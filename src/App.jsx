@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { usePostHog } from "@posthog/react";
 
 const C = {
   bg: "#0a0a0a", surface: "#111111", border: "#1e1e1e",
@@ -6,14 +7,14 @@ const C = {
   mono: "'IBM Plex Mono', 'Courier New', monospace",
   sans: "'IBM Plex Sans', sans-serif",
 };
-const sectionColors = { SKIN: "#e8920a", PROFILE: "#4ecdc4", LIFESTYLE: "#a29bfe" };
+const sectionColors = { SKIN: "#e8920a", PROFILE: "#4ecdc4", LIFESTYLE: "#a29bfe", SCALP: "#f78fb3" };
 const catColor = { BARRIER: "#4ecdc4", BRIGHTEN: "#e8920a", HYDRATE: "#74b9ff", REPAIR: "#a29bfe", PROTECT: "#55efc4" };
 const urgencyStyle = {
   ESSENTIAL: { color: "#e8920a", bg: "rgba(232,146,10,0.08)", border: "rgba(232,146,10,0.35)" },
   RECOMMENDED: { color: "#4ecdc4", bg: "rgba(78,205,196,0.08)", border: "rgba(78,205,196,0.35)" },
   BOOST: { color: "#a29bfe", bg: "rgba(162,155,254,0.08)", border: "rgba(162,155,254,0.35)" },
 };
-const retailerColor = { Amazon: "#ff9900", YesStyle: "#e94b6e", "Soko Glam": "#7b68ee", iHerb: "#5aac44", "Beauty of Joseon": "#c9a96e", StyleKorean: "#00b0c8", Stylevana: "#ff6b9d", "Olive Young": "#4ecdc4" };
+const retailerColor = { Amazon: "#ff9900", YesStyle: "#e94b6e", "Soko Glam": "#7b68ee", iHerb: "#5aac44", "Beauty of Joseon": "#c9a96e", StyleKorean: "#00b0c8", Stylevana: "#ff6b9d", "Olive Young": "#4ecdc4", "Peach & Lily": "#f78fb3", Target: "#cc0000", Ulta: "#7b2d8b", "Nudie Glow": "#f9ca24" };
 
 function getRetailerURL(retailer, name, brand) {
   const q = encodeURIComponent(`${name} ${brand}`);
@@ -26,6 +27,16 @@ function getRetailerURL(retailer, name, brand) {
     "StyleKorean": `https://www.stylekorean.com/search?search=${n}`,
     "Stylevana": `https://www.stylevana.com/en_US/search?q=${n}`,
     "Olive Young": `https://www.oliveyoung.com/search?query=${n}`,
+    "Jolse": `https://www.jolse.com/search?search=${q}`,
+    "Peach & Lily": `https://www.peachandlily.com/search?q=${n}`,
+    "Target": `https://www.target.com/s?searchTerm=${q}`,
+    "Ulta": `https://www.ulta.com/search?search=${q}`,
+    "Peach & Lily": `https://www.peachandlily.com/search?q=${n}`,
+    "Target": `https://www.target.com/s?searchTerm=${q}`,
+    "Ulta": `https://www.ulta.com/search?search=${n}`,
+    "Nudie Glow": `https://nudieglow.com/search?q=${n}`,
+    "COSRX": `https://www.cosrx.com/search?q=${n}`,
+    "Dr. Jart+": `https://www.drjart.com/search?q=${n}`,
   };
   return map[retailer] || `https://www.google.com/search?q=${encodeURIComponent(name + " " + brand + " buy")}`;
 }
@@ -54,6 +65,8 @@ const questions = [
   {id:"texture",code:"SKN_01",section:"SKIN",question:"By midday, your skin feels —",sub:"Select all that apply.",options:[{label:"Tight + parched",value:"dry",tag:"DRY"},{label:"Slick all over",value:"oily",tag:"OILY"},{label:"Oily T-zone, dry cheeks",value:"combination",tag:"COMBO"},{label:"Calm + balanced",value:"normal",tag:"NORMAL"}]},
   {id:"sensitivity",code:"SKN_02",section:"SKIN",question:"How does skin respond to new products?",sub:"Select all that apply.",options:[{label:"Burns or turns red",value:"sensitive",tag:"HIGH"},{label:"Occasional breakouts",value:"reactive",tag:"MED"},{label:"Usually adapts fine",value:"tolerant",tag:"LOW"},{label:"Never reacts",value:"resilient",tag:"NONE"}]},
   {id:"concerns",code:"SKN_03",section:"SKIN",question:"Primary skin objectives —",sub:"Select all that apply.",options:[{label:"Dullness + uneven tone",value:"brightening",tag:"GLOW"},{label:"Fine lines + firmness",value:"antiaging",tag:"AGE"},{label:"Acne + congestion",value:"acne",tag:"CLEAR"},{label:"Dehydration + plumpness",value:"hydration",tag:"H2O"},{label:"Dark spots + hyperpigmentation",value:"pigmentation",tag:"PIGMENT"},{label:"Redness + irritation",value:"redness",tag:"CALM"}]},
+  {id:"scalp_concern",code:"SCP_01",section:"SCALP",question:"Any scalp concerns? —",sub:"Select all that apply.",options:[{label:"Dry + flaky scalp",value:"dry_scalp",tag:"DRY"},{label:"Oily scalp + buildup",value:"oily_scalp",tag:"OILY"},{label:"Sensitive or itchy scalp",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Thinning or hair loss",value:"thinning",tag:"THINNING"},{label:"Dandruff",value:"dandruff",tag:"DANDRUFF"},{label:"No scalp concerns",value:"none",tag:"NONE"}]},
+  {id:"scalp_habit",code:"SCP_02",section:"SCALP",question:"How often do you wash your hair? —",sub:"Select one.",options:[{label:"Daily",value:"daily",tag:"DAILY"},{label:"Every 2–3 days",value:"every2to3",tag:"2–3 DAYS"},{label:"Twice a week",value:"twice_week",tag:"2X WEEK"},{label:"Once a week or less",value:"weekly",tag:"WEEKLY"}]},
   {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:"Skin needs shift every decade.",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 to 54",value:"45to54",tag:"45–54"},{label:"55 to 64",value:"55to64",tag:"55–64"},{label:"65 to 74",value:"65to74",tag:"65–74"},{label:"75 and over",value:"75plus",tag:"75+"}]},
   {id:"climate",code:"PRF_02",section:"PROFILE",question:"Where do you live? —",sub:"Climate shapes your barrier daily.",options:[{label:"Hot + humid",value:"tropical",tag:"TROPICAL"},{label:"Hot + dry",value:"arid",tag:"ARID"},{label:"Cold + dry",value:"cold",tag:"COLD"},{label:"Mild + temperate",value:"temperate",tag:"MILD"}]},
   {id:"sunlight",code:"LFE_01",section:"LIFESTYLE",question:"Daily sun exposure —",sub:"Average hours of direct sunlight.",options:[{label:"Indoor most of the day",value:"indoor",tag:"< 1HR"},{label:"Some outdoor time",value:"moderate",tag:"1–3HR"},{label:"Outdoors a lot",value:"high",tag:"3–6HR"},{label:"Full day in the sun",value:"extreme",tag:"6HR+"}]},
@@ -111,7 +124,7 @@ function RecCard({rec,index,stepNum}){
               <span style={{fontSize:"0.68rem",color:C.textMuted}}>{rec.rating} {rec.ratingCount&&<span style={{color:C.textDim}}>({rec.ratingCount})</span>}</span>
             </div>}
           </div>
-          <a href={getRetailerURL(rec.retailer, rec.name, rec.brand)} target="_blank" rel="noopener noreferrer"
+          <a href={getRetailerURL(rec.retailer, rec.name, rec.brand)} target="_blank" rel="noopener noreferrer" onClick={()=>{try{if(window.trackEvent)window.trackEvent("buy_clicked",{product:rec.name,brand:rec.brand,retailer:rec.retailer,price:rec.price});}catch(e){}}}
             style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"0.5rem 0.75rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,width:"100px",maxWidth:"100px",overflow:"hidden",transition:"all 0.15s"}}>
             <span style={{fontSize:"0.75rem",color:retCol,fontWeight:600,letterSpacing:"0.03em",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{rec.retailer} →</span>
           </a>
@@ -163,6 +176,7 @@ function buildText(recs,answers){
 }
 
 export default function MeemoSkinQuiz(){
+  const posthog = usePostHog();
   const[step,setStep]=useState(0);
   const[answers,setAnswers]=useState({});
   const[fading,setFading]=useState(false);
@@ -197,6 +211,10 @@ export default function MeemoSkinQuiz(){
   useEffect(()=>{const iv=setInterval(()=>setScanY(y=>(y+0.4)%100),30);return()=>clearInterval(iv);},[]);
 
   const go=(cb)=>new Promise(r=>{setFading(true);setTimeout(()=>{cb();setFading(false);r();},280);});
+  const track=(name,props={})=>{
+    try{if(window.trackEvent)window.trackEvent(name,props);}catch(e){}
+    try{if(posthog)posthog.capture(name,props);}catch(e){}
+  };
   const toggleOption=(value)=>{const prev=answers[currentQ.id]||{selected:[],comment:""};const already=prev.selected.includes(value);setAnswers({...answers,[currentQ.id]:{...prev,selected:already?prev.selected.filter(v=>v!==value):[...prev.selected,value]}});};
   const setComment=(text)=>{const prev=answers[currentQ.id]||{selected:[],comment:""};setAnswers({...answers,[currentQ.id]:{...prev,comment:text}});};
   const canContinue=currentAns.selected.length>0||currentAns.comment.trim().length>0;
@@ -206,14 +224,15 @@ export default function MeemoSkinQuiz(){
   const RESULTS_STEP=totalSteps+3;
 
   const handleNext=async()=>{
-    if(step===0){await go(()=>setStep(1));return;}
+    if(step===0){track("quiz_started");await go(()=>setStep(1));return;}
     if(step>=1&&step<=totalSteps){
       if(!canContinue)return;
-      if(step<totalSteps){await go(()=>setStep(step+1));}
-      else{await go(()=>setStep(SELFIE_STEP));}
+      if(step<totalSteps){track("question_answered",{question:currentQ.id,step,selected:currentAns.selected,hasNote:!!currentAns.comment.trim()});await go(()=>setStep(step+1));}
+      else{track("selfie_step_reached");await go(()=>setStep(SELFIE_STEP));}
       return;
     }
     if(step===SELFIE_STEP){
+      track(selfieData?"selfie_uploaded":"selfie_skipped");
       await go(()=>{setStep(LOADING_STEP);setLoading(true);});
       await fetchRecs(answers,selfieData);
       setLoading(false);
@@ -240,6 +259,10 @@ PERSONAL PROFILE:
 - Age: ${fmt("age")}
 - Climate: ${fmt("climate")}
 
+SCALP:
+- Scalp concerns: ${fmt("scalp_concern")}
+- Wash frequency: ${fmt("scalp_habit")}
+
 LIFESTYLE:
 - Sun exposure: ${fmt("sunlight")}
 - Habits: ${fmt("habits")}
@@ -247,12 +270,13 @@ LIFESTYLE:
 
 RULES:
 1. Return products IN ORDER of application: cleanser first, then toner, then serum/ampoule, then moisturizer, then SPF last. The JSON array order must match the application sequence.
+9. If scalp concerns are present (not "none"), replace one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence) and note it in dataReason.
 2. Each from a different brand
 3. Prioritize high sun exposure → UV protection first
 4. Age 45+ → retinol, peptides, collagen actives
 5. Stressed/poor sleep → cortisol + barrier repair focus
 6. Tropical/humid → lightweight gel textures only
-7. Include REALISTIC price ranges in USD and the cheapest reliable retailer (Amazon, YesStyle, iHerb, Soko Glam, StyleKorean, Stylevana)
+7. Include REALISTIC price ranges in USD and the best value retailer. Choose from: Amazon, YesStyle, iHerb, Soko Glam, StyleKorean, Stylevana, Olive Young, Peach & Lily, Target, Ulta, Nudie Glow. Pick whichever is genuinely cheapest and most accessible for that product.
 8. dataReason must explain EXACTLY which quiz answers drove this specific product choice
 
 Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explanation:
@@ -300,7 +324,8 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       const parsed=JSON.parse(raw.slice(s,e+1));
       if(!Array.isArray(parsed)||!parsed.length)throw new Error("empty");
       setRecs(parsed);
-    }catch(err){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);}
+      track("analysis_complete",{skinType:ans.texture?.selected,concerns:ans.concerns?.selected,age:ans.age?.selected,usedSelfie:!!imgData});
+    }catch(err){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);track("analysis_fallback",{reason:err.message});}
   };
 
   const handleSelfie=(e)=>{
@@ -316,6 +341,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   };
 
   const handleCopy=()=>{
+    track("regime_copied");
     const text=buildText(sortedRecs,answers);
     try{
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2500);}).catch(()=>fallbackCopy());}
@@ -324,7 +350,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   };
   const fallbackCopy=()=>{if(shareRef.current){shareRef.current.select();document.execCommand("copy");setCopied(true);setTimeout(()=>setCopied(false),2500);}};
   const handleEmail=()=>{const text=buildText(sortedRecs,answers);window.location.href=`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(text)}`;};
-  const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");setSelfieData(null);setSelfiePreview(null);setSelfieAnalysis(null);setSkinScan(null);};
+  const restart=()=>{track("quiz_restarted");setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");setSelfieData(null);setSelfiePreview(null);setSelfieAnalysis(null);setSkinScan(null);};
 
   // Fire Meta + TikTok pixel on results
   useEffect(()=>{
@@ -340,6 +366,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
   const handleSMS=()=>{
     if(!phone.trim())return;
+    track("regime_sms_sent");
     const text=buildText(sortedRecs,answers);
     const body=encodeURIComponent(text);
     // Opens native SMS app with pre-filled message
@@ -349,6 +376,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
   const handleSaveProfile=()=>{
     if(!profileName.trim()&&!profileEmail.trim())return;
+    track("profile_saved",{hasName:!!profileName.trim(),hasEmail:!!profileEmail.trim()});
     const profile={name:profileName,email:profileEmail,skinType:answers.texture?.selected,concerns:answers.concerns?.selected,age:answers.age?.selected,climate:answers.climate?.selected,habits:answers.habits?.selected,savedAt:new Date().toISOString(),regime:sortedRecs.map(r=>({name:r.name,brand:r.brand,step:stepLabel(r.texture),timing:r.timing}))};
     try{localStorage.setItem("meemo_profile",JSON.stringify(profile));}catch(e){}
     setProfileSaved(true);
@@ -382,7 +410,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               {questions.map((q,i)=><div key={i} style={{flex:1,height:"2px",background:i<step?(sectionColors[q.section]||C.amber):C.border,boxShadow:i<step?`0 0 6px ${sectionColors[q.section]||C.amber}55`:"none",transition:"all 0.4s ease",borderRadius:"1px"}}/>)}
             </div>
             <div style={{display:"flex",gap:"1.3rem"}}>
-              {["SKIN","PROFILE","LIFESTYLE"].map(sec=><span key={sec} style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{sec}</span>)}
+              {["SKIN","SCALP","PROFILE","LIFESTYLE"].map(sec=><span key={sec} style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{sec}</span>)}
             </div>
           </div>
         )}
@@ -403,17 +431,17 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               <div>
                 <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.1rem"}}>MEEMO / SKIN_DIAGNOSTICS v2.5</div>
                 <div style={{fontSize:"0.88rem",color:C.textDim,marginBottom:"0.9rem"}}>
-                  <span style={{color:C.textMuted}}>$ init </span><span style={{color:C.text}}>skin_analysis --full-profile --pricing</span>
+                  <span style={{color:C.textMuted}}>$ init </span><span style={{color:C.text}}>skin_analysis --your-way</span>
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
                 <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
-                  Korean Innovation<br/><span style={{color:C.amber}}>for Skin + Scalp.</span>
+                  Korean Innovation<br/>for Skin <span style={{color:C.amber}}>+ Scalp.</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
-                  Powered by Korean Beauty science — the world's most advanced skin and scalp innovation. 8 questions. AI-matched to your exact profile, age, climate, and lifestyle.
+                  Korean skin and scalp innovation, matched to you. Precise. Proven. Personal.
                 </p>
                 <div style={{display:"flex",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[["SKIN","3 q's","#e8920a"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
+                  {[["SKIN","3 q's","#e8920a"],["SCALP","2 q's","#f78fb3"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
                     <div key={sec} style={{flex:1,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.7rem 0.95rem",background:"#0d0d0d",borderTop:`2px solid ${col}`}}>
                       <div style={{fontSize:"0.72rem",color:col,letterSpacing:"0.10em",marginBottom:"0.47rem"}}>{sec}</div>
                       <div style={{fontSize:"0.8rem",color:C.textMuted}}>{n}</div>
@@ -421,14 +449,14 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   ))}
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[["PRICE RANGES","Realistic USD estimates"],["BEST RETAILER","Amazon, YesStyle, iHerb"],["WHY EACH PRODUCT","Tied to your exact inputs"],["ORDERED REGIME","Correct application sequence"]].map(([t,d])=>(
+                  {[["YOUR PACE","Go deep or keep it simple"],["SKIN + SCALP","Face and scalp, covered"],["KOREAN INNOVATION","Fermentation, peptides, Cica, Snail"],["BEST PRICE","Amazon, Jolse, YesStyle + more"]].map(([t,d])=>(
                     <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.95rem",background:"#0d0d0d"}}>
                       <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{t}</div>
                       <div style={{fontSize:"0.8rem",color:C.textMuted}}>{d}</div>
                     </div>
                   ))}
                 </div>
-                <button onClick={handleNext} style={{...primaryBtn,width:"100%"}}>begin full analysis →</button>
+                <button onClick={handleNext} style={{...primaryBtn,width:"100%"}}>start — at your own pace →</button>
               </div>
             )}
 
@@ -584,6 +612,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                         ["SKIN TYPE",answers.texture?.selected,"SKIN"],
                         ["SENSITIVITY",answers.sensitivity?.selected,"SKIN"],
                         ["CONCERN",answers.concerns?.selected,"SKIN"],
+                        ["SCALP",answers.scalp_concern?.selected,"SCALP"],
                         ["AGE",answers.age?.selected,"PROFILE"],
                         ["CLIMATE",answers.climate?.selected,"PROFILE"],
                         ["SUN",answers.sunlight?.selected,"PROFILE"],
