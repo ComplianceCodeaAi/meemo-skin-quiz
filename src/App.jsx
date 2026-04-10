@@ -444,6 +444,8 @@ export default function MeemoSkinQuiz(){
   const prevSection=step>1?questions[step-2]?.section:null;
   const isNewSection=step>=1&&step<=totalSteps&&currentQ.section!==prevSection;
   const sortedRecs=recs?[...recs].sort((a,b)=>{const diff=stepOrder(a.texture)-stepOrder(b.texture);return diff!==0?diff:0;}):[];
+  const skinRecs=sortedRecs.filter(r=>!r.texture?.toLowerCase().includes("scalp"));
+  const scalpRecs=sortedRecs.filter(r=>r.texture?.toLowerCase().includes("scalp"));
 
   useEffect(()=>{const iv=setInterval(()=>setCursor(c=>!c),530);return()=>clearInterval(iv);},[]);
   useEffect(()=>{if(!loading)return;const iv=setInterval(()=>setDots(d=>d.length>=3?".":d+"."),380);return()=>clearInterval(iv);},[loading]);
@@ -896,7 +898,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
                 {/* regime cards */}
                 <div style={{display:"flex",flexDirection:"column",gap:"0.8rem",marginBottom:"1.33rem"}}>
-                  {sortedRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i} stepNum={i+1}/>)}
+                  {skinRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#e8920a",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"0.5rem"}}>SKIN ROUTINE —— Apply to face AM/PM</div>}{skinRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i} stepNum={i+1}/>)}{scalpRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#55efc4",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"1.5rem"}}>SCALP ROUTINE —— Apply on wash days</div>}{scalpRecs.map((rec,i)=><RecCard key={"s"+i} rec={rec} index={i} stepNum={i+1}/>)}
                 </div>
 
                 {/* estimated total */}
