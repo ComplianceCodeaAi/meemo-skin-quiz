@@ -7,6 +7,242 @@ const C = {
   mono: "'IBM Plex Mono', 'Courier New', monospace",
   sans: "'IBM Plex Sans', sans-serif",
 };
+
+const T = {
+  en: {
+    brand: "MEEMO", sub: "SKIN_ANALYSIS",
+    headline1: "Korean Innovation", headline2: "for Skin + Scalp.",
+    subtitle: "{t.subtitle}",
+    terminal: "{t.terminal}",
+    begin: "start — at your own pace →",
+    version: "{t.version}",
+    yourPace: "YOUR PACE", yourPaceDesc: "Go deep or keep it simple",
+    skinScalp: "SKIN + SCALP", skinScalpDesc: "Face and scalp, covered",
+    koreanInno: "KOREAN INNOVATION", koreanInnoDesc: "Fermentation, peptides, Cica, Snail",
+    bestPrice: "BEST PRICE", bestPriceDesc: "Amazon, Jolse, YesStyle + more",
+    analysisComplete: "ANALYSIS COMPLETE ──",
+    yourRegime: "Your Korean Beauty Regime",
+    processing: "PROCESSING",
+    scanComplete: "SKIN SCAN ANALYSIS ──",
+    saveProfile: "SAVE TO MEEMO PROFILE ──",
+    saveDesc: "Save your regime. We'll remember your skin type and routine for next time.",
+    saveName: "Your name", saveEmail: "Email address", saveBtn: "save my skin profile →",
+    textRegime: "TEXT MY REGIME ──",
+    textDesc: "Opens your SMS app with your protocol pre-filled.",
+    textPhone: "+1 555 000 0000", textSend: "send →",
+    copyLabel: "COPY", emailLabel: "EMAIL",
+    restart: "↺ restart analysis",
+    back: "← back", continueBtn: "continue →", runAnalysis: "run full analysis →",
+    stepNote: "ADD A NOTE", noteOptional: "— optional",
+    notePlaceholder: "Allergies, products tried, doctor notes, specific concerns…",
+    noteSaved: "✓ note saved",
+    selectAll: t.selectAll,
+    basedOn: "BASED ON YOUR INPUTS ──",
+    estimatedCost: "{t.estimatedCost}",
+    firstPick: "FIRST PICK ──", secondPick: "SECOND PICK ──",
+    firstChoice: "FIRST CHOICE", whyRec: "WHY THIS WAS RECOMMENDED",
+    skinSection: "SKIN PROFILE", profileSection: "PROFILE", lifestyleSection: "LIFESTYLE",
+    savePlusShare: "SAVE + SHARE ──",
+    footerLeft: "MEEMO WELLNESS AI", footerRight: "KOREAN BEAUTY SKIN INTELLIGENCE v2.5",
+    selfieTitle: "Optional: Scan your skin",
+    selfieDesc: "Upload a selfie for AI-powered visual skin analysis. We analyze visible redness, oiliness, texture, pores, and tone — layered on top of your quiz answers.",
+    selfieReady: "Photo ready — AI will analyze your skin",
+    selfieChange: "Tap to change",
+    selfieUpload: "Tap to upload a selfie",
+    selfieFormat: "JPG or PNG · Front-facing, good lighting",
+    selfiePrivacy: "Your photo is sent directly to Claude AI and never stored. Analysis happens in real time and is deleted immediately after.",
+    selfieAnalyze: "{t.selfieAnalyze}",
+    selfieSkip: "{t.selfieSkip}",
+    scanHeader: "SKIN SCAN ANALYSIS ──",
+    scanFactored: "✓ Visual observations factored into your regime below",
+  },
+  es: {
+    brand: "MEEMO", sub: "ANÁLISIS DE PIEL",
+    headline1: "Innovación Coreana", headline2: "para Piel + Cuero Cabelludo.",
+    subtitle: "Innovación coreana para piel y cuero cabelludo, adaptada a ti. Precisa. Probada. Personal.",
+    terminal: "analisis_piel --a-tu-ritmo",
+    begin: "comenzar — a tu propio ritmo →",
+    version: "MEEMO / DIAGNÓSTICO DE PIEL v2.5",
+    yourPace: "TU RITMO", yourPaceDesc: "Profundo o simple, tú decides",
+    skinScalp: "PIEL + CUERO", skinScalpDesc: "Cara y cuero cabelludo",
+    koreanInno: "INNOVACIÓN COREANA", koreanInnoDesc: "Fermentación, péptidos, Cica",
+    bestPrice: "MEJOR PRECIO", bestPriceDesc: "Amazon, Jolse, YesStyle + más",
+    analysisComplete: "ANÁLISIS COMPLETO ──",
+    yourRegime: "Tu Régimen de Belleza Coreana",
+    processing: "PROCESANDO",
+    scanComplete: "ANÁLISIS DE PIEL ──",
+    saveProfile: "GUARDAR EN MEEMO ──",
+    saveDesc: "Guarda tu régimen. Recordaremos tu tipo de piel para la próxima vez.",
+    saveName: "Tu nombre", saveEmail: "Correo electrónico", saveBtn: "guardar mi perfil →",
+    textRegime: "ENVIAR MI RÉGIMEN ──",
+    textDesc: "Abre tu app de mensajes con el protocolo listo.",
+    textPhone: "+1 555 000 0000", textSend: "enviar →",
+    copyLabel: "COPIAR", emailLabel: "EMAIL",
+    restart: "↺ reiniciar análisis",
+    back: "← volver", continueBtn: "continuar →", runAnalysis: "ejecutar análisis completo →",
+    stepNote: "AGREGAR NOTA", noteOptional: "— opcional",
+    notePlaceholder: "Alergias, productos probados, notas médicas, preocupaciones específicas…",
+    noteSaved: "✓ nota guardada",
+    selectAll: "Selecciona todas las que apliquen.",
+    basedOn: "BASADO EN TUS RESPUESTAS ──",
+    estimatedCost: "COSTO ESTIMADO DEL RÉGIMEN",
+    firstPick: "PRIMERA OPCIÓN ──", secondPick: "SEGUNDA OPCIÓN ──",
+    firstChoice: "PRIMERA OPCIÓN", whyRec: "POR QUÉ SE RECOMENDÓ",
+    skinSection: "PERFIL DE PIEL", profileSection: "PERFIL", lifestyleSection: "ESTILO DE VIDA",
+    savePlusShare: "GUARDAR + COMPARTIR ──",
+    footerLeft: "MEEMO WELLNESS AI", footerRight: "INTELIGENCIA DE BELLEZA COREANA v2.5",
+    selfieTitle: "Opcional: Escanea tu piel",
+    selfieDesc: "Sube una selfie para análisis visual de piel con IA. Analizamos rojez, brillo, textura, poros y tono — junto con tus respuestas.",
+    selfieReady: "Foto lista — la IA analizará tu piel",
+    selfieChange: "Toca para cambiar",
+    selfieUpload: "Toca para subir una selfie",
+    selfieFormat: "JPG o PNG · Frente a la cámara, buena iluminación",
+    selfiePrivacy: "Tu foto se envía directamente a la IA y nunca se almacena.",
+    selfieAnalyze: "analizar mi piel →",
+    selfieSkip: "omitir — usar solo respuestas →",
+    scanHeader: "ANÁLISIS DE PIEL ──",
+    scanFactored: "✓ Observaciones visuales incluidas en tu régimen",
+  },
+  pt: {
+    brand: "MEEMO", sub: "ANÁLISE DE PELE",
+    headline1: "Inovação Coreana", headline2: "para Pele + Couro Cabeludo.",
+    subtitle: "Inovação coreana para pele e couro cabeludo, personalizada para você. Precisa. Comprovada. Pessoal.",
+    terminal: "analise_pele --no-seu-ritmo",
+    begin: "começar — no seu ritmo →",
+    version: "MEEMO / DIAGNÓSTICO DE PELE v2.5",
+    yourPace: "SEU RITMO", yourPaceDesc: "Profundo ou simples, você decide",
+    skinScalp: "PELE + COURO", skinScalpDesc: "Rosto e couro cabeludo",
+    koreanInno: "INOVAÇÃO COREANA", koreanInnoDesc: "Fermentação, peptídeos, Cica",
+    bestPrice: "MELHOR PREÇO", bestPriceDesc: "Amazon, Jolse, YesStyle + mais",
+    analysisComplete: "ANÁLISE COMPLETA ──",
+    yourRegime: "Seu Regime de Beleza Coreana",
+    processing: "PROCESSANDO",
+    saveProfile: "SALVAR NO MEEMO ──",
+    saveDesc: "Salve seu regime. Lembraremos do seu tipo de pele.",
+    saveName: "Seu nome", saveEmail: "E-mail", saveBtn: "salvar meu perfil →",
+    textRegime: "ENVIAR MEU REGIME ──",
+    textDesc: "Abre seu app de mensagens com o protocolo pronto.",
+    textPhone: "+55 11 00000-0000", textSend: "enviar →",
+    copyLabel: "COPIAR", emailLabel: "EMAIL",
+    restart: "↺ reiniciar análise",
+    back: "← voltar", continueBtn: "continuar →", runAnalysis: "executar análise completa →",
+    stepNote: "ADICIONAR NOTA", noteOptional: "— opcional",
+    notePlaceholder: "Alergias, produtos testados, notas médicas…",
+    noteSaved: "✓ nota salva",
+    selectAll: "Selecione todas que se aplicam.",
+    basedOn: "BASEADO NAS SUAS RESPOSTAS ──",
+    estimatedCost: "CUSTO ESTIMADO DO REGIME",
+    firstPick: "PRIMEIRA ESCOLHA ──", secondPick: "SEGUNDA ESCOLHA ──",
+    firstChoice: "PRIMEIRA ESCOLHA", whyRec: "POR QUE FOI RECOMENDADO",
+    skinSection: "PERFIL DE PELE", profileSection: "PERFIL", lifestyleSection: "ESTILO DE VIDA",
+    savePlusShare: "SALVAR + COMPARTILHAR ──",
+    footerLeft: "MEEMO WELLNESS AI", footerRight: "BELEZA COREANA INTELIGENTE v2.5",
+    selfieTitle: "Opcional: Escaneie sua pele",
+    selfieDesc: "Envie uma selfie para análise visual com IA. Analisamos vermelhidão, oleosidade, textura, poros e tom.",
+    selfieReady: "Foto pronta — a IA vai analisar sua pele",
+    selfieChange: "Toque para trocar",
+    selfieUpload: "Toque para enviar uma selfie",
+    selfieFormat: "JPG ou PNG · Frente à câmera, boa iluminação",
+    selfiePrivacy: "Sua foto é enviada diretamente à IA e nunca armazenada.",
+    selfieAnalyze: "analisar minha pele →",
+    selfieSkip: "pular — usar apenas respostas →",
+    scanHeader: "ANÁLISE DE PELE ──",
+    scanFactored: "✓ Observações visuais incluídas no seu regime",
+  },
+  ko: {
+    brand: "MEEMO", sub: "피부 분석",
+    headline1: "한국의 혁신", headline2: "피부와 두피를 위해.",
+    subtitle: "당신에게 맞춘 한국 피부·두피 혁신. 정확하고. 검증되었으며. 개인적입니다.",
+    terminal: "피부_분석 --나만의_방식",
+    begin: "나만의 속도로 시작하기 →",
+    version: "MEEMO / 피부 진단 v2.5",
+    yourPace: "나만의 속도", yourPaceDesc: "깊게 또는 간단하게",
+    skinScalp: "피부 + 두피", skinScalpDesc: "얼굴과 두피 모두 케어",
+    koreanInno: "한국 혁신", koreanInnoDesc: "발효, 펩타이드, 시카",
+    bestPrice: "최저가", bestPriceDesc: "아마존, 올리브영 + 더보기",
+    analysisComplete: "분석 완료 ──",
+    yourRegime: "나만의 한국 뷰티 루틴",
+    processing: "처리 중",
+    saveProfile: "MEEMO 프로필 저장 ──",
+    saveDesc: "루틴을 저장하세요. 다음 방문 시 피부 타입을 기억합니다.",
+    saveName: "이름", saveEmail: "이메일 주소", saveBtn: "내 피부 프로필 저장 →",
+    textRegime: "루틴 문자 전송 ──",
+    textDesc: "프로토콜이 입력된 문자 앱을 엽니다.",
+    textPhone: "010-0000-0000", textSend: "전송 →",
+    copyLabel: "복사", emailLabel: "이메일",
+    restart: "↺ 다시 분석하기",
+    back: "← 이전", continueBtn: "계속 →", runAnalysis: "전체 분석 실행 →",
+    stepNote: "메모 추가", noteOptional: "— 선택사항",
+    notePlaceholder: "알레르기, 사용 제품, 의사 메모, 특별한 고민…",
+    noteSaved: "✓ 메모 저장됨",
+    selectAll: "해당하는 것을 모두 선택하세요.",
+    basedOn: "입력 정보 기반 ──",
+    estimatedCost: "예상 루틴 비용",
+    firstPick: "첫 번째 추천 ──", secondPick: "두 번째 추천 ──",
+    firstChoice: "첫 번째 추천", whyRec: "이 제품을 추천한 이유",
+    skinSection: "피부 프로필", profileSection: "프로필", lifestyleSection: "라이프스타일",
+    savePlusShare: "저장 + 공유 ──",
+    footerLeft: "MEEMO WELLNESS AI", footerRight: "한국 뷰티 피부 지능 v2.5",
+    selfieTitle: "선택사항: 피부 스캔",
+    selfieDesc: "셀카를 업로드하면 AI가 피부를 분석합니다. 홍조, 유분, 모공, 톤을 분석합니다.",
+    selfieReady: "사진 준비 완료 — AI가 피부를 분석합니다",
+    selfieChange: "탭하여 변경",
+    selfieUpload: "탭하여 셀카 업로드",
+    selfieFormat: "JPG 또는 PNG · 정면, 밝은 조명",
+    selfiePrivacy: "사진은 AI로 직접 전송되며 저장되지 않습니다.",
+    selfieAnalyze: "피부 분석하기 →",
+    selfieSkip: "건너뛰기 — 설문 답변만 사용 →",
+    scanHeader: "피부 스캔 분석 ──",
+    scanFactored: "✓ 시각적 분석이 루틴에 반영되었습니다",
+  },
+  zh: {
+    brand: "MEEMO", sub: "肌肤分析",
+    headline1: "韩国创新科技", headline2: "为肌肤与头皮而生。",
+    subtitle: "专为您定制的韩国肌肤与头皮创新科技。精准。经过验证。个人化。",
+    terminal: "肌肤分析 --按您的节奏",
+    begin: "按自己的节奏开始 →",
+    version: "MEEMO / 肌肤诊断 v2.5",
+    yourPace: "您的节奏", yourPaceDesc: "深入或简单，由您决定",
+    skinScalp: "肌肤 + 头皮", skinScalpDesc: "面部与头皮全面护理",
+    koreanInno: "韩国创新", koreanInnoDesc: "发酵、肽、积雪草",
+    bestPrice: "最低价格", bestPriceDesc: "亚马逊、Jolse、YesStyle + 更多",
+    analysisComplete: "分析完成 ──",
+    yourRegime: "您的韩式美容护理方案",
+    processing: "处理中",
+    saveProfile: "保存到 MEEMO 档案 ──",
+    saveDesc: "保存您的护理方案。下次记住您的肤质。",
+    saveName: "您的姓名", saveEmail: "电子邮件", saveBtn: "保存我的肌肤档案 →",
+    textRegime: "发送我的方案 ──",
+    textDesc: "打开短信应用，方案已预填写。",
+    textPhone: "+86 000 0000 0000", textSend: "发送 →",
+    copyLabel: "复制", emailLabel: "邮件",
+    restart: "↺ 重新分析",
+    back: "← 返回", continueBtn: "继续 →", runAnalysis: "运行完整分析 →",
+    stepNote: "添加备注", noteOptional: "— 可选",
+    notePlaceholder: "过敏史、已用产品、医生建议、特定问题…",
+    noteSaved: "✓ 备注已保存",
+    selectAll: "选择所有适用项。",
+    basedOn: "基于您的输入 ──",
+    estimatedCost: "预计护理方案费用",
+    firstPick: "首选推荐 ──", secondPick: "次选推荐 ──",
+    firstChoice: "首选推荐", whyRec: "推荐原因",
+    skinSection: "肌肤档案", profileSection: "个人档案", lifestyleSection: "生活方式",
+    savePlusShare: "保存 + 分享 ──",
+    footerLeft: "MEEMO WELLNESS AI", footerRight: "韩国美容肌肤智能 v2.5",
+    selfieTitle: "可选：扫描您的肌肤",
+    selfieDesc: "上传自拍照，进行AI驱动的视觉肌肤分析。分析红肿、油脂、纹理、毛孔和肤色。",
+    selfieReady: "照片已就绪 — AI将分析您的肌肤",
+    selfieChange: "点击更换",
+    selfieUpload: "点击上传自拍照",
+    selfieFormat: "JPG或PNG · 正面拍摄，光线充足",
+    selfiePrivacy: "您的照片直接发送给AI，不会被存储。",
+    selfieAnalyze: "分析我的肌肤 →",
+    selfieSkip: "跳过 — 仅使用问卷答案 →",
+    scanHeader: "肌肤扫描分析 ──",
+    scanFactored: "✓ 视觉观察已纳入您的护理方案",
+  },
+};
+
 const sectionColors = { SKIN: "#e8920a", PROFILE: "#4ecdc4", LIFESTYLE: "#a29bfe", SCALP: "#f78fb3" };
 const catColor = { BARRIER: "#4ecdc4", BRIGHTEN: "#e8920a", HYDRATE: "#74b9ff", REPAIR: "#a29bfe", PROTECT: "#55efc4" };
 const urgencyStyle = {
@@ -64,16 +300,16 @@ const DEMO_RECS = [
 ];
 
 const questions = [
-  {id:"texture",code:"SKN_01",section:"SKIN",question:"By midday, your skin feels —",sub:"Select all that apply.",options:[{label:"Tight + parched",value:"dry",tag:"DRY"},{label:"Slick all over",value:"oily",tag:"OILY"},{label:"Oily T-zone, dry cheeks",value:"combination",tag:"COMBO"},{label:"Calm + balanced",value:"normal",tag:"NORMAL"}]},
-  {id:"sensitivity",code:"SKN_02",section:"SKIN",question:"How does skin respond to new products?",sub:"Select all that apply.",options:[{label:"Burns or turns red",value:"sensitive",tag:"HIGH"},{label:"Occasional breakouts",value:"reactive",tag:"MED"},{label:"Usually adapts fine",value:"tolerant",tag:"LOW"},{label:"Never reacts",value:"resilient",tag:"NONE"}]},
-  {id:"concerns",code:"SKN_03",section:"SKIN",question:"Primary skin objectives —",sub:"Select all that apply.",options:[{label:"Dullness + uneven tone",value:"brightening",tag:"GLOW"},{label:"Fine lines + firmness",value:"antiaging",tag:"AGE"},{label:"Acne + congestion",value:"acne",tag:"CLEAR"},{label:"Dehydration + plumpness",value:"hydration",tag:"H2O"},{label:"Dark spots + hyperpigmentation",value:"pigmentation",tag:"PIGMENT"},{label:"Redness + irritation",value:"redness",tag:"CALM"}]},
-  {id:"scalp_concern",code:"SCP_01",section:"SCALP",question:"Any scalp concerns? —",sub:"Select all that apply.",options:[{label:"Dry + flaky scalp",value:"dry_scalp",tag:"DRY"},{label:"Oily scalp + buildup",value:"oily_scalp",tag:"OILY"},{label:"Sensitive or itchy scalp",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Thinning or hair loss",value:"thinning",tag:"THINNING"},{label:"Dandruff",value:"dandruff",tag:"DANDRUFF"},{label:"No scalp concerns",value:"none",tag:"NONE"}]},
+  {id:"texture",code:"SKN_01",section:"SKIN",question:"By midday, your skin feels —",sub:t.selectAll,options:[{label:"Tight + parched",value:"dry",tag:"DRY"},{label:"Slick all over",value:"oily",tag:"OILY"},{label:"Oily T-zone, dry cheeks",value:"combination",tag:"COMBO"},{label:"Calm + balanced",value:"normal",tag:"NORMAL"}]},
+  {id:"sensitivity",code:"SKN_02",section:"SKIN",question:"How does skin respond to new products?",sub:t.selectAll,options:[{label:"Burns or turns red",value:"sensitive",tag:"HIGH"},{label:"Occasional breakouts",value:"reactive",tag:"MED"},{label:"Usually adapts fine",value:"tolerant",tag:"LOW"},{label:"Never reacts",value:"resilient",tag:"NONE"}]},
+  {id:"concerns",code:"SKN_03",section:"SKIN",question:"Primary skin objectives —",sub:t.selectAll,options:[{label:"Dullness + uneven tone",value:"brightening",tag:"GLOW"},{label:"Fine lines + firmness",value:"antiaging",tag:"AGE"},{label:"Acne + congestion",value:"acne",tag:"CLEAR"},{label:"Dehydration + plumpness",value:"hydration",tag:"H2O"},{label:"Dark spots + hyperpigmentation",value:"pigmentation",tag:"PIGMENT"},{label:"Redness + irritation",value:"redness",tag:"CALM"}]},
+  {id:"scalp_concern",code:"SCP_01",section:"SCALP",question:"Any scalp concerns? —",sub:t.selectAll,options:[{label:"Dry + flaky scalp",value:"dry_scalp",tag:"DRY"},{label:"Oily scalp + buildup",value:"oily_scalp",tag:"OILY"},{label:"Sensitive or itchy scalp",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Thinning or hair loss",value:"thinning",tag:"THINNING"},{label:"Dandruff",value:"dandruff",tag:"DANDRUFF"},{label:"No scalp concerns",value:"none",tag:"NONE"}]},
   {id:"scalp_habit",code:"SCP_02",section:"SCALP",question:"How often do you wash your hair? —",sub:"Select one.",options:[{label:"Daily",value:"daily",tag:"DAILY"},{label:"Every 2–3 days",value:"every2to3",tag:"2–3 DAYS"},{label:"Twice a week",value:"twice_week",tag:"2X WEEK"},{label:"Once a week or less",value:"weekly",tag:"WEEKLY"}]},
-  {id:"scalp",code:"SKN_04",section:"SKIN",question:"How does your scalp feel? —",sub:"Select all that apply.",options:[{label:"Dry + flaky",value:"dry_scalp",tag:"DRY"},{label:"Oily + itchy",value:"oily_scalp",tag:"OILY"},{label:"Sensitive + irritated",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Hair thinning or loss",value:"thinning",tag:"THINNING"},{label:"Balanced + no concerns",value:"balanced_scalp",tag:"BALANCED"}]},
-  {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:"Skin needs shift every decade.",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 to 54",value:"45to54",tag:"45–54"},{label:"55 to 64",value:"55to64",tag:"55–64"},{label:"65 to 74",value:"65to74",tag:"65–74"},{label:"75 and over",value:"75plus",tag:"75+"}]},
+  {id:"scalp",code:"SKN_04",section:"SKIN",question:"How does your scalp feel? —",sub:t.selectAll,options:[{label:"Dry + flaky",value:"dry_scalp",tag:"DRY"},{label:"Oily + itchy",value:"oily_scalp",tag:"OILY"},{label:"Sensitive + irritated",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Hair thinning or loss",value:"thinning",tag:"THINNING"},{label:"Balanced + no concerns",value:"balanced_scalp",tag:"BALANCED"}]},
+  {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:lang==="en"?"Skin needs shift every decade.":lang==="es"?"Las necesidades cambian cada década.":lang==="pt"?"As necessidades mudam a cada década.":lang==="ko"?"매 10년마다 피부 요구가 바뀝니다.":"每个十年肌肤需求都会改变。",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 to 54",value:"45to54",tag:"45–54"},{label:"55 to 64",value:"55to64",tag:"55–64"},{label:"65 to 74",value:"65to74",tag:"65–74"},{label:"75 and over",value:"75plus",tag:"75+"}]},
   {id:"climate",code:"PRF_02",section:"PROFILE",question:"Where do you live? —",sub:"Climate shapes your barrier daily.",options:[{label:"Hot + humid",value:"tropical",tag:"TROPICAL"},{label:"Hot + dry",value:"arid",tag:"ARID"},{label:"Cold + dry",value:"cold",tag:"COLD"},{label:"Mild + temperate",value:"temperate",tag:"MILD"}]},
   {id:"sunlight",code:"LFE_01",section:"LIFESTYLE",question:"Daily sun exposure —",sub:"Average hours of direct sunlight.",options:[{label:"Indoor most of the day",value:"indoor",tag:"< 1HR"},{label:"Some outdoor time",value:"moderate",tag:"1–3HR"},{label:"Outdoors a lot",value:"high",tag:"3–6HR"},{label:"Full day in the sun",value:"extreme",tag:"6HR+"}]},
-  {id:"habits",code:"LFE_02",section:"LIFESTYLE",question:"Which habits describe you? —",sub:"Select all that apply.",options:[{label:"Workouts + sweating daily",value:"active",tag:"ACTIVE"},{label:"Mostly desk / screen time",value:"sedentary",tag:"DESK"},{label:"Travel + irregular schedule",value:"travel",tag:"TRAVEL"},{label:"High stress + poor sleep",value:"stressed",tag:"STRESS"},{label:"Drinks alcohol regularly",value:"alcohol",tag:"ALCOHOL"},{label:"Smoker or ex-smoker",value:"smoker",tag:"SMOKE"}]},
+  {id:"habits",code:"LFE_02",section:"LIFESTYLE",question:"Which habits describe you? —",sub:t.selectAll,options:[{label:"Workouts + sweating daily",value:"active",tag:"ACTIVE"},{label:"Mostly desk / screen time",value:"sedentary",tag:"DESK"},{label:"Travel + irregular schedule",value:"travel",tag:"TRAVEL"},{label:"High stress + poor sleep",value:"stressed",tag:"STRESS"},{label:"Drinks alcohol regularly",value:"alcohol",tag:"ALCOHOL"},{label:"Smoker or ex-smoker",value:"smoker",tag:"SMOKE"}]},
   {id:"routine",code:"LFE_03",section:"LIFESTYLE",question:"Current Korean Beauty routine level —",sub:"Be honest.",options:[{label:"Total beginner",value:"beginner",tag:"LVL 0"},{label:"Cleanser + moisturizer",value:"minimal",tag:"LVL 1"},{label:"4–6 step routine",value:"intermediate",tag:"LVL 2"},{label:"Full 10-step devotee",value:"advanced",tag:"LVL 3"}]},
 ];
 
@@ -104,7 +340,7 @@ function RecCard({rec,index,stepNum}){
           </div>
         </div>
         {/* first pick label */}
-        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>FIRST PICK ──</div>
+        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>{t.firstPick}</div>
         {/* brand + name */}
         <div style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.2em",marginBottom:"0.35rem"}}>{rec.brand?.toUpperCase()}</div>
         <div style={{fontSize:"1.04rem",color:C.text,fontFamily:C.sans,fontWeight:400,lineHeight:1.25,marginBottom:"0.62rem"}}>{rec.name}</div>
@@ -120,7 +356,7 @@ function RecCard({rec,index,stepNum}){
         {/* price + rating + buy */}
         <div style={{display:"flex",alignItems:"stretch",gap:"0.5rem",marginBottom:"0.75rem"}}>
           <div style={{padding:"0.5rem 0.75rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>FIRST CHOICE</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>{t.firstChoice}</div>
             <div style={{fontSize:"1rem",color:C.text,fontFamily:C.sans,fontWeight:500,marginBottom:"0.25rem"}}>{rec.price}</div>
             {rec.rating&&<div style={{display:"flex",alignItems:"center",gap:"0.3rem"}}>
               <span style={{color:"#f4c542",fontSize:"0.75rem"}}>{"★".repeat(Math.round(parseFloat(rec.rating||0)))}</span>
@@ -136,7 +372,7 @@ function RecCard({rec,index,stepNum}){
         {/* alt product — always render if any alt field exists */}
         {(rec.altName||rec.altBrand)&&(
           <div style={{marginBottom:"0.75rem",padding:"0.65rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderLeft:`2px solid ${col}40`,borderRadius:"3px"}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>SECOND PICK ──</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>{t.secondPick}</div>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"0.5rem"}}>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{(rec.altBrand||"").toUpperCase()}</div>
@@ -157,7 +393,7 @@ function RecCard({rec,index,stepNum}){
 
         {/* why recommended — expandable */}
         <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:"0.62rem",background:"transparent",border:"none",cursor:"pointer",padding:0,fontFamily:C.mono}}>
-          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>WHY THIS WAS RECOMMENDED</span>
+          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>{t.whyRec}</span>
           <span style={{fontSize:"0.75rem",color:C.textDim,transition:"transform 0.2s",display:"inline-block",transform:open?"rotate(90deg)":"rotate(0deg)"}}>›</span>
         </button>
         {open&&(
@@ -180,6 +416,8 @@ function buildText(recs,answers){
 
 export default function MeemoSkinQuiz(){
   const posthog = usePostHog();
+  const[lang,setLang]=useState("en");
+  const t=T[lang]||T.en;
   const[step,setStep]=useState(0);
   const[answers,setAnswers]=useState({});
   const[fading,setFading]=useState(false);
@@ -425,7 +663,12 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             <span style={{fontSize:"0.8rem",color:C.amber,letterSpacing:"0.14em"}}>MEEMO</span>
             <span style={{fontSize:"0.8rem",color:C.textDim,letterSpacing:"0.1em"}}>SKIN_ANALYSIS</span>
           </div>
-          {step>0&&step<=totalSteps&&<span style={{fontSize:"0.78rem",color:C.textMuted,letterSpacing:"0.10em"}}>{String(step).padStart(2,"0")} / {String(totalSteps).padStart(2,"0")}</span>}
+          <div style={{display:"flex",alignItems:"center",gap:"0.35rem"}}>
+            {[["en","EN"],["es","ES"],["pt","PT"],["ko","한"],["zh","中"]].map(([code,lbl])=>(
+              <button key={code} onClick={()=>setLang(code)} style={{background:lang===code?C.amber:"transparent",color:lang===code?"#000":C.textDim,border:`1px solid ${lang===code?C.amber:C.border}`,borderRadius:"2px",padding:"0.18rem 0.45rem",fontSize:"0.58rem",fontFamily:C.mono,cursor:"pointer",letterSpacing:"0.06em",transition:"all 0.15s"}}>{lbl}</button>
+            ))}
+            {step>0&&step<=totalSteps&&<span style={{fontSize:"0.78rem",color:C.textMuted,letterSpacing:"0.10em",marginLeft:"0.5rem"}}>{String(step).padStart(2,"0")} / {String(totalSteps).padStart(2,"0")}</span>}
+          </div>
         </div>
 
         {/* progress */}
@@ -460,7 +703,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
                 <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
-                  Korean Innovation<br/>for Skin <span style={{color:C.amber}}>+ Scalp.</span>
+                  Korean Innovation<br/>{t.headline2.split("+")[0]}<span style={{color:C.amber}}>+{t.headline2.split("+")[1]}</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
                   Korean skin and scalp innovation, matched to you. Precise. Proven. Personal.
@@ -474,14 +717,14 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   ))}
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[["YOUR PACE","Go deep or keep it simple"],["SKIN + SCALP","Face and scalp, covered"],["KOREAN INNOVATION","Fermentation, peptides, Cica, Snail"],["BEST PRICE","Amazon, Jolse, YesStyle + more"]].map(([t,d])=>(
+                  {[[t.yourPace,t.yourPaceDesc],[t.skinScalp,t.skinScalpDesc],[t.koreanInno,t.koreanInnoDesc],[t.bestPrice,t.bestPriceDesc]].map(([t,d])=>(
                     <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.95rem",background:"#0d0d0d"}}>
                       <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{t}</div>
                       <div style={{fontSize:"0.8rem",color:C.textMuted}}>{d}</div>
                     </div>
                   ))}
                 </div>
-                <button onClick={handleNext} style={{...primaryBtn,width:"100%"}}>start — at your own pace →</button>
+                <button onClick={handleNext} style={{...primaryBtn,width:"100%"}}>{t.begin}</button>
               </div>
             )}
 
@@ -491,7 +734,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 {isNewSection&&(
                   <div style={{display:"flex",alignItems:"center",gap:"0.8rem",marginBottom:"1.3rem",paddingBottom:"0.88rem",borderBottom:`1px solid ${C.border}`}}>
                     <div style={{width:"3px",height:"14px",background:sectionColors[currentQ.section],borderRadius:"2px",boxShadow:`0 0 6px ${sectionColors[currentQ.section]}`}}/>
-                    <span style={{fontSize:"0.72rem",color:sectionColors[currentQ.section],letterSpacing:"0.14em"}}>{currentQ.section} PROFILE</span>
+                    <span style={{fontSize:"0.72rem",color:sectionColors[currentQ.section],letterSpacing:"0.14em"}}>{currentQ.section==="SKIN"?t.skinSection:currentQ.section==="PROFILE"?t.profileSection:t.lifestyleSection}</span>
                   </div>
                 )}
                 <div style={{marginBottom:"1.33rem"}}>
@@ -515,16 +758,16 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 </div>
                 <div style={{marginBottom:"1.58rem"}}>
                   <div style={{fontSize:"0.71rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.6rem"}}>
-                    <span style={{color:sectionColors[currentQ.section]||C.amber}}>+</span> ADD A NOTE <span style={{color:C.textDim}}>— optional</span>
+                    <span style={{color:sectionColors[currentQ.section]||C.amber}}>+</span> {t.stepNote} <span style={{color:C.textDim}}>{t.noteOptional}</span>
                   </div>
-                  <textarea value={currentAns.comment} onChange={e=>setComment(e.target.value)} placeholder="Allergies, products tried, doctor notes, specific concerns…" rows={2}
+                  <textarea value={currentAns.comment} onChange={e=>setComment(e.target.value)} placeholder={t.notePlaceholder} rows={2}
                     style={{width:"100%",background:"#0d0d0d",border:`1px solid ${currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.text,fontFamily:C.mono,fontSize:"0.84rem",lineHeight:1.6,resize:"vertical",outline:"none",transition:"border-color 0.15s"}}
                     onFocus={e=>e.target.style.borderColor=(sectionColors[currentQ.section]||C.amber)+"80"}
                     onBlur={e=>e.target.style.borderColor=currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}/>
                   {currentAns.comment&&<div style={{fontSize:"0.71rem",color:sectionColors[currentQ.section]||C.amber,marginTop:"0.44rem",letterSpacing:"0.1em"}}>✓ note saved</div>}
                 </div>
                 <div style={{display:"flex",gap:"0.72rem"}}>
-                  {step>1&&<button onClick={handleBack} style={ghostBtn}>← back</button>}
+                  {step>1&&<button onClick={handleBack} style={ghostBtn}>{t.back}</button>}
                   <button onClick={handleNext} disabled={!canContinue} style={{...primaryBtn,flex:1,opacity:canContinue?1:0.3,cursor:canContinue?"pointer":"not-allowed"}}>
                     {step===totalSteps?"run full analysis →":"continue →"}
                   </button>
@@ -538,7 +781,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               <div>
                 <div style={{marginBottom:"1.25rem"}}>
                   <div style={{fontSize:"0.58rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.5rem"}}>SKIN_SCAN ──</div>
-                  <h2 style={{fontFamily:C.sans,fontSize:"1.35rem",fontWeight:400,color:C.text,lineHeight:1.3,marginBottom:"0.35rem"}}>Optional: Scan your skin</h2>
+                  <h2 style={{fontFamily:C.sans,fontSize:"1.35rem",fontWeight:400,color:C.text,lineHeight:1.3,marginBottom:"0.35rem"}}>{t.selfieTitle}</h2>
                   <p style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.75}}>Upload a selfie for AI-powered visual skin analysis. We analyze visible redness, oiliness, texture, pores, and tone — then layer it on top of your quiz answers for more accurate recommendations.</p>
                 </div>
 
@@ -579,7 +822,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             {/* LOADING */}
             {step===LOADING_STEP&&loading&&(
               <div style={{padding:"1rem 0"}}>
-                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.58rem"}}>PROCESSING{dots}</div>
+                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.58rem"}}>{t.processing}{dots}</div>
                 {["Mapping skin barrier + age profile","Calibrating for climate conditions","Analyzing UV exposure damage risk","Cross-referencing lifestyle factors","Reading your personal notes","Building step-by-step routine order","Finding best prices + retailers","Generating personalized protocol"].map((line,i)=>(
                   <LoadingLine key={line} text={line} delay={i*480}/>
                 ))}
@@ -591,8 +834,8 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               <div>
                 {/* header */}
                 <div style={{marginBottom:"1.2rem"}}>
-                  <div style={{fontSize:"0.76rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"0.57rem"}}>ANALYSIS COMPLETE ──</div>
-                  <h2 style={{fontFamily:C.sans,fontSize:"1.2rem",fontWeight:400,color:C.text,marginBottom:"0.72rem"}}>Your Korean Beauty Regime</h2>
+                  <div style={{fontSize:"0.76rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"0.57rem"}}>{t.analysisComplete}</div>
+                  <h2 style={{fontFamily:C.sans,fontSize:"1.2rem",fontWeight:400,color:C.text,marginBottom:"0.72rem"}}>{t.yourRegime}</h2>
                   {apiNote&&<div style={{fontSize:"0.72rem",color:C.textMuted,background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.35rem 0.8rem",marginBottom:"0.72rem",letterSpacing:"0.05em"}}>ℹ {apiNote}</div>}
 
                   {/* ── SKIN SCAN CARD ── */}
@@ -631,7 +874,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
                   {/* what drove these recs */}
                   <div style={{padding:"0.65rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"0.8rem"}}>
-                    <div style={{fontSize:"0.69rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.62rem"}}>BASED ON YOUR INPUTS ──</div>
+                    <div style={{fontSize:"0.69rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.62rem"}}>{t.basedOn}</div>
                     <div style={{display:"flex",gap:"0.5rem",flexWrap:"wrap"}}>
                       {[
                         ["SKIN TYPE",answers.texture?.selected,"SKIN"],
@@ -676,12 +919,12 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.33rem",marginBottom:"0.83rem",position:"relative",overflow:"hidden"}}>
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#a29bfe",boxShadow:"0 0 10px #a29bfe60"}}/>
                   <div style={{paddingLeft:"0.9rem"}}>
-                    <div style={{fontSize:"0.72rem",color:"#a29bfe",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>SAVE TO MEEMO PROFILE ──</div>
+                    <div style={{fontSize:"0.72rem",color:"#a29bfe",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>{t.saveProfile}</div>
                     <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Save your regime to your Meemo profile. We will remember your skin type, routine, and concerns for next time.</p>
                     {!profileSaved?(
                       <div style={{display:"flex",flexDirection:"column",gap:"0.62rem"}}>
-                        <input value={profileName} onChange={e=>setProfileName(e.target.value)} placeholder="Your name" style={{width:"100%",background:"#111",border:`1px solid ${profileName?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
-                        <input value={profileEmail} onChange={e=>setProfileEmail(e.target.value)} placeholder="Email address" type="email" style={{width:"100%",background:"#111",border:`1px solid ${profileEmail?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <input value={profileName} onChange={e=>setProfileName(e.target.value)} placeholder={t.saveName} style={{width:"100%",background:"#111",border:`1px solid ${profileName?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <input value={profileEmail} onChange={e=>setProfileEmail(e.target.value)} placeholder={t.saveEmail} type="email" style={{width:"100%",background:"#111",border:`1px solid ${profileEmail?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
                         <button onClick={handleSaveProfile} disabled={!profileName.trim()&&!profileEmail.trim()} style={{background:"#a29bfe",color:"#000",border:"none",borderRadius:"3px",padding:"0.88rem",fontSize:"0.86rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,opacity:(!profileName.trim()&&!profileEmail.trim())?0.35:1}}>
                           save my skin profile →
                         </button>
@@ -699,11 +942,11 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.33rem",marginBottom:"0.83rem",position:"relative",overflow:"hidden"}}>
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#4ecdc4",boxShadow:"0 0 10px #4ecdc460"}}/>
                   <div style={{paddingLeft:"0.9rem"}}>
-                    <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>TEXT MY REGIME ──</div>
+                    <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>{t.textRegime}</div>
                     <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Send your full Korean Beauty routine to your phone. Opens your SMS app with the protocol pre-filled.</p>
                     {!smsSent?(
                       <div style={{display:"flex",gap:"0.62rem"}}>
-                        <input value={phone} onChange={e=>setPhone(e.target.value)} placeholder="+1 555 000 0000" type="tel" style={{flex:1,background:"#111",border:`1px solid ${phone?"#4ecdc455":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <input value={phone} onChange={e=>setPhone(e.target.value)} placeholder={t.textPhone} type="tel" style={{flex:1,background:"#111",border:`1px solid ${phone?"#4ecdc455":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
                         <button onClick={handleSMS} disabled={!phone.trim()} style={{background:"#4ecdc4",color:"#000",border:"none",borderRadius:"3px",padding:"0.6rem 1.1rem",fontSize:"0.86rem",letterSpacing:"0.06em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,flexShrink:0,opacity:!phone.trim()?0.35:1}}>
                           send →
                         </button>
@@ -728,7 +971,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     <a href={`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(buildText(sortedRecs,answers))}`}
                       style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.52rem",padding:"0.85rem 0.72rem",background:"transparent",border:`1px solid ${C.border}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.15s",textDecoration:"none"}}>
                       <span style={{fontSize:"1.2rem",lineHeight:1,color:C.textMuted}}>✉</span>
-                      <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.1em"}}>EMAIL</span>
+                      <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.1em"}}>{t.emailLabel}</span>
                     </a>
                   </div>
                   <div style={{fontSize:"0.7rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.57rem"}}>TEXT PREVIEW — tap to select all</div>
@@ -736,14 +979,14 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     style={{width:"100%",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.textMuted,fontFamily:C.mono,fontSize:"0.73rem",lineHeight:1.75,resize:"none",outline:"none",cursor:"text"}}/>
                 </div>
 
-                <button onClick={restart} style={{...ghostBtn,width:"100%",textAlign:"center"}}>↺ restart analysis</button>
+                <button onClick={restart} style={{...ghostBtn,width:"100%",textAlign:"center"}}>{t.restart}</button>
               </div>
             )}
           </div>
         </div>
 
         <div style={{display:"flex",justifyContent:"space-between",marginTop:"1.3rem",fontSize:"0.72rem",color:C.textDim,letterSpacing:"0.14em"}}>
-          <span>MEEMO WELLNESS AI</span><span>KOREAN BEAUTY SKIN INTELLIGENCE v2.5</span>
+          <span>{t.footerLeft}</span><span>{t.footerRight}</span>
         </div>
       </div>
 
