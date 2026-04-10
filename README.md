@@ -41,3 +41,4 @@ Your site is live at `https://meemo-skin-quiz.vercel.app`
 - Vercel serverless function (`/api/recommend.js`) as secure API proxy
 - Anthropic Claude Sonnet for AI recommendations
 - No database — stateless, privacy-first
+# meemo-skin-quiz
