@@ -487,6 +487,7 @@ export default function MeemoSkinQuiz(){
   };
 
   const fetchRecs=async(ans,imgData=null)=>{
+    console.log('fetchRecs called, ans keys:',Object.keys(ans));
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
     const prompt=`You are a Korean dermatology-informed skincare expert with deep knowledge of Korean pharmacy products, Olive Young bestsellers, and dermatologist-recommended Korean skincare.
@@ -576,6 +577,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       if(s===-1||e===-1)throw new Error("no json");
       const parsed=JSON.parse(raw.slice(s,e+1));
       if(!Array.isArray(parsed)||!parsed.length)throw new Error("empty");
+      console.log('setRecs parsed:',parsed.length);
       setRecs(parsed);
       track("analysis_complete",{skinType:ans.texture?.selected,concerns:ans.concerns?.selected,age:ans.age?.selected,usedSelfie:!!imgData});
     }catch(err){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);track("analysis_fallback",{reason:err.message});}
