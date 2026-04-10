@@ -407,10 +407,10 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
                 <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
-                  Know Your Skin.<br/><span style={{color:C.amber}}>Find Your Formula.</span>
+                  Korean Innovation<br/><span style={{color:C.amber}}>for Skin + Scalp.</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
-                  8-question deep profile. AI recommends 5 products with pricing, where to buy for less, and exactly why each was chosen for you.
+                  Powered by Korean Beauty science — the world's most advanced skin and scalp innovation. 8 questions. AI-matched to your exact profile, age, climate, and lifestyle.
                 </p>
                 <div style={{display:"flex",gap:"0.62rem",marginBottom:"1.58rem"}}>
                   {[["SKIN","3 q's","#e8920a"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
