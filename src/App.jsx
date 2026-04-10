@@ -572,7 +572,8 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       })});
       const data=await res.json();
       if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
-      const raw=data.content?.map(i=>i.text||"").join("")||"";
+      // Handle tool_use blocks from web search — extract only text blocks
+      const raw=(data.content||[]).filter(i=>i.type==="text").map(i=>i.text||"").join("")||"";
       // Extract skin scan if present
       const scanStart=raw.indexOf("SKIN_SCAN_START");
       const scanEnd=raw.indexOf("SKIN_SCAN_END");
