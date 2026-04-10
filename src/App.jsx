@@ -567,7 +567,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
         model:"claude-sonnet-4-20250514",
         max_tokens:3000,
-        tools:[{type:"web_search_20250305",name:"web_search"}],
+        
         messages:[{role:"user",content:userContent}]
       })});
       const data=await res.json();
