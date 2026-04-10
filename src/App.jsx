@@ -41,7 +41,7 @@ function getRetailerURL(retailer, name, brand) {
   return map[retailer] || `https://www.google.com/search?q=${encodeURIComponent(name + " " + brand + " buy")}`;
 }
 
-const STEP_ORDER = { "oil cleanser":1,"balm cleanser":1,"cleansing oil":1,"foam cleanser":2,"gel cleanser":2,"cleanser":2,"exfoliating toner":3,"essence toner":3,"toner":3,"serum ampoule":4,"ampoule":4,"lightweight serum":4,"serum":4,"essence":4,"sheet mask":5,"sleeping mask":5,"mask":5,"eye cream":6,"water-jelly cream":7,"gel cream":7,"moisturizer":7,"cream":7,"emulsion":7,"color-correcting cream":8,"sunscreen":9,"spf cream":9 };
+const STEP_ORDER = { "oil cleanser":1,"balm cleanser":1,"cleansing oil":1,"foam cleanser":2,"gel cleanser":2,"cleanser":2,"exfoliating toner":3,"essence toner":3,"toner":3,"serum ampoule":4,"ampoule":4,"lightweight serum":4,"serum":4,"essence":4,"sheet mask":5,"sleeping mask":5,"mask":5,"eye cream":6,"water-jelly cream":7,"gel cream":7,"moisturizer":7,"cream":7,"emulsion":7,"color-correcting cream":8,"sunscreen":9,"spf cream":9,"scalp serum":4,"scalp treatment":4,"scalp toner":3 };
 function stepOrder(tex=""){ const t=tex.toLowerCase(); for(const[k,v]of Object.entries(STEP_ORDER))if(t.includes(k))return v; return 6; }
 function stepLabel(tex=""){ const t=tex.toLowerCase();
   if(t.includes("cleanser")||t.includes("cleansing")||t.includes("foam"))return"STEP 1 · CLEANSE";
@@ -51,12 +51,14 @@ function stepLabel(tex=""){ const t=tex.toLowerCase();
   if(t.includes("eye"))return"STEP 4 · EYE CREAM";
   if(t.includes("cream")||t.includes("moistur")||t.includes("emulsion")||t.includes("jelly"))return"STEP 4 · MOISTURIZE";
   if(t.includes("spf")||t.includes("sun")||t.includes("color-correct"))return"STEP 5 · PROTECT";
+  if(t.includes("scalp"))return"STEP 3 · SCALP TREAT";
   return"STEP · APPLY"; }
 
 const DEMO_RECS = [
   {name:"Low pH Good Morning Cleanser",brand:"COSRX",tech:"pH-Balanced Surfactant System",ingredient:"Tea Tree Oil",texture:"gel cleanser",why:"Gentle pH-balanced formula clears congestion without stripping combination skin.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$14",retailer:"Amazon",rating:"4.7",ratingCount:"89k+",altName:"Real Fresh Foam Cleanser",altBrand:"Innisfree",altPrice:"$13–$16",altRetailer:"YesStyle",altRating:"4.5",dataReason:"Your oily/combination skin needs a low-pH cleanser that won't over-strip."},
   {name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"Triple Acid Exfoliation",ingredient:"Salicylic Acid BHA",texture:"exfoliating toner",why:"Unclogs pores and fades dark spots without heavy peeling — PM use only.",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$14–$18",retailer:"YesStyle",rating:"4.6",ratingCount:"42k+",altName:"BHA Blackhead Power Liquid",altBrand:"COSRX",altPrice:"$18–$22",altRetailer:"Amazon",altRating:"4.5",dataReason:"Pigmentation and dullness concerns + oily skin = BHA exfoliation is the highest-leverage step."},
   {name:"Snail Mucin 96% Power Repairing Essence",brand:"COSRX",tech:"Snail Secretion Filtrate",ingredient:"Snail Mucin 96%",texture:"essence serum",why:"Deeply repairs barrier and boosts hydration — ideal for stressed or reactive skin.",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$25",retailer:"Amazon",rating:"4.8",ratingCount:"127k+",altName:"Galactomyces 95 Tone Balancing Essence",altBrand:"Some By Mi",altPrice:"$15–$19",altRetailer:"iHerb",altRating:"4.6",dataReason:"Sensitivity + stress habit selected. Snail mucin is the most clinically backed barrier repair ingredient."},
+  {name:"Hair Loss Care Scalp Serum",brand:"Ryo",tech:"6-Herbal Complex + Adenosine",ingredient:"Adenosine + Ginseng Root",texture:"scalp serum",why:"Strengthens hair roots and reduces thinning — key for hormonal hair changes at 45+.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$24",retailer:"Amazon",rating:"4.6",ratingCount:"8k+",altName:"Scalp Scaling Toner",altBrand:"Dr. Groot",altPrice:"$14–$18",altRetailer:"YesStyle",altRating:"4.4",dataReason:"Age 45+ + stress habit = hormonal scalp thinning is common. Ryo is Korea's #1 scalp brand, clinically tested for hair loss."},
   {name:"Water Bomb Cherry Blossom Jelly Cream",brand:"Laneige",tech:"Moisture Wrap Technology",ingredient:"Cherry Blossom Extract",texture:"water-jelly cream",why:"Locks in hydration without heaviness — perfect for oily skin in warm climates.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$22–$28",retailer:"Soko Glam",rating:"4.6",ratingCount:"31k+",altName:"Water Sleeping Mask",altBrand:"Laneige",altPrice:"$18–$24",altRetailer:"Amazon",altRating:"4.7",dataReason:"Hot/humid climate + combination skin means a gel-texture moisturizer over a heavy cream."},
   {name:"Cicapair Tiger Grass Color Correcting SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Protects and corrects uneven tone — essential for outdoor exposure and redness.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Soko Glam",rating:"4.5",ratingCount:"18k+",altName:"Airy Sun Stick SPF 50+",altBrand:"Beauty of Joseon",altPrice:"$12–$16",altRetailer:"Amazon",altRating:"4.8",dataReason:"Sun exposure + redness + uneven tone = SPF with Cica is the highest-urgency morning product."},
 ];
@@ -67,6 +69,7 @@ const questions = [
   {id:"concerns",code:"SKN_03",section:"SKIN",question:"Primary skin objectives —",sub:"Select all that apply.",options:[{label:"Dullness + uneven tone",value:"brightening",tag:"GLOW"},{label:"Fine lines + firmness",value:"antiaging",tag:"AGE"},{label:"Acne + congestion",value:"acne",tag:"CLEAR"},{label:"Dehydration + plumpness",value:"hydration",tag:"H2O"},{label:"Dark spots + hyperpigmentation",value:"pigmentation",tag:"PIGMENT"},{label:"Redness + irritation",value:"redness",tag:"CALM"}]},
   {id:"scalp_concern",code:"SCP_01",section:"SCALP",question:"Any scalp concerns? —",sub:"Select all that apply.",options:[{label:"Dry + flaky scalp",value:"dry_scalp",tag:"DRY"},{label:"Oily scalp + buildup",value:"oily_scalp",tag:"OILY"},{label:"Sensitive or itchy scalp",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Thinning or hair loss",value:"thinning",tag:"THINNING"},{label:"Dandruff",value:"dandruff",tag:"DANDRUFF"},{label:"No scalp concerns",value:"none",tag:"NONE"}]},
   {id:"scalp_habit",code:"SCP_02",section:"SCALP",question:"How often do you wash your hair? —",sub:"Select one.",options:[{label:"Daily",value:"daily",tag:"DAILY"},{label:"Every 2–3 days",value:"every2to3",tag:"2–3 DAYS"},{label:"Twice a week",value:"twice_week",tag:"2X WEEK"},{label:"Once a week or less",value:"weekly",tag:"WEEKLY"}]},
+  {id:"scalp",code:"SKN_04",section:"SKIN",question:"How does your scalp feel? —",sub:"Select all that apply.",options:[{label:"Dry + flaky",value:"dry_scalp",tag:"DRY"},{label:"Oily + itchy",value:"oily_scalp",tag:"OILY"},{label:"Sensitive + irritated",value:"sensitive_scalp",tag:"SENSITIVE"},{label:"Hair thinning or loss",value:"thinning",tag:"THINNING"},{label:"Balanced + no concerns",value:"balanced_scalp",tag:"BALANCED"}]},
   {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:"Skin needs shift every decade.",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 to 54",value:"45to54",tag:"45–54"},{label:"55 to 64",value:"55to64",tag:"55–64"},{label:"65 to 74",value:"65to74",tag:"65–74"},{label:"75 and over",value:"75plus",tag:"75+"}]},
   {id:"climate",code:"PRF_02",section:"PROFILE",question:"Where do you live? —",sub:"Climate shapes your barrier daily.",options:[{label:"Hot + humid",value:"tropical",tag:"TROPICAL"},{label:"Hot + dry",value:"arid",tag:"ARID"},{label:"Cold + dry",value:"cold",tag:"COLD"},{label:"Mild + temperate",value:"temperate",tag:"MILD"}]},
   {id:"sunlight",code:"LFE_01",section:"LIFESTYLE",question:"Daily sun exposure —",sub:"Average hours of direct sunlight.",options:[{label:"Indoor most of the day",value:"indoor",tag:"< 1HR"},{label:"Some outdoor time",value:"moderate",tag:"1–3HR"},{label:"Outdoors a lot",value:"high",tag:"3–6HR"},{label:"Full day in the sun",value:"extreme",tag:"6HR+"}]},
@@ -254,6 +257,7 @@ SKIN PROFILE:
 - Midday feel: ${fmt("texture")}
 - Sensitivity: ${fmt("sensitivity")}
 - Concerns: ${fmt("concerns")}
+- Scalp: ${fmt("scalp")}
 
 PERSONAL PROFILE:
 - Age: ${fmt("age")}
@@ -270,6 +274,7 @@ LIFESTYLE:
 
 RULES:
 1. Return products IN ORDER of application: cleanser first, then toner, then serum/ampoule, then moisturizer, then SPF last. The JSON array order must match the application sequence.
+9. SCALP RULE: If scalp concerns are selected (dry, oily, sensitive, thinning), REPLACE one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence). Age 45+ with thinning = prioritize scalp. Use brands like Ryo, Dr. Groot, Innisfree, Some By Mi, COSRX for scalp products. Set texture to "scalp serum" or "scalp treatment" for these.
 9. If scalp concerns are present (not "none"), replace one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence) and note it in dataReason.
 2. Each from a different brand
 3. Prioritize high sun exposure → UV protection first
@@ -610,6 +615,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     <div style={{display:"flex",gap:"0.5rem",flexWrap:"wrap"}}>
                       {[
                         ["SKIN TYPE",answers.texture?.selected,"SKIN"],
+                        ["SCALP",answers.scalp?.selected,"SKIN"],
                         ["SENSITIVITY",answers.sensitivity?.selected,"SKIN"],
                         ["CONCERN",answers.concerns?.selected,"SKIN"],
                         ["SCALP",answers.scalp_concern?.selected,"SCALP"],
