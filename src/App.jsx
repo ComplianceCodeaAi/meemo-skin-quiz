@@ -488,7 +488,7 @@ export default function MeemoSkinQuiz(){
   const fetchRecs=async(ans,imgData=null)=>{
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
-    const prompt=`You are a Korean dermatology-informed skincare expert. You have access to web search — use it BEFORE recommending products.
+    const prompt=`You are a Korean dermatology-informed skincare expert with deep knowledge of Korean pharmacy products, Olive Young bestsellers, and dermatologist-recommended Korean skincare.
 
 Your recommendations must meet this standard:
 - PRIORITIZE products sold in Korean pharmacies (올리브영 Olive Young, Lalavla, Bonne Santé), dermatology clinics, and recommended by Korean dermatologists
