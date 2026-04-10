@@ -819,7 +819,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             )}
 
             {/* RESULTS */}
-            {(step===RESULTS_STEP||(step===totalSteps+1&&!loading&&recs))&&(
+            {(!loading&&recs)&&(
               <div>
                 {/* header */}
                 <div style={{marginBottom:"1.2rem"}}>
