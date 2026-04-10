@@ -474,9 +474,11 @@ export default function MeemoSkinQuiz(){
     }
     if(step===SELFIE_STEP){
       track(selfieData?"selfie_uploaded":"selfie_skipped");
-      await go(()=>{setStep(LOADING_STEP);setLoading(true);});
+      setStep(LOADING_STEP);
+      setLoading(true);
       await fetchRecs(answers,selfieData);
-      await go(()=>{setLoading(false);setStep(RESULTS_STEP);});
+      setLoading(false);
+      setStep(RESULTS_STEP);
     }
   };
   const handleBack=()=>{
@@ -677,7 +679,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
           <div style={{background:"#0d0d0d",borderBottom:`1px solid ${C.border}`,padding:"0.6rem 1.3rem",display:"flex",alignItems:"center",gap:"0.67rem"}}>
             {["#ff5f57","#febc2e","#28c840"].map((c,i)=><div key={i} style={{width:"8px",height:"8px",borderRadius:"50%",background:c,opacity:0.65}}/>)}
             <span style={{fontSize:"0.78rem",color:C.textDim,letterSpacing:"0.10em",marginLeft:"0.8rem"}}>
-              {step===0?"skin_diagnostics.meemo":step<=totalSteps?`${currentQ?.section?.toLowerCase()}_${currentQ?.code?.toLowerCase()}.run`:step===SELFIE_STEP?"skin_scan.meemo":loading?"processing_results.meemo":"skin_report.output"}
+              {step===0?"skin_diagnostics.meemo":step<=totalSteps?`${currentQ?.section?.toLowerCase()}_${currentQ?.code?.toLowerCase()}.run`:step===SELFIE_STEP?"skin_scan.meemo":step===LOADING_STEP?"processing_results.meemo":"skin_report.output"}
             </span>
           </div>
 
