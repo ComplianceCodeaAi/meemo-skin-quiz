@@ -4,5 +4,10 @@
   "framework": "vite",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" }
-  ]
+  ],
+  "functions": {
+    "api/recommend.js": {
+      "maxDuration": 60
+    }
+  }
 }
