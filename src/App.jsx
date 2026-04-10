@@ -477,6 +477,7 @@ export default function MeemoSkinQuiz(){
       await fetchRecs(answers,selfieData);
       setLoading(false);
       setStep(RESULTS_STEP);
+      setTimeout(()=>setStep(RESULTS_STEP),100);
     }
   };
   const handleBack=()=>{
