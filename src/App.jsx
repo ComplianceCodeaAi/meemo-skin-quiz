@@ -717,10 +717,10 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   ))}
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[[t.yourPace,t.yourPaceDesc],[t.skinScalp,t.skinScalpDesc],[t.koreanInno,t.koreanInnoDesc],[t.bestPrice,t.bestPriceDesc]].map(([t,d])=>(
+                  {[[t.yourPace,t.yourPaceDesc],[t.skinScalp,t.skinScalpDesc],[t.koreanInno,t.koreanInnoDesc],[t.bestPrice,t.bestPriceDesc]].map(([tile,desc])=>(
                     <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.95rem",background:"#0d0d0d"}}>
-                      <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{t}</div>
-                      <div style={{fontSize:"0.8rem",color:C.textMuted}}>{d}</div>
+                      <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{tile}</div>
+                      <div style={{fontSize:"0.8rem",color:C.textMuted}}>{desc}</div>
                     </div>
                   ))}
                 </div>
