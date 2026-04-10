@@ -69,7 +69,7 @@ function LoadingLine({text,delay}){
     <span style={{color:done?"#4ecdc4":C.amber,marginRight:"0.8rem"}}>{done?"✓":"›"}</span>{text}</div>);
 }
 
-function RecCard({rec,index}){
+function RecCard({rec,index,stepNum}){
   const[open,setOpen]=useState(false);
   const urg=urgencyStyle[rec.urgency]||urgencyStyle.RECOMMENDED;
   const col=catColor[rec.category]||C.amber;
@@ -81,7 +81,7 @@ function RecCard({rec,index}){
       <div style={{padding:"0.9rem 1.1rem 0.9rem 1.33rem"}}>
         {/* step + badges */}
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.64rem"}}>
-          <span style={{fontSize:"0.69rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>{sl}</span>
+          <span style={{fontSize:"0.69rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>STEP {stepNum} · {sl.split("·")[1]?.trim()||sl}</span>
           <div style={{display:"flex",gap:"0.47rem"}}>
             {rec.timing&&<span style={{fontSize:"0.65rem",color:C.textDim,border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",letterSpacing:"0.1em"}}>{rec.timing}</span>}
             <span style={{fontSize:"0.65rem",letterSpacing:"0.12em",color:urg.color,border:`1px solid ${urg.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",background:urg.bg}}>{rec.urgency}</span>
@@ -181,6 +181,7 @@ export default function MeemoSkinQuiz(){
   const[selfieData,setSelfieData]=useState(null);
   const[selfiePreview,setSelfiePreview]=useState(null);
   const[selfieAnalysis,setSelfieAnalysis]=useState(null);
+  const[skinScan,setSkinScan]=useState(null);
   const selfieRef=useRef(null);
   const shareRef=useRef(null);
 
@@ -189,7 +190,7 @@ export default function MeemoSkinQuiz(){
   const currentAns=currentQ?(answers[currentQ.id]||{selected:[],comment:""}):{selected:[],comment:""};
   const prevSection=step>1?questions[step-2]?.section:null;
   const isNewSection=step>=1&&step<=totalSteps&&currentQ.section!==prevSection;
-  const sortedRecs=recs?[...recs].sort((a,b)=>stepOrder(a.texture)-stepOrder(b.texture)):[];
+  const sortedRecs=recs?[...recs].sort((a,b)=>{const diff=stepOrder(a.texture)-stepOrder(b.texture);return diff!==0?diff:0;}):[];
 
   useEffect(()=>{const iv=setInterval(()=>setCursor(c=>!c),530);return()=>clearInterval(iv);},[]);
   useEffect(()=>{if(!loading)return;const iv=setInterval(()=>setDots(d=>d.length>=3?".":d+"."),380);return()=>clearInterval(iv);},[loading]);
@@ -245,7 +246,7 @@ LIFESTYLE:
 - Routine level: ${fmt("routine")}
 
 RULES:
-1. Products must form a logical routine: cleanser → toner → serum/ampoule → moisturizer → SPF
+1. Return products IN ORDER of application: cleanser first, then toner, then serum/ampoule, then moisturizer, then SPF last. The JSON array order must match the application sequence.
 2. Each from a different brand
 3. Prioritize high sun exposure → UV protection first
 4. Age 45+ → retinol, peptides, collagen actives
@@ -278,13 +279,22 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   "dataReason": "2-3 sentences explaining exactly which quiz inputs drove this recommendation"
 }]`;
     const userContent=imgData
-      ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgData}},{type:"text",text:prompt+"\n\nIMPORTANT: A selfie has been provided. Analyze the visible skin — note any redness, oiliness, dryness, dark spots, pores, or texture concerns you can see — and factor your visual observations into the product recommendations. Mention what you observed in dataReason."}]
+      ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgData}},{type:"text",text:prompt+"\n\nIMPORTANT: A selfie has been provided. Do two things:\n1. Analyze the visible skin carefully — look for redness, oiliness, dryness, dark spots, enlarged pores, uneven texture, fine lines, or any visible concerns.\n2. Before the JSON product array, output a skin scan summary in this EXACT format (no markdown):\nSKIN_SCAN_START\n{\"redness\":\"low|moderate|high — describe location\",\"oiliness\":\"low|moderate|high — describe\",\"pores\":\"small|medium|large — describe\",\"darkSpots\":\"none|mild|moderate|significant — describe\",\"texture\":\"smooth|slightly uneven|rough — describe\",\"hydration\":\"well hydrated|slightly dehydrated|dehydrated\",\"overall\":\"one sentence summary of what you see\"}\nSKIN_SCAN_END\nThen output the product JSON array. Factor all visual observations into product choices."}]
       :[{type:"text",text:prompt}];
     try{
       const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:userContent}]})});
       const data=await res.json();
       if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
       const raw=data.content?.map(i=>i.text||"").join("")||"";
+      // Extract skin scan if present
+      const scanStart=raw.indexOf("SKIN_SCAN_START");
+      const scanEnd=raw.indexOf("SKIN_SCAN_END");
+      if(scanStart!==-1&&scanEnd!==-1){
+        try{
+          const scanJson=raw.slice(scanStart+15,scanEnd).trim();
+          setSkinScan(JSON.parse(scanJson));
+        }catch(e){}
+      }
       const s=raw.indexOf("["),e=raw.lastIndexOf("]");
       if(s===-1||e===-1)throw new Error("no json");
       const parsed=JSON.parse(raw.slice(s,e+1));
@@ -314,7 +324,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   };
   const fallbackCopy=()=>{if(shareRef.current){shareRef.current.select();document.execCommand("copy");setCopied(true);setTimeout(()=>setCopied(false),2500);}};
   const handleEmail=()=>{const text=buildText(sortedRecs,answers);window.location.href=`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(text)}`;};
-  const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");setSelfieData(null);setSelfiePreview(null);setSelfieAnalysis(null);};
+  const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");setSelfieData(null);setSelfiePreview(null);setSelfieAnalysis(null);setSkinScan(null);};
 
   // Fire Meta + TikTok pixel on results
   useEffect(()=>{
@@ -532,6 +542,40 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <h2 style={{fontFamily:C.sans,fontSize:"1.2rem",fontWeight:400,color:C.text,marginBottom:"0.72rem"}}>Your Korean Beauty Regime</h2>
                   {apiNote&&<div style={{fontSize:"0.72rem",color:C.textMuted,background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.35rem 0.8rem",marginBottom:"0.72rem",letterSpacing:"0.05em"}}>ℹ {apiNote}</div>}
 
+                  {/* ── SKIN SCAN CARD ── */}
+                  {skinScan&&selfiePreview&&(
+                    <div style={{border:`1px solid #4ecdc440`,borderRadius:"4px",background:"#0d0d0d",padding:"1rem 1.15rem",marginBottom:"1rem",position:"relative",overflow:"hidden"}}>
+                      <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#4ecdc4",boxShadow:"0 0 8px #4ecdc460"}}/>
+                      <div style={{paddingLeft:"0.75rem"}}>
+                        <div style={{display:"flex",alignItems:"center",gap:"0.85rem",marginBottom:"0.75rem"}}>
+                          <img src={selfiePreview} alt="scan" style={{width:"48px",height:"48px",borderRadius:"50%",objectFit:"cover",border:"1.5px solid #4ecdc4",flexShrink:0}}/>
+                          <div>
+                            <div style={{fontSize:"0.62rem",color:"#4ecdc4",letterSpacing:"0.18em",marginBottom:"0.15rem"}}>SKIN SCAN ANALYSIS ──</div>
+                            <div style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.5}}>{skinScan.overall}</div>
+                          </div>
+                        </div>
+                        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.4rem"}}>
+                          {[
+                            ["Redness",skinScan.redness],
+                            ["Oiliness",skinScan.oiliness],
+                            ["Pores",skinScan.pores],
+                            ["Dark spots",skinScan.darkSpots],
+                            ["Texture",skinScan.texture],
+                            ["Hydration",skinScan.hydration],
+                          ].filter(([,v])=>v).map(([label,val])=>(
+                            <div key={label} style={{padding:"0.4rem 0.55rem",background:"#111",border:`1px solid ${C.border}`,borderRadius:"3px"}}>
+                              <div style={{fontSize:"0.52rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{label.toUpperCase()}</div>
+                              <div style={{fontSize:"0.7rem",color:C.textMuted,lineHeight:1.4}}>{val}</div>
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{fontSize:"0.58rem",color:C.textDim,marginTop:"0.6rem",letterSpacing:"0.06em"}}>
+                          ✓ Visual observations factored into your regime below
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* what drove these recs */}
                   <div style={{padding:"0.65rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"0.8rem"}}>
                     <div style={{fontSize:"0.69rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.62rem"}}>BASED ON YOUR INPUTS ──</div>
@@ -562,7 +606,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
                 {/* regime cards */}
                 <div style={{display:"flex",flexDirection:"column",gap:"0.8rem",marginBottom:"1.33rem"}}>
-                  {sortedRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i}/>)}
+                  {sortedRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i} stepNum={i+1}/>)}
                 </div>
 
                 {/* estimated total */}
