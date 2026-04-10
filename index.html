@@ -3,22 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Meemo Skin Analysis — Personalized K-beauty protocol powered by AI" />
+    <meta name="description" content="Meemo Skin Analysis — Personalized Korean Beauty protocol powered by AI" />
     <title>Meemo · Skin Analysis</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- GA4: replace YOUR_GA4_MEASUREMENT_ID (analytics.google.com > Admin > Data Streams) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GA4_MEASUREMENT_ID');
+      window.trackEvent = function(name, params) {
+        if(window.gtag) gtag('event', name, params || {});
+      };
+    </script>
+
+    <!-- PostHog: replace YOUR_POSTHOG_KEY (app.posthog.com > Project Settings > Project API Key) -->
+    <script>
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('YOUR_POSTHOG_KEY', {
+        api_host: 'https://app.posthog.com',
+        capture_pageview: true,
+        autocapture: true
+      });
+      window.phTrack = function(name, props) {
+        if(window.posthog) posthog.capture(name, props || {});
+      };
+    </script>
   </head>
   <body style="margin:0;background:#0a0a0a;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- META PIXEL: replace YOUR_META_PIXEL_ID (business.facebook.com > Events Manager) -->
+    <!-- META PIXEL: replace 1654164725636213 (business.facebook.com > Events Manager) -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
       document,"script","https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "YOUR_META_PIXEL_ID");
+      fbq("init", "1654164725636213");
       fbq("track", "PageView");
     </script>
 
