@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { usePostHog } from "@posthog/react";
 
 const C = {
   bg: "#0a0a0a", surface: "#111111", border: "#1e1e1e",
@@ -415,7 +414,6 @@ function buildText(recs,answers){
 }
 
 export default function MeemoSkinQuiz(){
-  const posthog = usePostHog();
   const[lang,setLang]=useState("en");
   const t=T[lang]||T.en;
   const[step,setStep]=useState(0);
