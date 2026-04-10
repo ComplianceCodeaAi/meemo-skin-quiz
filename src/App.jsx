@@ -703,7 +703,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
                 <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
-                  Korean Innovation<br/>{t.headline2.split("+")[0]}<span style={{color:C.amber}}>+{t.headline2.split("+")[1]}</span>
+                  {t.headline1}<br/><span style={{color:C.amber}}>{t.headline2}</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
                   Korean skin and scalp innovation, matched to you. Precise. Proven. Personal.
