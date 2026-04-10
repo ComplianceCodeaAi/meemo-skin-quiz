@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const C = {
   bg: "#0a0a0a", surface: "#111111", border: "#1e1e1e",
-  amber: "#e8920a", text: "#f0ece6", textMuted: "#6b6560", textDim: "#3a3632",
+  amber: "#e8920a", text: "#f0ece6", textMuted: "#9a928a", textDim: "#5a5450",
   mono: "'IBM Plex Mono', 'Courier New', monospace",
   sans: "'IBM Plex Sans', sans-serif",
 };
@@ -43,11 +43,11 @@ function stepLabel(tex=""){ const t=tex.toLowerCase();
   return"STEP · APPLY"; }
 
 const DEMO_RECS = [
-  {name:"Low pH Good Morning Cleanser",brand:"COSRX",tech:"pH-Balanced Surfactant System",ingredient:"Tea Tree Oil",texture:"gel cleanser",why:"Gentle pH-balanced formula clears congestion without stripping combination skin.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$14",retailer:"Amazon",retailerNote:"Often under $12 on Amazon with Prime. Also on iHerb.",dataReason:"Your oily/combination skin needs a low-pH cleanser that won't over-strip. Acne and congestion concern confirmed this step is critical."},
-  {name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"Triple Acid Exfoliation",ingredient:"Salicylic Acid BHA",texture:"exfoliating toner",why:"Unclogs pores and fades dark spots without heavy peeling — PM use only.",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$14–$18",retailer:"YesStyle",retailerNote:"Cheapest at YesStyle ($14). Also iHerb for fast US shipping.",dataReason:"Pigmentation and dullness concerns + oily skin = BHA exfoliation is the highest-leverage step. PM only due to photosensitivity."},
-  {name:"Snail Mucin 96% Power Repairing Essence",brand:"COSRX",tech:"Snail Secretion Filtrate",ingredient:"Snail Mucin 96%",texture:"essence serum",why:"Deeply repairs barrier and boosts hydration — ideal for stressed or reactive skin.",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$25",retailer:"Amazon",retailerNote:"Best value in the large 3.38oz size on Amazon (~$25). Smaller sizes on iHerb.",dataReason:"Sensitivity + stress habit selected. Snail mucin is the most clinically backed K-beauty ingredient for barrier repair and hydration simultaneously."},
-  {name:"Water Bomb Cherry Blossom Jelly Cream",brand:"Laneige",tech:"Moisture Wrap Technology",ingredient:"Cherry Blossom Extract",texture:"water-jelly cream",why:"Locks in hydration without heaviness — perfect for oily skin in warm climates.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$22–$28",retailer:"Soko Glam",retailerNote:"Soko Glam has regular 10–15% off sitewide codes. Also Target carries Laneige.",dataReason:"Hot/humid climate + combination skin means a gel-texture moisturizer over a heavy cream. Your hydration concern confirmed this step."},
-  {name:"Cicapair Tiger Grass Color Correcting SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Protects and corrects uneven tone — essential for outdoor exposure and redness.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Soko Glam",retailerNote:"Best price at Soko Glam or Ulta during sales. Amazon third-party sellers vary.",dataReason:"Your sun exposure + redness concern + uneven tone concern = SPF with Cica is the highest-urgency morning product. Non-negotiable if you're outdoors."},
+  {name:"Low pH Good Morning Cleanser",brand:"COSRX",tech:"pH-Balanced Surfactant System",ingredient:"Tea Tree Oil",texture:"gel cleanser",why:"Gentle pH-balanced formula clears congestion without stripping combination skin.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$14",retailer:"Amazon",rating:"4.7",ratingCount:"89k+",altName:"Real Fresh Foam Cleanser",altBrand:"Innisfree",altPrice:"$13–$16",altRetailer:"YesStyle",altRating:"4.5",dataReason:"Your oily/combination skin needs a low-pH cleanser that won't over-strip."},
+  {name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"Triple Acid Exfoliation",ingredient:"Salicylic Acid BHA",texture:"exfoliating toner",why:"Unclogs pores and fades dark spots without heavy peeling — PM use only.",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$14–$18",retailer:"YesStyle",rating:"4.6",ratingCount:"42k+",altName:"BHA Blackhead Power Liquid",altBrand:"COSRX",altPrice:"$18–$22",altRetailer:"Amazon",altRating:"4.5",dataReason:"Pigmentation and dullness concerns + oily skin = BHA exfoliation is the highest-leverage step."},
+  {name:"Snail Mucin 96% Power Repairing Essence",brand:"COSRX",tech:"Snail Secretion Filtrate",ingredient:"Snail Mucin 96%",texture:"essence serum",why:"Deeply repairs barrier and boosts hydration — ideal for stressed or reactive skin.",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$25",retailer:"Amazon",rating:"4.8",ratingCount:"127k+",altName:"Galactomyces 95 Tone Balancing Essence",altBrand:"Some By Mi",altPrice:"$15–$19",altRetailer:"iHerb",altRating:"4.6",dataReason:"Sensitivity + stress habit selected. Snail mucin is the most clinically backed barrier repair ingredient."},
+  {name:"Water Bomb Cherry Blossom Jelly Cream",brand:"Laneige",tech:"Moisture Wrap Technology",ingredient:"Cherry Blossom Extract",texture:"water-jelly cream",why:"Locks in hydration without heaviness — perfect for oily skin in warm climates.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$22–$28",retailer:"Soko Glam",rating:"4.6",ratingCount:"31k+",altName:"Water Sleeping Mask",altBrand:"Laneige",altPrice:"$18–$24",altRetailer:"Amazon",altRating:"4.7",dataReason:"Hot/humid climate + combination skin means a gel-texture moisturizer over a heavy cream."},
+  {name:"Cicapair Tiger Grass Color Correcting SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Protects and corrects uneven tone — essential for outdoor exposure and redness.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Soko Glam",rating:"4.5",ratingCount:"18k+",altName:"Airy Sun Stick SPF 50+",altBrand:"Beauty of Joseon",altPrice:"$12–$16",altRetailer:"Amazon",altRating:"4.8",dataReason:"Sun exposure + redness + uneven tone = SPF with Cica is the highest-urgency morning product."},
 ];
 
 const questions = [
@@ -58,15 +58,15 @@ const questions = [
   {id:"climate",code:"PRF_02",section:"PROFILE",question:"Where do you live? —",sub:"Climate shapes your barrier daily.",options:[{label:"Hot + humid",value:"tropical",tag:"TROPICAL"},{label:"Hot + dry",value:"arid",tag:"ARID"},{label:"Cold + dry",value:"cold",tag:"COLD"},{label:"Mild + temperate",value:"temperate",tag:"MILD"}]},
   {id:"sunlight",code:"LFE_01",section:"LIFESTYLE",question:"Daily sun exposure —",sub:"Average hours of direct sunlight.",options:[{label:"Indoor most of the day",value:"indoor",tag:"< 1HR"},{label:"Some outdoor time",value:"moderate",tag:"1–3HR"},{label:"Outdoors a lot",value:"high",tag:"3–6HR"},{label:"Full day in the sun",value:"extreme",tag:"6HR+"}]},
   {id:"habits",code:"LFE_02",section:"LIFESTYLE",question:"Which habits describe you? —",sub:"Select all that apply.",options:[{label:"Workouts + sweating daily",value:"active",tag:"ACTIVE"},{label:"Mostly desk / screen time",value:"sedentary",tag:"DESK"},{label:"Travel + irregular schedule",value:"travel",tag:"TRAVEL"},{label:"High stress + poor sleep",value:"stressed",tag:"STRESS"},{label:"Drinks alcohol regularly",value:"alcohol",tag:"ALCOHOL"},{label:"Smoker or ex-smoker",value:"smoker",tag:"SMOKE"}]},
-  {id:"routine",code:"LFE_03",section:"LIFESTYLE",question:"Current K-beauty routine level —",sub:"Be honest.",options:[{label:"Total beginner",value:"beginner",tag:"LVL 0"},{label:"Cleanser + moisturizer",value:"minimal",tag:"LVL 1"},{label:"4–6 step routine",value:"intermediate",tag:"LVL 2"},{label:"Full 10-step devotee",value:"advanced",tag:"LVL 3"}]},
+  {id:"routine",code:"LFE_03",section:"LIFESTYLE",question:"Current Korean Beauty routine level —",sub:"Be honest.",options:[{label:"Total beginner",value:"beginner",tag:"LVL 0"},{label:"Cleanser + moisturizer",value:"minimal",tag:"LVL 1"},{label:"4–6 step routine",value:"intermediate",tag:"LVL 2"},{label:"Full 10-step devotee",value:"advanced",tag:"LVL 3"}]},
 ];
 
 function LoadingLine({text,delay}){
   const[vis,setVis]=useState(false);const[done,setDone]=useState(false);
   useEffect(()=>{const t1=setTimeout(()=>setVis(true),delay);const t2=setTimeout(()=>setDone(true),delay+500);return()=>{clearTimeout(t1);clearTimeout(t2);};},[delay]);
   if(!vis)return null;
-  return(<div style={{fontSize:"0.68rem",color:done?"#4ecdc4":C.textMuted,marginBottom:"0.55rem",letterSpacing:"0.04em",animation:"fadeUp 0.3s ease"}}>
-    <span style={{color:done?"#4ecdc4":C.amber,marginRight:"0.6rem"}}>{done?"✓":"›"}</span>{text}</div>);
+  return(<div style={{fontSize:"0.86rem",color:done?"#4ecdc4":C.textMuted,marginBottom:"0.75rem",letterSpacing:"0.04em",animation:"fadeUp 0.3s ease"}}>
+    <span style={{color:done?"#4ecdc4":C.amber,marginRight:"0.8rem"}}>{done?"✓":"›"}</span>{text}</div>);
 }
 
 function RecCard({rec,index}){
@@ -78,48 +78,75 @@ function RecCard({rec,index}){
   return(
     <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",position:"relative",overflow:"hidden",animation:`fadeUp 0.4s ease ${index*0.09}s both`}}>
       <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:col,boxShadow:`0 0 10px ${col}60`}}/>
-      <div style={{padding:"0.9rem 1.1rem 0.9rem 1.25rem"}}>
+      <div style={{padding:"0.9rem 1.1rem 0.9rem 1.33rem"}}>
         {/* step + badges */}
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.42rem"}}>
-          <span style={{fontSize:"0.47rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>{sl}</span>
-          <div style={{display:"flex",gap:"0.25rem"}}>
-            {rec.timing&&<span style={{fontSize:"0.43rem",color:C.textDim,border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.1rem 0.33rem",letterSpacing:"0.1em"}}>{rec.timing}</span>}
-            <span style={{fontSize:"0.43rem",letterSpacing:"0.12em",color:urg.color,border:`1px solid ${urg.border}`,borderRadius:"2px",padding:"0.1rem 0.33rem",background:urg.bg}}>{rec.urgency}</span>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.64rem"}}>
+          <span style={{fontSize:"0.69rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>{sl}</span>
+          <div style={{display:"flex",gap:"0.47rem"}}>
+            {rec.timing&&<span style={{fontSize:"0.65rem",color:C.textDim,border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",letterSpacing:"0.1em"}}>{rec.timing}</span>}
+            <span style={{fontSize:"0.65rem",letterSpacing:"0.12em",color:urg.color,border:`1px solid ${urg.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",background:urg.bg}}>{rec.urgency}</span>
           </div>
         </div>
+        {/* first pick label */}
+        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>FIRST PICK ──</div>
         {/* brand + name */}
-        <div style={{fontSize:"0.47rem",color:C.textDim,letterSpacing:"0.2em",marginBottom:"0.13rem"}}>{rec.brand?.toUpperCase()}</div>
-        <div style={{fontSize:"0.92rem",color:C.text,fontFamily:C.sans,fontWeight:400,lineHeight:1.25,marginBottom:"0.4rem"}}>{rec.name}</div>
+        <div style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.2em",marginBottom:"0.35rem"}}>{rec.brand?.toUpperCase()}</div>
+        <div style={{fontSize:"1.04rem",color:C.text,fontFamily:C.sans,fontWeight:400,lineHeight:1.25,marginBottom:"0.62rem"}}>{rec.name}</div>
         {/* why italic */}
-        <p style={{fontSize:"0.67rem",color:"#908888",lineHeight:1.55,marginBottom:"0.5rem",fontStyle:"italic"}}>"{rec.why}"</p>
+        <p style={{fontSize:"0.85rem",color:"#908888",lineHeight:1.55,marginBottom:"0.72rem",fontStyle:"italic"}}>"{rec.why}"</p>
         {/* tech chips */}
-        <div style={{display:"flex",gap:"0.28rem",flexWrap:"wrap",marginBottom:"0.6rem"}}>
+        <div style={{display:"flex",gap:"0.5rem",flexWrap:"wrap",marginBottom:"0.8rem"}}>
           {[["TECH",rec.tech],["KEY",rec.ingredient],["FORM",rec.texture]].map(([l,v])=>(
-            <span key={l} style={{fontSize:"0.45rem",color:C.textMuted,background:"#161616",border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.12rem 0.38rem"}}>
+            <span key={l} style={{fontSize:"0.67rem",color:C.textMuted,background:"#161616",border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.12rem 0.6rem"}}>
               <span style={{color:C.textDim}}>{l}: </span>{v}</span>))}
         </div>
 
-        {/* price + buy link */}
-        <div style={{display:"flex",alignItems:"center",gap:"0.5rem",marginBottom:"0.45rem"}}>
-          <div style={{padding:"0.4rem 0.65rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
-            <div style={{fontSize:"0.43rem",color:C.textDim,letterSpacing:"0.15em",marginBottom:"0.08rem"}}>CHEAPEST PRICE</div>
-            <div style={{fontSize:"0.82rem",color:C.text,fontFamily:C.sans,fontWeight:400}}>{rec.price}</div>
+        {/* price + rating + buy */}
+        <div style={{display:"flex",alignItems:"stretch",gap:"0.5rem",marginBottom:"0.75rem"}}>
+          <div style={{padding:"0.5rem 0.75rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>CHEAPEST PRICE</div>
+            <div style={{fontSize:"1rem",color:C.text,fontFamily:C.sans,fontWeight:500,marginBottom:"0.25rem"}}>{rec.price}</div>
+            {rec.rating&&<div style={{display:"flex",alignItems:"center",gap:"0.3rem"}}>
+              <span style={{color:"#f4c542",fontSize:"0.75rem"}}>{"★".repeat(Math.round(parseFloat(rec.rating||0)))}</span>
+              <span style={{fontSize:"0.68rem",color:C.textMuted}}>{rec.rating} {rec.ratingCount&&<span style={{color:C.textDim}}>({rec.ratingCount})</span>}</span>
+            </div>}
           </div>
           <a href={getRetailerURL(rec.retailer, rec.name, rec.brand)} target="_blank" rel="noopener noreferrer"
-            style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.15rem",padding:"0.4rem 0.9rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,minWidth:"90px",transition:"all 0.15s"}}>
-            <span style={{fontSize:"0.62rem",color:retCol,fontWeight:600,letterSpacing:"0.06em"}}>{rec.retailer}</span>
-            <span style={{fontSize:"0.48rem",color:retCol,opacity:0.7,letterSpacing:"0.1em"}}>BUY NOW →</span>
+            style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.3rem",padding:"0.5rem 0.9rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,minWidth:"88px",transition:"all 0.15s"}}>
+            <span style={{fontSize:"0.78rem",color:retCol,fontWeight:600,letterSpacing:"0.04em"}}>{rec.retailer} →</span>
           </a>
         </div>
 
+        {/* alt product */}
+        {rec.altName&&(
+          <div style={{marginBottom:"0.75rem",padding:"0.6rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderRadius:"3px",borderLeft:`2px solid ${col}40`}}>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.35rem"}}>SECOND PICK ──</div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:"0.5rem"}}>
+              <div style={{flex:1}}>
+                <div style={{fontSize:"0.62rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{rec.altBrand?.toUpperCase()}</div>
+                <div style={{fontSize:"0.88rem",color:"#c8c0b8",fontFamily:C.sans,lineHeight:1.25,marginBottom:"0.3rem"}}>{rec.altName}</div>
+                <div style={{display:"flex",alignItems:"center",gap:"0.4rem"}}>
+                  {rec.altRating&&<><span style={{color:"#f4c542",fontSize:"0.7rem"}}>{"★".repeat(Math.round(parseFloat(rec.altRating||0)))}</span>
+                  <span style={{fontSize:"0.65rem",color:C.textMuted}}>{rec.altRating}</span></>}
+                  {rec.altPrice&&<span style={{fontSize:"0.7rem",color:C.textMuted,marginLeft:"0.25rem"}}>{rec.altPrice}</span>}
+                </div>
+              </div>
+              {rec.altRetailer&&<a href={getRetailerURL(rec.altRetailer,rec.altName,rec.altBrand||"")} target="_blank" rel="noopener noreferrer"
+                style={{fontSize:"0.62rem",color:retailerColor[rec.altRetailer]||C.textMuted,border:`1px solid ${(retailerColor[rec.altRetailer]||C.textMuted)+"40"}`,borderRadius:"2px",padding:"0.25rem 0.55rem",textDecoration:"none",whiteSpace:"nowrap",flexShrink:0,alignSelf:"center"}}>
+                {rec.altRetailer} →
+              </a>}
+            </div>
+          </div>
+        )}
+
         {/* why recommended — expandable */}
-        <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:"0.4rem",background:"transparent",border:"none",cursor:"pointer",padding:0,fontFamily:C.mono}}>
-          <span style={{fontSize:"0.47rem",color:C.textDim,letterSpacing:"0.15em"}}>WHY THIS WAS RECOMMENDED</span>
-          <span style={{fontSize:"0.55rem",color:C.textDim,transition:"transform 0.2s",display:"inline-block",transform:open?"rotate(90deg)":"rotate(0deg)"}}>›</span>
+        <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:"0.62rem",background:"transparent",border:"none",cursor:"pointer",padding:0,fontFamily:C.mono}}>
+          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>WHY THIS WAS RECOMMENDED</span>
+          <span style={{fontSize:"0.75rem",color:C.textDim,transition:"transform 0.2s",display:"inline-block",transform:open?"rotate(90deg)":"rotate(0deg)"}}>›</span>
         </button>
         {open&&(
-          <div style={{marginTop:"0.35rem",padding:"0.5rem 0.65rem",background:"#111",border:`1px solid ${C.border}`,borderRadius:"3px",animation:"fadeUp 0.2s ease"}}>
-            <div style={{fontSize:"0.6rem",color:C.textMuted,lineHeight:1.65}}>{rec.dataReason}</div>
+          <div style={{marginTop:"0.57rem",padding:"0.5rem 0.83rem",background:"#111",border:`1px solid ${C.border}`,borderRadius:"3px",animation:"fadeUp 0.2s ease"}}>
+            <div style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.65}}>{rec.dataReason}</div>
           </div>
         )}
       </div>
@@ -128,7 +155,11 @@ function RecCard({rec,index}){
 
 function buildText(recs,answers){
   const profile=[answers.texture?.selected?.join(", "),answers.age?.selected?.join(", "),answers.climate?.selected?.join(", "),answers.sunlight?.selected?.join(", ")].filter(Boolean).join(" · ");
-  return["✦ MY MEEMO K-BEAUTY PROTOCOL","Profile: "+profile,"",...recs.map((r,i)=>`${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Price: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand)}\n   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`),"Generated by Meemo Wellness AI"].join("\n");
+  return["✦ MY MEEMO KOREAN BEAUTY PROTOCOL","Profile: "+profile,"",...recs.map((r,i)=>{
+    const stars="★".repeat(Math.round(parseFloat(r.rating||0)));
+    const alt=r.altName?`   ALT: ${r.altName} — ${r.altBrand} · ${r.altPrice} · ${r.altRetailer}\n`:"";
+    return `${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Rating: ${stars} ${r.rating} (${r.ratingCount})\n   Price: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand)}\n${alt}   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`;
+  }),"Generated by Meemo Wellness AI"].join("\n");
 }
 
 export default function MeemoSkinQuiz(){
@@ -176,7 +207,7 @@ export default function MeemoSkinQuiz(){
   const fetchRecs=async(ans)=>{
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
-    const prompt=`You are a K-beauty expert and dermatology-informed skincare advisor. Recommend exactly 5 Korean skincare products forming a complete routine.
+    const prompt=`You are a Korean Beauty expert and dermatology-informed skincare advisor. Recommend exactly 5 Korean skincare products forming a complete routine.
 
 SKIN PROFILE:
 - Midday feel: ${fmt("texture")}
@@ -216,10 +247,17 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   "price": "$XX–$XX",
   "retailer": "cheapest retailer name",
   "retailerNote": "one sentence tip on where/how to get cheapest price",
-  "dataReason": "2-3 sentences explaining exactly which quiz inputs (skin type, age, climate, habits, concerns) drove this specific recommendation"
+  "rating": "overall rating out of 5 e.g. 4.7",
+  "ratingCount": "number of reviews e.g. 12k+",
+  "altName": "second best product name for same step",
+  "altBrand": "second best brand",
+  "altPrice": "$XX–$XX",
+  "altRetailer": "cheapest retailer for alt product",
+  "altRating": "rating out of 5",
+  "dataReason": "2-3 sentences explaining exactly which quiz inputs drove this recommendation"
 }]`;
     try{
-      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:2000,messages:[{role:"user",content:prompt}]})});
+      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:prompt}]})});
       const data=await res.json();
       if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
       const raw=data.content?.map(i=>i.text||"").join("")||"";
@@ -239,7 +277,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
     }catch(e){fallbackCopy();}
   };
   const fallbackCopy=()=>{if(shareRef.current){shareRef.current.select();document.execCommand("copy");setCopied(true);setTimeout(()=>setCopied(false),2500);}};
-  const handleEmail=()=>{const text=buildText(sortedRecs,answers);window.location.href=`mailto:?subject=${encodeURIComponent("My Meemo K-Beauty Skin Protocol")}&body=${encodeURIComponent(text)}`;};
+  const handleEmail=()=>{const text=buildText(sortedRecs,answers);window.location.href=`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(text)}`;};
   const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");};
 
   // Fire Meta + TikTok pixel on results
@@ -270,11 +308,11 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
     setProfileSaved(true);
   };
 
-  const primaryBtn={background:C.amber,color:"#000",border:"none",borderRadius:"3px",padding:"0.8rem 1.25rem",fontSize:"0.75rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500};
-  const ghostBtn={background:"transparent",color:C.textMuted,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.8rem 1.1rem",fontSize:"0.7rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,flexShrink:0};
+  const primaryBtn={background:C.amber,color:"#000",border:"none",borderRadius:"3px",padding:"0.8rem 1.33rem",fontSize:"0.9rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500};
+  const ghostBtn={background:"transparent",color:C.textMuted,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.8rem 1.2rem",fontSize:"0.88rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,flexShrink:0};
 
   return(
-    <div style={{minHeight:"100vh",background:C.bg,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"2rem 1rem",fontFamily:C.mono,position:"relative",overflow:"hidden"}}>
+    <div style={{minHeight:"100vh",background:C.bg,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"2rem 1.1rem",fontFamily:C.mono,position:"relative",overflow:"hidden"}}>
       <div style={{position:"fixed",inset:0,pointerEvents:"none",backgroundImage:`linear-gradient(rgba(232,146,10,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(232,146,10,0.022) 1px, transparent 1px)`,backgroundSize:"44px 44px"}}/>
       <div style={{position:"fixed",left:0,right:0,height:"2px",top:`${scanY}%`,background:"linear-gradient(90deg, transparent, rgba(232,146,10,0.055), transparent)",pointerEvents:"none"}}/>
       <div style={{position:"fixed",top:"25%",left:"50%",transform:"translateX(-50%)",width:"700px",height:"350px",borderRadius:"50%",background:"radial-gradient(ellipse, rgba(232,146,10,0.035) 0%, transparent 65%)",pointerEvents:"none"}}/>
@@ -282,65 +320,65 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       <div style={{width:"100%",maxWidth:"580px",opacity:fading?0:1,transform:fading?"translateY(10px)":"translateY(0)",transition:"all 0.28s cubic-bezier(0.16,1,0.3,1)"}}>
 
         {/* topbar */}
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.75rem",paddingBottom:"0.7rem",borderBottom:`1px solid ${C.border}`}}>
-          <div style={{display:"flex",alignItems:"center",gap:"0.5rem"}}>
-            <div style={{width:"6px",height:"6px",borderRadius:"50%",background:C.amber,boxShadow:`0 0 8px ${C.amber}`}}/>
-            <span style={{fontSize:"0.62rem",color:C.amber,letterSpacing:"0.22em"}}>MEEMO</span>
-            <span style={{fontSize:"0.62rem",color:C.textDim,letterSpacing:"0.1em"}}>SKIN_ANALYSIS</span>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.8rem",paddingBottom:"0.88rem",borderBottom:`1px solid ${C.border}`}}>
+          <div style={{display:"flex",alignItems:"center",gap:"0.72rem"}}>
+            <div style={{width:"9px",height:"9px",borderRadius:"50%",background:C.amber,boxShadow:`0 0 8px ${C.amber}`}}/>
+            <span style={{fontSize:"0.8rem",color:C.amber,letterSpacing:"0.14em"}}>MEEMO</span>
+            <span style={{fontSize:"0.8rem",color:C.textDim,letterSpacing:"0.1em"}}>SKIN_ANALYSIS</span>
           </div>
-          {step>0&&step<=totalSteps&&<span style={{fontSize:"0.58rem",color:C.textMuted,letterSpacing:"0.18em"}}>{String(step).padStart(2,"0")} / {String(totalSteps).padStart(2,"0")}</span>}
+          {step>0&&step<=totalSteps&&<span style={{fontSize:"0.78rem",color:C.textMuted,letterSpacing:"0.10em"}}>{String(step).padStart(2,"0")} / {String(totalSteps).padStart(2,"0")}</span>}
         </div>
 
         {/* progress */}
         {step>0&&step<=totalSteps&&(
-          <div style={{marginBottom:"1.5rem"}}>
-            <div style={{display:"flex",gap:"4px",marginBottom:"0.5rem"}}>
+          <div style={{marginBottom:"1.58rem"}}>
+            <div style={{display:"flex",gap:"4px",marginBottom:"0.72rem"}}>
               {questions.map((q,i)=><div key={i} style={{flex:1,height:"2px",background:i<step?(sectionColors[q.section]||C.amber):C.border,boxShadow:i<step?`0 0 6px ${sectionColors[q.section]||C.amber}55`:"none",transition:"all 0.4s ease",borderRadius:"1px"}}/>)}
             </div>
-            <div style={{display:"flex",gap:"1.2rem"}}>
-              {["SKIN","PROFILE","LIFESTYLE"].map(sec=><span key={sec} style={{fontSize:"0.5rem",letterSpacing:"0.18em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{sec}</span>)}
+            <div style={{display:"flex",gap:"1.3rem"}}>
+              {["SKIN","PROFILE","LIFESTYLE"].map(sec=><span key={sec} style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{sec}</span>)}
             </div>
           </div>
         )}
 
         {/* card */}
         <div style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:"4px",overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,0.7)"}}>
-          <div style={{background:"#0d0d0d",borderBottom:`1px solid ${C.border}`,padding:"0.6rem 1.2rem",display:"flex",alignItems:"center",gap:"0.45rem"}}>
+          <div style={{background:"#0d0d0d",borderBottom:`1px solid ${C.border}`,padding:"0.6rem 1.3rem",display:"flex",alignItems:"center",gap:"0.67rem"}}>
             {["#ff5f57","#febc2e","#28c840"].map((c,i)=><div key={i} style={{width:"8px",height:"8px",borderRadius:"50%",background:c,opacity:0.65}}/>)}
-            <span style={{fontSize:"0.58rem",color:C.textDim,letterSpacing:"0.15em",marginLeft:"0.6rem"}}>
+            <span style={{fontSize:"0.78rem",color:C.textDim,letterSpacing:"0.10em",marginLeft:"0.8rem"}}>
               {step===0?"skin_diagnostics.meemo":step<=totalSteps?`${currentQ?.section?.toLowerCase()}_${currentQ?.code?.toLowerCase()}.run`:loading?"processing_results.meemo":"skin_report.output"}
             </span>
           </div>
 
-          <div style={{padding:"1.75rem 2rem 2.25rem"}}>
+          <div style={{padding:"2rem 2.25rem 2.5rem"}}>
 
             {/* INTRO */}
             {step===0&&(
               <div>
-                <div style={{fontSize:"0.58rem",color:C.amber,letterSpacing:"0.22em",marginBottom:"1rem"}}>MEEMO / SKIN_DIAGNOSTICS v2.5</div>
-                <div style={{fontSize:"0.7rem",color:C.textDim,marginBottom:"0.75rem"}}>
+                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.1rem"}}>MEEMO / SKIN_DIAGNOSTICS v2.5</div>
+                <div style={{fontSize:"0.88rem",color:C.textDim,marginBottom:"0.9rem"}}>
                   <span style={{color:C.textMuted}}>$ init </span><span style={{color:C.text}}>skin_analysis --full-profile --pricing</span>
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
-                <h1 style={{fontFamily:C.sans,fontSize:"1.85rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1rem"}}>
+                <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
                   Know Your Skin.<br/><span style={{color:C.amber}}>Find Your Formula.</span>
                 </h1>
-                <p style={{fontSize:"0.7rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.5rem"}}>
+                <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
                   8-question deep profile. AI recommends 5 products with pricing, where to buy cheapest, and exactly why each was chosen for you.
                 </p>
-                <div style={{display:"flex",gap:"0.4rem",marginBottom:"1.5rem"}}>
+                <div style={{display:"flex",gap:"0.62rem",marginBottom:"1.58rem"}}>
                   {[["SKIN","3 q's","#e8920a"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
-                    <div key={sec} style={{flex:1,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.7rem 0.8rem",background:"#0d0d0d",borderTop:`2px solid ${col}`}}>
-                      <div style={{fontSize:"0.5rem",color:col,letterSpacing:"0.18em",marginBottom:"0.25rem"}}>{sec}</div>
-                      <div style={{fontSize:"0.6rem",color:C.textMuted}}>{n}</div>
+                    <div key={sec} style={{flex:1,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.7rem 0.95rem",background:"#0d0d0d",borderTop:`2px solid ${col}`}}>
+                      <div style={{fontSize:"0.72rem",color:col,letterSpacing:"0.10em",marginBottom:"0.47rem"}}>{sec}</div>
+                      <div style={{fontSize:"0.8rem",color:C.textMuted}}>{n}</div>
                     </div>
                   ))}
                 </div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.4rem",marginBottom:"1.5rem"}}>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.62rem",marginBottom:"1.58rem"}}>
                   {[["PRICE RANGES","Realistic USD estimates"],["CHEAPEST RETAILER","Amazon, YesStyle, iHerb"],["WHY EACH PRODUCT","Tied to your exact inputs"],["ORDERED REGIME","Correct application sequence"]].map(([t,d])=>(
-                    <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.8rem",background:"#0d0d0d"}}>
-                      <div style={{fontSize:"0.5rem",color:C.amber,letterSpacing:"0.15em",marginBottom:"0.22rem"}}>{t}</div>
-                      <div style={{fontSize:"0.6rem",color:C.textMuted}}>{d}</div>
+                    <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.95rem",background:"#0d0d0d"}}>
+                      <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{t}</div>
+                      <div style={{fontSize:"0.8rem",color:C.textMuted}}>{d}</div>
                     </div>
                   ))}
                 </div>
@@ -352,54 +390,54 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             {step>=1&&step<=totalSteps&&(
               <div>
                 {isNewSection&&(
-                  <div style={{display:"flex",alignItems:"center",gap:"0.6rem",marginBottom:"1.2rem",paddingBottom:"0.7rem",borderBottom:`1px solid ${C.border}`}}>
+                  <div style={{display:"flex",alignItems:"center",gap:"0.8rem",marginBottom:"1.3rem",paddingBottom:"0.88rem",borderBottom:`1px solid ${C.border}`}}>
                     <div style={{width:"3px",height:"14px",background:sectionColors[currentQ.section],borderRadius:"2px",boxShadow:`0 0 6px ${sectionColors[currentQ.section]}`}}/>
-                    <span style={{fontSize:"0.52rem",color:sectionColors[currentQ.section],letterSpacing:"0.22em"}}>{currentQ.section} PROFILE</span>
+                    <span style={{fontSize:"0.72rem",color:sectionColors[currentQ.section],letterSpacing:"0.14em"}}>{currentQ.section} PROFILE</span>
                   </div>
                 )}
-                <div style={{marginBottom:"1.25rem"}}>
-                  <div style={{fontSize:"0.54rem",color:sectionColors[currentQ.section]||C.amber,letterSpacing:"0.2em",marginBottom:"0.5rem"}}>{currentQ.code} ──</div>
-                  <h2 style={{fontFamily:C.sans,fontSize:"1.1rem",fontWeight:400,color:C.text,lineHeight:1.35,marginBottom:"0.25rem"}}>{currentQ.question}</h2>
-                  <p style={{fontSize:"0.62rem",color:C.textMuted}}>{currentQ.sub}</p>
+                <div style={{marginBottom:"1.33rem"}}>
+                  <div style={{fontSize:"0.74rem",color:sectionColors[currentQ.section]||C.amber,letterSpacing:"0.2em",marginBottom:"0.72rem"}}>{currentQ.code} ──</div>
+                  <h2 style={{fontFamily:C.sans,fontSize:"1.2rem",fontWeight:400,color:C.text,lineHeight:1.35,marginBottom:"0.47rem"}}>{currentQ.question}</h2>
+                  <p style={{fontSize:"0.8rem",color:C.textMuted}}>{currentQ.sub}</p>
                 </div>
-                <div style={{display:"flex",flexDirection:"column",gap:"0.38rem",marginBottom:"1rem"}}>
+                <div style={{display:"flex",flexDirection:"column",gap:"0.6rem",marginBottom:"1.1rem"}}>
                   {currentQ.options.map(opt=>{
                     const on=currentAns.selected.includes(opt.value);
                     const sec=sectionColors[currentQ.section]||C.amber;
                     return(
-                      <button key={opt.value} onClick={()=>toggleOption(opt.value)} style={{display:"flex",alignItems:"center",gap:"0.85rem",padding:"0.7rem 0.9rem",background:on?`${sec}10`:"transparent",border:`1px solid ${on?sec:C.border}`,borderRadius:"3px",cursor:"pointer",textAlign:"left",transition:"all 0.14s",fontFamily:C.mono}}>
+                      <button key={opt.value} onClick={()=>toggleOption(opt.value)} style={{display:"flex",alignItems:"center",gap:"0.97rem",padding:"0.7rem 1.02rem",background:on?`${sec}10`:"transparent",border:`1px solid ${on?sec:C.border}`,borderRadius:"3px",cursor:"pointer",textAlign:"left",transition:"all 0.14s",fontFamily:C.mono}}>
                         <div style={{width:"13px",height:"13px",borderRadius:"2px",flexShrink:0,border:`1px solid ${on?sec:C.border}`,background:on?sec:"transparent",display:"flex",alignItems:"center",justifyContent:"center",transition:"all 0.14s"}}>
-                          {on&&<span style={{fontSize:"0.5rem",color:"#000",fontWeight:700}}>✓</span>}
+                          {on&&<span style={{fontSize:"0.72rem",color:"#000",fontWeight:700}}>✓</span>}
                         </div>
-                        <span style={{fontSize:"0.52rem",letterSpacing:"0.16em",color:on?sec:C.textDim,minWidth:"46px",transition:"color 0.14s"}}>{opt.tag}</span>
-                        <span style={{fontSize:"0.79rem",color:on?C.text:"#7a7068",transition:"color 0.14s"}}>{opt.label}</span>
+                        <span style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:on?sec:C.textDim,minWidth:"46px",transition:"color 0.14s"}}>{opt.tag}</span>
+                        <span style={{fontSize:"0.94rem",color:on?C.text:"#7a7068",transition:"color 0.14s"}}>{opt.label}</span>
                       </button>);
                   })}
                 </div>
-                <div style={{marginBottom:"1.5rem"}}>
-                  <div style={{fontSize:"0.49rem",color:C.textDim,letterSpacing:"0.18em",marginBottom:"0.38rem"}}>
+                <div style={{marginBottom:"1.58rem"}}>
+                  <div style={{fontSize:"0.71rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.6rem"}}>
                     <span style={{color:sectionColors[currentQ.section]||C.amber}}>+</span> ADD A NOTE <span style={{color:C.textDim}}>— optional</span>
                   </div>
                   <textarea value={currentAns.comment} onChange={e=>setComment(e.target.value)} placeholder="Allergies, products tried, doctor notes, specific concerns…" rows={2}
-                    style={{width:"100%",background:"#0d0d0d",border:`1px solid ${currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}`,borderRadius:"3px",padding:"0.65rem 0.85rem",color:C.text,fontFamily:C.mono,fontSize:"0.66rem",lineHeight:1.6,resize:"vertical",outline:"none",transition:"border-color 0.15s"}}
+                    style={{width:"100%",background:"#0d0d0d",border:`1px solid ${currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.text,fontFamily:C.mono,fontSize:"0.84rem",lineHeight:1.6,resize:"vertical",outline:"none",transition:"border-color 0.15s"}}
                     onFocus={e=>e.target.style.borderColor=(sectionColors[currentQ.section]||C.amber)+"80"}
                     onBlur={e=>e.target.style.borderColor=currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}/>
-                  {currentAns.comment&&<div style={{fontSize:"0.49rem",color:sectionColors[currentQ.section]||C.amber,marginTop:"0.22rem",letterSpacing:"0.1em"}}>✓ note saved</div>}
+                  {currentAns.comment&&<div style={{fontSize:"0.71rem",color:sectionColors[currentQ.section]||C.amber,marginTop:"0.44rem",letterSpacing:"0.1em"}}>✓ note saved</div>}
                 </div>
-                <div style={{display:"flex",gap:"0.5rem"}}>
+                <div style={{display:"flex",gap:"0.72rem"}}>
                   {step>1&&<button onClick={handleBack} style={ghostBtn}>← back</button>}
                   <button onClick={handleNext} disabled={!canContinue} style={{...primaryBtn,flex:1,opacity:canContinue?1:0.3,cursor:canContinue?"pointer":"not-allowed"}}>
                     {step===totalSteps?"run full analysis →":"continue →"}
                   </button>
                 </div>
-                {!canContinue&&<div style={{fontSize:"0.49rem",color:C.textDim,textAlign:"center",marginTop:"0.55rem",letterSpacing:"0.08em"}}>select an option or add a note to continue</div>}
+                {!canContinue&&<div style={{fontSize:"0.71rem",color:C.textDim,textAlign:"center",marginTop:"0.75rem",letterSpacing:"0.08em"}}>select an option or add a note to continue</div>}
               </div>
             )}
 
             {/* LOADING */}
             {step===totalSteps+1&&loading&&(
               <div style={{padding:"1rem 0"}}>
-                <div style={{fontSize:"0.58rem",color:C.amber,letterSpacing:"0.22em",marginBottom:"1.5rem"}}>PROCESSING{dots}</div>
+                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.58rem"}}>PROCESSING{dots}</div>
                 {["Mapping skin barrier + age profile","Calibrating for climate conditions","Analyzing UV exposure damage risk","Cross-referencing lifestyle factors","Reading your personal notes","Building step-by-step routine order","Finding best prices + retailers","Generating personalized protocol"].map((line,i)=>(
                   <LoadingLine key={line} text={line} delay={i*480}/>
                 ))}
@@ -410,15 +448,15 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             {step===totalSteps+1&&!loading&&recs&&(
               <div>
                 {/* header */}
-                <div style={{marginBottom:"1.1rem"}}>
-                  <div style={{fontSize:"0.56rem",color:C.amber,letterSpacing:"0.22em",marginBottom:"0.35rem"}}>ANALYSIS COMPLETE ──</div>
-                  <h2 style={{fontFamily:C.sans,fontSize:"1.1rem",fontWeight:400,color:C.text,marginBottom:"0.5rem"}}>Your K-Beauty Regime</h2>
-                  {apiNote&&<div style={{fontSize:"0.5rem",color:C.textMuted,background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.35rem 0.6rem",marginBottom:"0.5rem",letterSpacing:"0.05em"}}>ℹ {apiNote}</div>}
+                <div style={{marginBottom:"1.2rem"}}>
+                  <div style={{fontSize:"0.76rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"0.57rem"}}>ANALYSIS COMPLETE ──</div>
+                  <h2 style={{fontFamily:C.sans,fontSize:"1.2rem",fontWeight:400,color:C.text,marginBottom:"0.72rem"}}>Your Korean Beauty Regime</h2>
+                  {apiNote&&<div style={{fontSize:"0.72rem",color:C.textMuted,background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.35rem 0.8rem",marginBottom:"0.72rem",letterSpacing:"0.05em"}}>ℹ {apiNote}</div>}
 
                   {/* what drove these recs */}
-                  <div style={{padding:"0.65rem 0.75rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"0.6rem"}}>
-                    <div style={{fontSize:"0.47rem",color:C.amber,letterSpacing:"0.17em",marginBottom:"0.4rem"}}>BASED ON YOUR INPUTS ──</div>
-                    <div style={{display:"flex",gap:"0.28rem",flexWrap:"wrap"}}>
+                  <div style={{padding:"0.65rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"0.8rem"}}>
+                    <div style={{fontSize:"0.69rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.62rem"}}>BASED ON YOUR INPUTS ──</div>
+                    <div style={{display:"flex",gap:"0.5rem",flexWrap:"wrap"}}>
                       {[
                         ["SKIN TYPE",answers.texture?.selected,"SKIN"],
                         ["SENSITIVITY",answers.sensitivity?.selected,"SKIN"],
@@ -428,96 +466,96 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                         ["SUN",answers.sunlight?.selected,"PROFILE"],
                         ["HABITS",answers.habits?.selected,"LIFESTYLE"],
                         ["ROUTINE",answers.routine?.selected,"LIFESTYLE"],
-                      ].map(([k,v,sec])=>v?.length?<span key={k} style={{fontSize:"0.44rem",letterSpacing:"0.1em",color:sectionColors[sec],border:`1px solid ${sectionColors[sec]}25`,borderRadius:"2px",padding:"0.12rem 0.35rem",background:`${sectionColors[sec]}07`,marginBottom:"0.2rem"}}>{k}: {v.join("+").toUpperCase()}</span>:null)}
+                      ].map(([k,v,sec])=>v?.length?<span key={k} style={{fontSize:"0.66rem",letterSpacing:"0.1em",color:sectionColors[sec],border:`1px solid ${sectionColors[sec]}25`,borderRadius:"2px",padding:"0.12rem 0.57rem",background:`${sectionColors[sec]}07`,marginBottom:"0.42rem"}}>{k}: {v.join("+").toUpperCase()}</span>:null)}
                     </div>
                     {Object.entries(answers).some(([,v])=>v.comment?.trim())&&(
-                      <div style={{marginTop:"0.4rem",paddingTop:"0.4rem",borderTop:`1px solid ${C.border}`}}>
+                      <div style={{marginTop:"0.62rem",paddingTop:"0.62rem",borderTop:`1px solid ${C.border}`}}>
                         {Object.entries(answers).filter(([,v])=>v.comment?.trim()).map(([id,v])=>(
-                          <div key={id} style={{fontSize:"0.55rem",color:C.textMuted,lineHeight:1.5}}><span style={{color:C.textDim}}>#{id} note: </span>{v.comment}</div>
+                          <div key={id} style={{fontSize:"0.75rem",color:C.textMuted,lineHeight:1.5}}><span style={{color:C.textDim}}>#{id} note: </span>{v.comment}</div>
                         ))}
                       </div>
                     )}
                   </div>
-                  <div style={{fontSize:"0.5rem",color:C.textDim,letterSpacing:"0.08em",lineHeight:1.6}}>
+                  <div style={{fontSize:"0.72rem",color:C.textDim,letterSpacing:"0.08em",lineHeight:1.6}}>
                     Each product below shows its price range, cheapest retailer, and a <span style={{color:C.amber}}>›</span> button explaining exactly which of your inputs triggered it.
                   </div>
                 </div>
 
                 {/* regime cards */}
-                <div style={{display:"flex",flexDirection:"column",gap:"0.6rem",marginBottom:"1.25rem"}}>
+                <div style={{display:"flex",flexDirection:"column",gap:"0.8rem",marginBottom:"1.33rem"}}>
                   {sortedRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i}/>)}
                 </div>
 
                 {/* estimated total */}
-                <div style={{padding:"0.6rem 0.75rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.25rem"}}>
-                  <span style={{fontSize:"0.5rem",color:C.textMuted,letterSpacing:"0.15em"}}>ESTIMATED FULL ROUTINE COST</span>
-                  <span style={{fontSize:"0.9rem",color:C.text,fontFamily:C.sans}}>
+                <div style={{padding:"0.6rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.33rem"}}>
+                  <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.10em"}}>ESTIMATED FULL ROUTINE COST</span>
+                  <span style={{fontSize:"1.02rem",color:C.text,fontFamily:C.sans}}>
                     ${sortedRecs.reduce((sum,r)=>{const m=r.price?.match(/\$(\d+)/);return sum+(m?parseInt(m[1]):20);},0)}–${sortedRecs.reduce((sum,r)=>{const m=r.price?.match(/\$\d+–\$(\d+)/);return sum+(m?parseInt(m[1]):30);},0)}
                   </span>
                 </div>
 
                 {/* ── SAVE TO MEEMO PROFILE ── */}
-                <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.25rem",marginBottom:"0.65rem",position:"relative",overflow:"hidden"}}>
+                <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.33rem",marginBottom:"0.83rem",position:"relative",overflow:"hidden"}}>
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#a29bfe",boxShadow:"0 0 10px #a29bfe60"}}/>
-                  <div style={{paddingLeft:"0.75rem"}}>
-                    <div style={{fontSize:"0.52rem",color:"#a29bfe",letterSpacing:"0.2em",marginBottom:"0.35rem"}}>SAVE TO MEEMO PROFILE ──</div>
-                    <p style={{fontSize:"0.62rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.75rem"}}>Save your regime to your Meemo profile. We will remember your skin type, routine, and concerns for next time.</p>
+                  <div style={{paddingLeft:"0.9rem"}}>
+                    <div style={{fontSize:"0.72rem",color:"#a29bfe",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>SAVE TO MEEMO PROFILE ──</div>
+                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Save your regime to your Meemo profile. We will remember your skin type, routine, and concerns for next time.</p>
                     {!profileSaved?(
-                      <div style={{display:"flex",flexDirection:"column",gap:"0.4rem"}}>
-                        <input value={profileName} onChange={e=>setProfileName(e.target.value)} placeholder="Your name" style={{width:"100%",background:"#111",border:`1px solid ${profileName?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.75rem",color:C.text,fontFamily:C.mono,fontSize:"0.7rem",outline:"none"}}/>
-                        <input value={profileEmail} onChange={e=>setProfileEmail(e.target.value)} placeholder="Email address" type="email" style={{width:"100%",background:"#111",border:`1px solid ${profileEmail?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.75rem",color:C.text,fontFamily:C.mono,fontSize:"0.7rem",outline:"none"}}/>
-                        <button onClick={handleSaveProfile} disabled={!profileName.trim()&&!profileEmail.trim()} style={{background:"#a29bfe",color:"#000",border:"none",borderRadius:"3px",padding:"0.7rem",fontSize:"0.68rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,opacity:(!profileName.trim()&&!profileEmail.trim())?0.35:1}}>
+                      <div style={{display:"flex",flexDirection:"column",gap:"0.62rem"}}>
+                        <input value={profileName} onChange={e=>setProfileName(e.target.value)} placeholder="Your name" style={{width:"100%",background:"#111",border:`1px solid ${profileName?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <input value={profileEmail} onChange={e=>setProfileEmail(e.target.value)} placeholder="Email address" type="email" style={{width:"100%",background:"#111",border:`1px solid ${profileEmail?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <button onClick={handleSaveProfile} disabled={!profileName.trim()&&!profileEmail.trim()} style={{background:"#a29bfe",color:"#000",border:"none",borderRadius:"3px",padding:"0.88rem",fontSize:"0.86rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,opacity:(!profileName.trim()&&!profileEmail.trim())?0.35:1}}>
                           save my skin profile →
                         </button>
                       </div>
                     ):(
-                      <div style={{display:"flex",alignItems:"center",gap:"0.5rem",padding:"0.6rem 0.75rem",background:"rgba(162,155,254,0.08)",border:"1px solid rgba(162,155,254,0.3)",borderRadius:"3px"}}>
+                      <div style={{display:"flex",alignItems:"center",gap:"0.72rem",padding:"0.6rem 0.9rem",background:"rgba(162,155,254,0.08)",border:"1px solid rgba(162,155,254,0.3)",borderRadius:"3px"}}>
                         <span style={{color:"#a29bfe"}}>✓</span>
-                        <span style={{fontSize:"0.65rem",color:"#a29bfe"}}>Profile saved — welcome to Meemo, {profileName||profileEmail}</span>
+                        <span style={{fontSize:"0.83rem",color:"#a29bfe"}}>Profile saved — welcome to Meemo, {profileName||profileEmail}</span>
                       </div>
                     )}
                   </div>
                 </div>
 
                 {/* ── SMS DELIVERY ── */}
-                <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.25rem",marginBottom:"0.65rem",position:"relative",overflow:"hidden"}}>
+                <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",padding:"1.1rem 1.33rem",marginBottom:"0.83rem",position:"relative",overflow:"hidden"}}>
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#4ecdc4",boxShadow:"0 0 10px #4ecdc460"}}/>
-                  <div style={{paddingLeft:"0.75rem"}}>
-                    <div style={{fontSize:"0.52rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.35rem"}}>TEXT MY REGIME ──</div>
-                    <p style={{fontSize:"0.62rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.75rem"}}>Send your full K-beauty routine to your phone. Opens your SMS app with the protocol pre-filled.</p>
+                  <div style={{paddingLeft:"0.9rem"}}>
+                    <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>TEXT MY REGIME ──</div>
+                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Send your full Korean Beauty routine to your phone. Opens your SMS app with the protocol pre-filled.</p>
                     {!smsSent?(
-                      <div style={{display:"flex",gap:"0.4rem"}}>
-                        <input value={phone} onChange={e=>setPhone(e.target.value)} placeholder="+1 555 000 0000" type="tel" style={{flex:1,background:"#111",border:`1px solid ${phone?"#4ecdc455":C.border}`,borderRadius:"3px",padding:"0.6rem 0.75rem",color:C.text,fontFamily:C.mono,fontSize:"0.7rem",outline:"none"}}/>
-                        <button onClick={handleSMS} disabled={!phone.trim()} style={{background:"#4ecdc4",color:"#000",border:"none",borderRadius:"3px",padding:"0.6rem 1rem",fontSize:"0.68rem",letterSpacing:"0.06em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,flexShrink:0,opacity:!phone.trim()?0.35:1}}>
+                      <div style={{display:"flex",gap:"0.62rem"}}>
+                        <input value={phone} onChange={e=>setPhone(e.target.value)} placeholder="+1 555 000 0000" type="tel" style={{flex:1,background:"#111",border:`1px solid ${phone?"#4ecdc455":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
+                        <button onClick={handleSMS} disabled={!phone.trim()} style={{background:"#4ecdc4",color:"#000",border:"none",borderRadius:"3px",padding:"0.6rem 1.1rem",fontSize:"0.86rem",letterSpacing:"0.06em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,flexShrink:0,opacity:!phone.trim()?0.35:1}}>
                           send →
                         </button>
                       </div>
                     ):(
-                      <div style={{display:"flex",alignItems:"center",gap:"0.5rem",padding:"0.6rem 0.75rem",background:"rgba(78,205,196,0.08)",border:"1px solid rgba(78,205,196,0.3)",borderRadius:"3px"}}>
+                      <div style={{display:"flex",alignItems:"center",gap:"0.72rem",padding:"0.6rem 0.9rem",background:"rgba(78,205,196,0.08)",border:"1px solid rgba(78,205,196,0.3)",borderRadius:"3px"}}>
                         <span style={{color:"#4ecdc4"}}>✓</span>
-                        <span style={{fontSize:"0.65rem",color:"#4ecdc4"}}>Opening SMS app — paste your regime and hit send</span>
+                        <span style={{fontSize:"0.83rem",color:"#4ecdc4"}}>Opening SMS app — paste your regime and hit send</span>
                       </div>
                     )}
                   </div>
                 </div>
 
                 {/* ── COPY + EMAIL ── */}
-                <div style={{borderTop:`1px solid ${C.border}`,paddingTop:"1.25rem",marginBottom:"1.25rem"}}>
-                  <div style={{fontSize:"0.52rem",color:C.amber,letterSpacing:"0.2em",marginBottom:"0.75rem"}}>COPY + SHARE ──</div>
-                  <div style={{display:"flex",gap:"0.45rem",marginBottom:"0.75rem"}}>
-                    <button onClick={handleCopy} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.3rem",padding:"0.85rem 0.5rem",background:copied?"rgba(78,205,196,0.08)":"rgba(232,146,10,0.07)",border:`1px solid ${copied?"#4ecdc4":C.amber}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.2s"}}>
-                      <span style={{fontSize:"1.1rem",lineHeight:1}}>{copied?"✓":"⎘"}</span>
-                      <span style={{fontSize:"0.52rem",color:copied?"#4ecdc4":C.amber,letterSpacing:"0.1em"}}>{copied?"COPIED!":"COPY"}</span>
+                <div style={{borderTop:`1px solid ${C.border}`,paddingTop:"1.33rem",marginBottom:"1.33rem"}}>
+                  <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.2em",marginBottom:"0.9rem"}}>COPY + SHARE ──</div>
+                  <div style={{display:"flex",gap:"0.67rem",marginBottom:"0.9rem"}}>
+                    <button onClick={handleCopy} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.52rem",padding:"0.85rem 0.72rem",background:copied?"rgba(78,205,196,0.08)":"rgba(232,146,10,0.07)",border:`1px solid ${copied?"#4ecdc4":C.amber}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.2s"}}>
+                      <span style={{fontSize:"1.2rem",lineHeight:1}}>{copied?"✓":"⎘"}</span>
+                      <span style={{fontSize:"0.72rem",color:copied?"#4ecdc4":C.amber,letterSpacing:"0.1em"}}>{copied?"COPIED!":"COPY"}</span>
                     </button>
-                    <a href={`mailto:?subject=${encodeURIComponent("My Meemo K-Beauty Skin Protocol")}&body=${encodeURIComponent(buildText(sortedRecs,answers))}`}
-                      style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.3rem",padding:"0.85rem 0.5rem",background:"transparent",border:`1px solid ${C.border}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.15s",textDecoration:"none"}}>
-                      <span style={{fontSize:"1.1rem",lineHeight:1,color:C.textMuted}}>✉</span>
-                      <span style={{fontSize:"0.52rem",color:C.textMuted,letterSpacing:"0.1em"}}>EMAIL</span>
+                    <a href={`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(buildText(sortedRecs,answers))}`}
+                      style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.52rem",padding:"0.85rem 0.72rem",background:"transparent",border:`1px solid ${C.border}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.15s",textDecoration:"none"}}>
+                      <span style={{fontSize:"1.2rem",lineHeight:1,color:C.textMuted}}>✉</span>
+                      <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.1em"}}>EMAIL</span>
                     </a>
                   </div>
-                  <div style={{fontSize:"0.48rem",color:C.textDim,letterSpacing:"0.15em",marginBottom:"0.35rem"}}>TEXT PREVIEW — tap to select all</div>
+                  <div style={{fontSize:"0.7rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.57rem"}}>TEXT PREVIEW — tap to select all</div>
                   <textarea ref={shareRef} readOnly value={buildText(sortedRecs,answers)} rows={5} onClick={e=>e.target.select()}
-                    style={{width:"100%",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.85rem",color:C.textMuted,fontFamily:C.mono,fontSize:"0.53rem",lineHeight:1.75,resize:"none",outline:"none",cursor:"text"}}/>
+                    style={{width:"100%",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.textMuted,fontFamily:C.mono,fontSize:"0.73rem",lineHeight:1.75,resize:"none",outline:"none",cursor:"text"}}/>
                 </div>
 
                 <button onClick={restart} style={{...ghostBtn,width:"100%",textAlign:"center"}}>↺ restart analysis</button>
@@ -526,8 +564,8 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
           </div>
         </div>
 
-        <div style={{display:"flex",justifyContent:"space-between",marginTop:"1.2rem",fontSize:"0.5rem",color:C.textDim,letterSpacing:"0.14em"}}>
-          <span>MEEMO WELLNESS AI</span><span>K-BEAUTY SKIN INTELLIGENCE v2.5</span>
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:"1.3rem",fontSize:"0.72rem",color:C.textDim,letterSpacing:"0.14em"}}>
+          <span>MEEMO WELLNESS AI</span><span>KOREAN BEAUTY SKIN INTELLIGENCE v2.5</span>
         </div>
       </div>
 
