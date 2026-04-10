@@ -251,9 +251,15 @@ export default function MeemoSkinQuiz(){
   const fetchRecs=async(ans,imgData=null)=>{
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
-    const prompt=`You are a Korean dermatology-informed skincare expert with deep knowledge of what Korean consumers, dermatologists, and pharmacists actually use and recommend in Korea — not what is viral in the US or trending on TikTok.
+    const prompt=`You are a Korean dermatology-informed skincare expert. You have access to web search — use it BEFORE recommending products.
 
-Your product recommendations must meet this standard:
+SEARCH STEPS (do these first):
+1. Search "Olive Young best sellers 2025 [skin concern]" to find what Koreans are actually buying right now
+2. Search "Hwahae 화해 best rated [skin type] products" for Korean consumer ratings
+3. Search "Korean dermatologist recommended [concern] products 2025" for clinical backing
+4. Search "Korean pharmacy staple skincare [ingredient]" for pharmacy-trusted products
+
+Only after searching, recommend products. Your recommendations must meet this standard:
 - PRIORITIZE products sold in Korean pharmacies (올리브영 Olive Young, Lalavla, Bonne Santé), dermatology clinics, and recommended by Korean dermatologists
 - PREFER products with peer-reviewed or clinical study backing, dermatologist-tested certification, or KFDA approval
 - AVOID recommending products that are primarily viral in Western markets without clinical evidence
@@ -320,7 +326,12 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgData}},{type:"text",text:prompt+"\n\nIMPORTANT: A selfie has been provided. Do two things:\n1. Analyze the visible skin carefully — look for redness, oiliness, dryness, dark spots, enlarged pores, uneven texture, fine lines, or any visible concerns.\n2. Before the JSON product array, output a skin scan summary in this EXACT format (no markdown):\nSKIN_SCAN_START\n{\"redness\":\"low|moderate|high — describe location\",\"oiliness\":\"low|moderate|high — describe\",\"pores\":\"small|medium|large — describe\",\"darkSpots\":\"none|mild|moderate|significant — describe\",\"texture\":\"smooth|slightly uneven|rough — describe\",\"hydration\":\"well hydrated|slightly dehydrated|dehydrated\",\"overall\":\"one sentence summary of what you see\"}\nSKIN_SCAN_END\nThen output the product JSON array. Factor all visual observations into product choices."}]
       :[{type:"text",text:prompt}];
     try{
-      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:userContent}]})});
+      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:3000,
+        tools:[{type:"web_search_20250305",name:"web_search"}],
+        messages:[{role:"user",content:userContent}]
+      })});
       const data=await res.json();
       if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
       const raw=data.content?.map(i=>i.text||"").join("")||"";
