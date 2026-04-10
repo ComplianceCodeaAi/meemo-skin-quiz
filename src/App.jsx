@@ -339,7 +339,7 @@ function RecCard({rec,index,stepNum}){
           </div>
         </div>
         {/* first pick label */}
-        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>{t.firstPick}</div>
+        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>"FIRST PICK ──"</div>
         {/* brand + name */}
         <div style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.2em",marginBottom:"0.35rem"}}>{rec.brand?.toUpperCase()}</div>
         <div style={{fontSize:"1.04rem",color:C.text,fontFamily:C.sans,fontWeight:400,lineHeight:1.25,marginBottom:"0.62rem"}}>{rec.name}</div>
@@ -355,7 +355,7 @@ function RecCard({rec,index,stepNum}){
         {/* price + rating + buy */}
         <div style={{display:"flex",alignItems:"stretch",gap:"0.5rem",marginBottom:"0.75rem"}}>
           <div style={{padding:"0.5rem 0.75rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>{t.firstChoice}</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>"FIRST CHOICE"</div>
             <div style={{fontSize:"1rem",color:C.text,fontFamily:C.sans,fontWeight:500,marginBottom:"0.25rem"}}>{rec.price}</div>
             {rec.rating&&<div style={{display:"flex",alignItems:"center",gap:"0.3rem"}}>
               <span style={{color:"#f4c542",fontSize:"0.75rem"}}>{"★".repeat(Math.round(parseFloat(rec.rating||0)))}</span>
@@ -371,7 +371,7 @@ function RecCard({rec,index,stepNum}){
         {/* alt product — always render if any alt field exists */}
         {(rec.altName||rec.altBrand)&&(
           <div style={{marginBottom:"0.75rem",padding:"0.65rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderLeft:`2px solid ${col}40`,borderRadius:"3px"}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>{t.secondPick}</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>"SECOND PICK ──"</div>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"0.5rem"}}>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{(rec.altBrand||"").toUpperCase()}</div>
@@ -392,7 +392,7 @@ function RecCard({rec,index,stepNum}){
 
         {/* why recommended — expandable */}
         <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:"0.62rem",background:"transparent",border:"none",cursor:"pointer",padding:0,fontFamily:C.mono}}>
-          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>{t.whyRec}</span>
+          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>"WHY THIS WAS RECOMMENDED"</span>
           <span style={{fontSize:"0.75rem",color:C.textDim,transition:"transform 0.2s",display:"inline-block",transform:open?"rotate(90deg)":"rotate(0deg)"}}>›</span>
         </button>
         {open&&(
