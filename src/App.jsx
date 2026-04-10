@@ -54,7 +54,7 @@ const questions = [
   {id:"texture",code:"SKN_01",section:"SKIN",question:"By midday, your skin feels —",sub:"Select all that apply.",options:[{label:"Tight + parched",value:"dry",tag:"DRY"},{label:"Slick all over",value:"oily",tag:"OILY"},{label:"Oily T-zone, dry cheeks",value:"combination",tag:"COMBO"},{label:"Calm + balanced",value:"normal",tag:"NORMAL"}]},
   {id:"sensitivity",code:"SKN_02",section:"SKIN",question:"How does skin respond to new products?",sub:"Select all that apply.",options:[{label:"Burns or turns red",value:"sensitive",tag:"HIGH"},{label:"Occasional breakouts",value:"reactive",tag:"MED"},{label:"Usually adapts fine",value:"tolerant",tag:"LOW"},{label:"Never reacts",value:"resilient",tag:"NONE"}]},
   {id:"concerns",code:"SKN_03",section:"SKIN",question:"Primary skin objectives —",sub:"Select all that apply.",options:[{label:"Dullness + uneven tone",value:"brightening",tag:"GLOW"},{label:"Fine lines + firmness",value:"antiaging",tag:"AGE"},{label:"Acne + congestion",value:"acne",tag:"CLEAR"},{label:"Dehydration + plumpness",value:"hydration",tag:"H2O"},{label:"Dark spots + hyperpigmentation",value:"pigmentation",tag:"PIGMENT"},{label:"Redness + irritation",value:"redness",tag:"CALM"}]},
-  {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:"Skin needs shift every decade.",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 and over",value:"45plus",tag:"45+"}]},
+  {id:"age",code:"PRF_01",section:"PROFILE",question:"Your age range —",sub:"Skin needs shift every decade.",options:[{label:"Under 25",value:"under25",tag:"18–24"},{label:"25 to 34",value:"25to34",tag:"25–34"},{label:"35 to 44",value:"35to44",tag:"35–44"},{label:"45 to 54",value:"45to54",tag:"45–54"},{label:"55 to 64",value:"55to64",tag:"55–64"},{label:"65 to 74",value:"65to74",tag:"65–74"},{label:"75 and over",value:"75plus",tag:"75+"}]},
   {id:"climate",code:"PRF_02",section:"PROFILE",question:"Where do you live? —",sub:"Climate shapes your barrier daily.",options:[{label:"Hot + humid",value:"tropical",tag:"TROPICAL"},{label:"Hot + dry",value:"arid",tag:"ARID"},{label:"Cold + dry",value:"cold",tag:"COLD"},{label:"Mild + temperate",value:"temperate",tag:"MILD"}]},
   {id:"sunlight",code:"LFE_01",section:"LIFESTYLE",question:"Daily sun exposure —",sub:"Average hours of direct sunlight.",options:[{label:"Indoor most of the day",value:"indoor",tag:"< 1HR"},{label:"Some outdoor time",value:"moderate",tag:"1–3HR"},{label:"Outdoors a lot",value:"high",tag:"3–6HR"},{label:"Full day in the sun",value:"extreme",tag:"6HR+"}]},
   {id:"habits",code:"LFE_02",section:"LIFESTYLE",question:"Which habits describe you? —",sub:"Select all that apply.",options:[{label:"Workouts + sweating daily",value:"active",tag:"ACTIVE"},{label:"Mostly desk / screen time",value:"sedentary",tag:"DESK"},{label:"Travel + irregular schedule",value:"travel",tag:"TRAVEL"},{label:"High stress + poor sleep",value:"stressed",tag:"STRESS"},{label:"Drinks alcohol regularly",value:"alcohol",tag:"ALCOHOL"},{label:"Smoker or ex-smoker",value:"smoker",tag:"SMOKE"}]},
@@ -104,7 +104,7 @@ function RecCard({rec,index}){
         {/* price + rating + buy */}
         <div style={{display:"flex",alignItems:"stretch",gap:"0.5rem",marginBottom:"0.75rem"}}>
           <div style={{padding:"0.5rem 0.75rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>CHEAPEST PRICE</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>FIRST CHOICE</div>
             <div style={{fontSize:"1rem",color:C.text,fontFamily:C.sans,fontWeight:500,marginBottom:"0.25rem"}}>{rec.price}</div>
             {rec.rating&&<div style={{display:"flex",alignItems:"center",gap:"0.3rem"}}>
               <span style={{color:"#f4c542",fontSize:"0.75rem"}}>{"★".repeat(Math.round(parseFloat(rec.rating||0)))}</span>
@@ -112,27 +112,27 @@ function RecCard({rec,index}){
             </div>}
           </div>
           <a href={getRetailerURL(rec.retailer, rec.name, rec.brand)} target="_blank" rel="noopener noreferrer"
-            style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.3rem",padding:"0.5rem 0.9rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,minWidth:"88px",transition:"all 0.15s"}}>
-            <span style={{fontSize:"0.78rem",color:retCol,fontWeight:600,letterSpacing:"0.04em"}}>{rec.retailer} →</span>
+            style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"0.5rem 0.75rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,width:"100px",maxWidth:"100px",overflow:"hidden",transition:"all 0.15s"}}>
+            <span style={{fontSize:"0.75rem",color:retCol,fontWeight:600,letterSpacing:"0.03em",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{rec.retailer} →</span>
           </a>
         </div>
 
-        {/* alt product */}
-        {rec.altName&&(
-          <div style={{marginBottom:"0.75rem",padding:"0.6rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderRadius:"3px",borderLeft:`2px solid ${col}40`}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.35rem"}}>SECOND PICK ──</div>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:"0.5rem"}}>
-              <div style={{flex:1}}>
-                <div style={{fontSize:"0.62rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{rec.altBrand?.toUpperCase()}</div>
-                <div style={{fontSize:"0.88rem",color:"#c8c0b8",fontFamily:C.sans,lineHeight:1.25,marginBottom:"0.3rem"}}>{rec.altName}</div>
-                <div style={{display:"flex",alignItems:"center",gap:"0.4rem"}}>
-                  {rec.altRating&&<><span style={{color:"#f4c542",fontSize:"0.7rem"}}>{"★".repeat(Math.round(parseFloat(rec.altRating||0)))}</span>
-                  <span style={{fontSize:"0.65rem",color:C.textMuted}}>{rec.altRating}</span></>}
-                  {rec.altPrice&&<span style={{fontSize:"0.7rem",color:C.textMuted,marginLeft:"0.25rem"}}>{rec.altPrice}</span>}
+        {/* alt product — always render if any alt field exists */}
+        {(rec.altName||rec.altBrand)&&(
+          <div style={{marginBottom:"0.75rem",padding:"0.65rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderLeft:`2px solid ${col}40`,borderRadius:"3px"}}>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>SECOND PICK ──</div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"0.5rem"}}>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{(rec.altBrand||"").toUpperCase()}</div>
+                <div style={{fontSize:"0.88rem",color:"#c8c0b8",fontFamily:C.sans,lineHeight:1.25,marginBottom:"0.28rem",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{rec.altName}</div>
+                <div style={{display:"flex",alignItems:"center",gap:"0.35rem",flexWrap:"wrap"}}>
+                  {rec.altRating&&<span style={{color:"#f4c542",fontSize:"0.68rem"}}>{"★".repeat(Math.round(parseFloat(rec.altRating||0)))}</span>}
+                  {rec.altRating&&<span style={{fontSize:"0.65rem",color:C.textMuted}}>{rec.altRating}</span>}
+                  {rec.altPrice&&<span style={{fontSize:"0.68rem",color:C.textMuted}}>{rec.altPrice}</span>}
                 </div>
               </div>
-              {rec.altRetailer&&<a href={getRetailerURL(rec.altRetailer,rec.altName,rec.altBrand||"")} target="_blank" rel="noopener noreferrer"
-                style={{fontSize:"0.62rem",color:retailerColor[rec.altRetailer]||C.textMuted,border:`1px solid ${(retailerColor[rec.altRetailer]||C.textMuted)+"40"}`,borderRadius:"2px",padding:"0.25rem 0.55rem",textDecoration:"none",whiteSpace:"nowrap",flexShrink:0,alignSelf:"center"}}>
+              {rec.altRetailer&&<a href={getRetailerURL(rec.altRetailer,rec.altName||"",rec.altBrand||"")} target="_blank" rel="noopener noreferrer"
+                style={{fontSize:"0.65rem",color:retailerColor[rec.altRetailer]||C.textMuted,border:`1px solid ${(retailerColor[rec.altRetailer]||C.textMuted)+"40"}`,borderRadius:"2px",padding:"0.28rem 0.6rem",textDecoration:"none",whiteSpace:"nowrap",flexShrink:0}}>
                 {rec.altRetailer} →
               </a>}
             </div>
@@ -158,7 +158,7 @@ function buildText(recs,answers){
   return["✦ MY MEEMO KOREAN BEAUTY PROTOCOL","Profile: "+profile,"",...recs.map((r,i)=>{
     const stars="★".repeat(Math.round(parseFloat(r.rating||0)));
     const alt=r.altName?`   ALT: ${r.altName} — ${r.altBrand} · ${r.altPrice} · ${r.altRetailer}\n`:"";
-    return `${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Rating: ${stars} ${r.rating} (${r.ratingCount})\n   Price: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand)}\n${alt}   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`;
+    return `${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Rating: ${stars} ${r.rating} (${r.ratingCount})\n   First choice: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand)}\n${alt}   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`;
   }),"Generated by Meemo Wellness AI"].join("\n");
 }
 
@@ -178,6 +178,10 @@ export default function MeemoSkinQuiz(){
   const[profileName,setProfileName]=useState("");
   const[profileEmail,setProfileEmail]=useState("");
   const[profileSaved,setProfileSaved]=useState(false);
+  const[selfieData,setSelfieData]=useState(null);
+  const[selfiePreview,setSelfiePreview]=useState(null);
+  const[selfieAnalysis,setSelfieAnalysis]=useState(null);
+  const selfieRef=useRef(null);
   const shareRef=useRef(null);
 
   const totalSteps=questions.length;
@@ -196,15 +200,32 @@ export default function MeemoSkinQuiz(){
   const setComment=(text)=>{const prev=answers[currentQ.id]||{selected:[],comment:""};setAnswers({...answers,[currentQ.id]:{...prev,comment:text}});};
   const canContinue=currentAns.selected.length>0||currentAns.comment.trim().length>0;
 
+  const SELFIE_STEP=totalSteps+1;
+  const LOADING_STEP=totalSteps+2;
+  const RESULTS_STEP=totalSteps+3;
+
   const handleNext=async()=>{
     if(step===0){await go(()=>setStep(1));return;}
-    if(!canContinue)return;
-    if(step<totalSteps){await go(()=>setStep(step+1));}
-    else{await go(()=>{setStep(totalSteps+1);setLoading(true);});await fetchRecs(answers);setLoading(false);}
+    if(step>=1&&step<=totalSteps){
+      if(!canContinue)return;
+      if(step<totalSteps){await go(()=>setStep(step+1));}
+      else{await go(()=>setStep(SELFIE_STEP));}
+      return;
+    }
+    if(step===SELFIE_STEP){
+      await go(()=>{setStep(LOADING_STEP);setLoading(true);});
+      await fetchRecs(answers,selfieData);
+      setLoading(false);
+      await go(()=>setStep(RESULTS_STEP));
+    }
   };
-  const handleBack=()=>{if(step<2)return;go(()=>setStep(step-1));};
+  const handleBack=()=>{
+    if(step===SELFIE_STEP){go(()=>setStep(totalSteps));return;}
+    if(step<2)return;
+    go(()=>setStep(step-1));
+  };
 
-  const fetchRecs=async(ans)=>{
+  const fetchRecs=async(ans,imgData=null)=>{
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
     const prompt=`You are a Korean Beauty expert and dermatology-informed skincare advisor. Recommend exactly 5 Korean skincare products forming a complete routine.
@@ -245,19 +266,22 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   "urgency": "ESSENTIAL|RECOMMENDED|BOOST",
   "timing": "AM|PM|AM + PM",
   "price": "$XX–$XX",
-  "retailer": "cheapest retailer name",
-  "retailerNote": "one sentence tip on where/how to get cheapest price",
+  "retailer": "best value retailer name",
+  "retailerNote": "one sentence tip on where to get best price",
   "rating": "overall rating out of 5 e.g. 4.7",
   "ratingCount": "number of reviews e.g. 12k+",
   "altName": "second best product name for same step",
   "altBrand": "second best brand",
   "altPrice": "$XX–$XX",
-  "altRetailer": "cheapest retailer for alt product",
+  "altRetailer": "best value retailer for alt product",
   "altRating": "rating out of 5",
   "dataReason": "2-3 sentences explaining exactly which quiz inputs drove this recommendation"
 }]`;
+    const userContent=imgData
+      ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgData}},{type:"text",text:prompt+"\n\nIMPORTANT: A selfie has been provided. Analyze the visible skin — note any redness, oiliness, dryness, dark spots, pores, or texture concerns you can see — and factor your visual observations into the product recommendations. Mention what you observed in dataReason."}]
+      :[{type:"text",text:prompt}];
     try{
-      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:prompt}]})});
+      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:userContent}]})});
       const data=await res.json();
       if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
       const raw=data.content?.map(i=>i.text||"").join("")||"";
@@ -269,6 +293,18 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
     }catch(err){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);}
   };
 
+  const handleSelfie=(e)=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    const reader=new FileReader();
+    reader.onload=(ev)=>{
+      const base64=ev.target.result.split(",")[1];
+      setSelfieData(base64);
+      setSelfiePreview(ev.target.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleCopy=()=>{
     const text=buildText(sortedRecs,answers);
     try{
@@ -278,11 +314,11 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   };
   const fallbackCopy=()=>{if(shareRef.current){shareRef.current.select();document.execCommand("copy");setCopied(true);setTimeout(()=>setCopied(false),2500);}};
   const handleEmail=()=>{const text=buildText(sortedRecs,answers);window.location.href=`mailto:?subject=${encodeURIComponent("My Meemo Korean Beauty Skin Protocol")}&body=${encodeURIComponent(text)}`;};
-  const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");};
+  const restart=()=>{setStep(0);setAnswers({});setRecs(null);setApiNote(null);setCopied(false);setPhone("");setSmsSent(false);setProfileSaved(false);setProfileName("");setProfileEmail("");setSelfieData(null);setSelfiePreview(null);setSelfieAnalysis(null);};
 
   // Fire Meta + TikTok pixel on results
   useEffect(()=>{
-    if(step===totalSteps+1&&!loading&&recs){
+    if(step===RESULTS_STEP&&!loading&&recs){
       try{
         // Meta Pixel — replace PIXEL_ID_HERE with your actual ID
         if(window.fbq){window.fbq("track","CompleteRegistration",{content_name:"Meemo Skin Analysis",skin_type:answers.texture?.selected?.join(","),concern:answers.concerns?.selected?.join(",")});}
@@ -346,7 +382,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
           <div style={{background:"#0d0d0d",borderBottom:`1px solid ${C.border}`,padding:"0.6rem 1.3rem",display:"flex",alignItems:"center",gap:"0.67rem"}}>
             {["#ff5f57","#febc2e","#28c840"].map((c,i)=><div key={i} style={{width:"8px",height:"8px",borderRadius:"50%",background:c,opacity:0.65}}/>)}
             <span style={{fontSize:"0.78rem",color:C.textDim,letterSpacing:"0.10em",marginLeft:"0.8rem"}}>
-              {step===0?"skin_diagnostics.meemo":step<=totalSteps?`${currentQ?.section?.toLowerCase()}_${currentQ?.code?.toLowerCase()}.run`:loading?"processing_results.meemo":"skin_report.output"}
+              {step===0?"skin_diagnostics.meemo":step<=totalSteps?`${currentQ?.section?.toLowerCase()}_${currentQ?.code?.toLowerCase()}.run`:step===SELFIE_STEP?"skin_scan.meemo":loading?"processing_results.meemo":"skin_report.output"}
             </span>
           </div>
 
@@ -364,7 +400,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   Know Your Skin.<br/><span style={{color:C.amber}}>Find Your Formula.</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
-                  8-question deep profile. AI recommends 5 products with pricing, where to buy cheapest, and exactly why each was chosen for you.
+                  8-question deep profile. AI recommends 5 products with pricing, where to buy for less, and exactly why each was chosen for you.
                 </p>
                 <div style={{display:"flex",gap:"0.62rem",marginBottom:"1.58rem"}}>
                   {[["SKIN","3 q's","#e8920a"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
@@ -375,7 +411,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   ))}
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[["PRICE RANGES","Realistic USD estimates"],["CHEAPEST RETAILER","Amazon, YesStyle, iHerb"],["WHY EACH PRODUCT","Tied to your exact inputs"],["ORDERED REGIME","Correct application sequence"]].map(([t,d])=>(
+                  {[["PRICE RANGES","Realistic USD estimates"],["BEST RETAILER","Amazon, YesStyle, iHerb"],["WHY EACH PRODUCT","Tied to your exact inputs"],["ORDERED REGIME","Correct application sequence"]].map(([t,d])=>(
                     <div key={t} style={{border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.95rem",background:"#0d0d0d"}}>
                       <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.10em",marginBottom:"0.44rem"}}>{t}</div>
                       <div style={{fontSize:"0.8rem",color:C.textMuted}}>{d}</div>
@@ -434,8 +470,51 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               </div>
             )}
 
+            {/* SELFIE STEP */}
+            {step===SELFIE_STEP&&(
+              <div>
+                <div style={{marginBottom:"1.25rem"}}>
+                  <div style={{fontSize:"0.58rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.5rem"}}>SKIN_SCAN ──</div>
+                  <h2 style={{fontFamily:C.sans,fontSize:"1.35rem",fontWeight:400,color:C.text,lineHeight:1.3,marginBottom:"0.35rem"}}>Optional: Scan your skin</h2>
+                  <p style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.75}}>Upload a selfie for AI-powered visual skin analysis. We analyze visible redness, oiliness, texture, pores, and tone — then layer it on top of your quiz answers for more accurate recommendations.</p>
+                </div>
+
+                {/* upload area */}
+                <div onClick={()=>selfieRef.current?.click()} style={{border:`2px dashed ${selfiePreview?"#4ecdc4":C.border}`,borderRadius:"6px",padding:"1.5rem",textAlign:"center",cursor:"pointer",marginBottom:"1rem",background:selfiePreview?"rgba(78,205,196,0.05)":"transparent",transition:"all 0.2s"}}>
+                  {selfiePreview?(
+                    <div>
+                      <img src={selfiePreview} alt="selfie" style={{width:"120px",height:"120px",objectFit:"cover",borderRadius:"50%",border:"2px solid #4ecdc4",marginBottom:"0.75rem"}}/>
+                      <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.1em"}}>✓ Photo ready — AI will analyze your skin</div>
+                      <div style={{fontSize:"0.62rem",color:C.textMuted,marginTop:"0.3rem"}}>Tap to change</div>
+                    </div>
+                  ):(
+                    <div>
+                      <div style={{fontSize:"2rem",marginBottom:"0.5rem"}}>📷</div>
+                      <div style={{fontSize:"0.78rem",color:C.textMuted,marginBottom:"0.25rem"}}>Tap to upload a selfie</div>
+                      <div style={{fontSize:"0.62rem",color:C.textDim}}>JPG or PNG · Front-facing, good lighting</div>
+                    </div>
+                  )}
+                </div>
+                <input ref={selfieRef} type="file" accept="image/*" capture="user" onChange={handleSelfie} style={{display:"none"}}/>
+
+                {/* privacy note */}
+                <div style={{padding:"0.6rem 0.75rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"1.25rem"}}>
+                  <div style={{fontSize:"0.6rem",color:C.textDim,lineHeight:1.65}}>
+                    🔒 Your photo is sent directly to Claude AI for analysis and is never stored. Analysis happens in real time and is deleted immediately after.
+                  </div>
+                </div>
+
+                <div style={{display:"flex",gap:"0.5rem",justifyContent:"space-between"}}>
+                  <button onClick={handleBack} style={{...ghostBtn}}>← back</button>
+                  <button onClick={handleNext} style={{...primaryBtn,flex:1}}>
+                    {selfiePreview?"analyze my skin →":"skip — use quiz answers only →"}
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* LOADING */}
-            {step===totalSteps+1&&loading&&(
+            {step===LOADING_STEP&&loading&&(
               <div style={{padding:"1rem 0"}}>
                 <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.58rem"}}>PROCESSING{dots}</div>
                 {["Mapping skin barrier + age profile","Calibrating for climate conditions","Analyzing UV exposure damage risk","Cross-referencing lifestyle factors","Reading your personal notes","Building step-by-step routine order","Finding best prices + retailers","Generating personalized protocol"].map((line,i)=>(
@@ -445,7 +524,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             )}
 
             {/* RESULTS */}
-            {step===totalSteps+1&&!loading&&recs&&(
+            {step===RESULTS_STEP&&!loading&&recs&&(
               <div>
                 {/* header */}
                 <div style={{marginBottom:"1.2rem"}}>
@@ -477,7 +556,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     )}
                   </div>
                   <div style={{fontSize:"0.72rem",color:C.textDim,letterSpacing:"0.08em",lineHeight:1.6}}>
-                    Each product below shows its price range, cheapest retailer, and a <span style={{color:C.amber}}>›</span> button explaining exactly which of your inputs triggered it.
+                    Each product below shows its price range, best retailer, and a <span style={{color:C.amber}}>›</span> button explaining exactly which of your inputs triggered it.
                   </div>
                 </div>
 
