@@ -251,7 +251,16 @@ export default function MeemoSkinQuiz(){
   const fetchRecs=async(ans,imgData=null)=>{
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
-    const prompt=`You are a Korean Beauty expert and dermatology-informed skincare advisor. Recommend exactly 5 Korean skincare products forming a complete routine.
+    const prompt=`You are a Korean dermatology-informed skincare expert with deep knowledge of what Korean consumers, dermatologists, and pharmacists actually use and recommend in Korea — not what is viral in the US or trending on TikTok.
+
+Your product recommendations must meet this standard:
+- PRIORITIZE products sold in Korean pharmacies (올리브영 Olive Young, Lalavla, Bonne Santé), dermatology clinics, and recommended by Korean dermatologists
+- PREFER products with peer-reviewed or clinical study backing, dermatologist-tested certification, or KFDA approval
+- AVOID recommending products that are primarily viral in Western markets without clinical evidence
+- FAVOR brands with long track records in Korea: COSRX, Illiyoon, Pyunkang Yul, Isntree, Dr. Jart+, Etude, Mediheal, Anua, Beauty of Joseon, Skin1004, Round Lab, Torriden, Some By Mi, Ryo, Aestura, Cicapair
+- For scalp: prioritize clinically tested Korean trichology brands — Ryo, Dr. Groot, Reen, La'dor, Daeng Gi Meo Ri
+- Mention if a product is a Korean pharmacy staple or dermatologist-recommended in the dataReason field
+- Price should reflect actual Korean market value, not inflated Western import pricing
 
 SKIN PROFILE:
 - Midday feel: ${fmt("texture")}
