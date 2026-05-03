@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const C = {
   bg: "#0a0a0a", surface: "#111111", border: "#1e1e1e",
@@ -991,6 +992,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
         textarea{color-scheme:dark;}
         @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
       `}</style>
+      <Analytics />
     </div>
   );
 }
