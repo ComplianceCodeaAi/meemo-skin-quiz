@@ -3,11 +3,26 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" }
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
   ],
   "functions": {
     "api/recommend.js": {
       "maxDuration": 60
+    },
+    "api/sms.js": {
+      "maxDuration": 60
+    },
+    "api/checkin.js": {
+      "maxDuration": 60
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/checkin",
+      "schedule": "0 17 * * *"
+    }
+  ]
 }
