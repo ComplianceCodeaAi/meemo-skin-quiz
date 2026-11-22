@@ -54,6 +54,17 @@ const T = {
     selfieSkip: "skip — use quiz answers only →",
     scanHeader: "SKIN SCAN ANALYSIS ──",
     scanFactored: "✓ Visual observations factored into your regime below",
+    scalpSection: "SCALP PROFILE",
+    secSkin: "SKIN", secScalp: "SCALP", secProfile: "PROFILE", secLifestyle: "LIFESTYLE",
+    skip: "skip this question →",
+    continueHint: "select an option or add a note to continue — or skip this question",
+    skinRoutine: "SKIN ROUTINE —— Apply to face AM/PM",
+    scalpRoutine: "SCALP ROUTINE —— Apply on wash days",
+    textPreview: "TEXT PREVIEW — tap to select all",
+    fallbackNote: "Showing curated recommendations — personalized analysis is temporarily unavailable, so these are our editors' picks.",
+    legalTitle: "IMPORTANT INFORMATION ──",
+    recsExplainer: "Each product below shows its price range, best retailer, and a › button explaining exactly which of your inputs triggered it.",
+    legalBody: "Meemo provides cosmetic guidance only. This analysis is not medical advice and does not diagnose or treat any skin, scalp, or medical condition. For persistent or serious concerns — including psoriasis, dermatitis, or hair loss — please consult a dermatologist. Product ratings and prices are indicative and may differ at the retailer. Meemo may earn a commission from retailer links, at no extra cost to you. Privacy: your answers are used only to generate your routine. A selfie, if you add one, is sent to Claude AI (Anthropic) for analysis and is never stored by Meemo. Saving a profile stores your details only in this browser — nothing is uploaded to a Meemo server.",
   },
   es: {
     brand: "MEEMO", sub: "ANÁLISIS DE PIEL",
@@ -101,6 +112,17 @@ const T = {
     selfieSkip: "omitir — usar solo respuestas →",
     scanHeader: "ANÁLISIS DE PIEL ──",
     scanFactored: "✓ Observaciones visuales incluidas en tu régimen",
+    scalpSection: "PERFIL DEL CUERO CABELLUDO",
+    secSkin: "PIEL", secScalp: "CUERO CABELLUDO", secProfile: "PERFIL", secLifestyle: "ESTILO DE VIDA",
+    skip: "omitir esta pregunta →",
+    continueHint: "selecciona una opción o agrega una nota para continuar — o omite esta pregunta",
+    skinRoutine: "RUTINA DE PIEL —— Aplicar en el rostro AM/PM",
+    scalpRoutine: "RUTINA DEL CUERO CABELLUDO —— Aplicar en días de lavado",
+    textPreview: "VISTA PREVIA — toca para seleccionar todo",
+    fallbackNote: "Mostrando recomendaciones seleccionadas — el análisis personalizado no está disponible temporalmente, así que estas son las elecciones de nuestros editores.",
+    legalTitle: "INFORMACIÓN IMPORTANTE ──",
+    recsExplainer: "Cada producto muestra su rango de precios, la mejor tienda y un botón › que explica exactamente qué respuestas lo motivaron.",
+    legalBody: "Meemo ofrece solo orientación cosmética. Este análisis no es consejo médico y no diagnostica ni trata ninguna afección de la piel, el cuero cabelludo o de salud. Ante problemas persistentes o graves —incluidos psoriasis, dermatitis o caída del cabello— consulta a un dermatólogo. Las valoraciones y los precios son orientativos y pueden variar en la tienda. Meemo puede recibir una comisión por los enlaces a tiendas, sin costo adicional para ti. Privacidad: tus respuestas se usan solo para generar tu rutina. Si agregas una selfie, se envía a Claude AI (Anthropic) para su análisis y Meemo nunca la almacena. Guardar un perfil almacena tus datos solo en este navegador: nada se sube a un servidor de Meemo.",
   },
   pt: {
     brand: "MEEMO", sub: "ANÁLISE DE PELE",
@@ -147,6 +169,17 @@ const T = {
     selfieSkip: "pular — usar apenas respostas →",
     scanHeader: "ANÁLISE DE PELE ──",
     scanFactored: "✓ Observações visuais incluídas no seu regime",
+    scalpSection: "PERFIL DO COURO CABELUDO",
+    secSkin: "PELE", secScalp: "COURO CABELUDO", secProfile: "PERFIL", secLifestyle: "ESTILO DE VIDA",
+    skip: "pular esta pergunta →",
+    continueHint: "selecione uma opção ou adicione uma nota para continuar — ou pule esta pergunta",
+    skinRoutine: "ROTINA DE PELE —— Aplicar no rosto AM/PM",
+    scalpRoutine: "ROTINA DO COURO CABELUDO —— Aplicar nos dias de lavagem",
+    textPreview: "PRÉ-VISUALIZAÇÃO — toque para selecionar tudo",
+    fallbackNote: "Mostrando recomendações selecionadas — a análise personalizada está temporariamente indisponível, então estas são as escolhas dos nossos editores.",
+    legalTitle: "INFORMAÇÕES IMPORTANTES ──",
+    recsExplainer: "Cada produto abaixo mostra sua faixa de preço, a melhor loja e um botão › explicando exatamente quais respostas o motivaram.",
+    legalBody: "A Meemo oferece apenas orientação cosmética. Esta análise não é aconselhamento médico e não diagnostica nem trata qualquer condição de pele, couro cabeludo ou de saúde. Para preocupações persistentes ou graves — incluindo psoríase, dermatite ou queda de cabelo — consulte um dermatologista. Avaliações e preços são indicativos e podem diferir na loja. A Meemo pode receber uma comissão por links de lojas, sem custo extra para você. Privacidade: suas respostas são usadas apenas para gerar sua rotina. Uma selfie, se adicionada, é enviada à Claude AI (Anthropic) para análise e nunca é armazenada pela Meemo. Salvar um perfil guarda seus dados apenas neste navegador — nada é enviado a um servidor da Meemo.",
   },
   ko: {
     brand: "MEEMO", sub: "피부 분석",
@@ -193,6 +226,17 @@ const T = {
     selfieSkip: "건너뛰기 — 설문 답변만 사용 →",
     scanHeader: "피부 스캔 분석 ──",
     scanFactored: "✓ 시각적 분석이 루틴에 반영되었습니다",
+    scalpSection: "두피 프로필",
+    secSkin: "피부", secScalp: "두피", secProfile: "프로필", secLifestyle: "라이프스타일",
+    skip: "이 질문 건너뛰기 →",
+    continueHint: "계속하려면 옵션을 선택하거나 메모를 추가하세요 — 또는 이 질문을 건너뛰세요",
+    skinRoutine: "피부 루틴 —— 아침/저녁 얼굴에 사용",
+    scalpRoutine: "두피 루틴 —— 머리를 감는 날 사용",
+    textPreview: "텍스트 미리보기 — 탭하여 전체 선택",
+    fallbackNote: "큐레이션 추천을 표시 중입니다 — 맞춤 분석을 일시적으로 사용할 수 없어 에디터 추천 제품을 보여드립니다.",
+    legalTitle: "중요 안내 ──",
+    recsExplainer: "아래 각 제품에는 가격대, 최적의 구매처, 그리고 어떤 입력이 이 제품을 추천하게 했는지 설명하는 › 버튼이 있습니다.",
+    legalBody: "Meemo는 화장품 관련 안내만 제공합니다. 이 분석은 의학적 조언이 아니며 피부, 두피 또는 기타 질환을 진단하거나 치료하지 않습니다. 건선, 피부염, 탈모 등 지속적이거나 심각한 문제가 있다면 피부과 전문의와 상담하세요. 제품 평점과 가격은 참고용이며 판매처에 따라 다를 수 있습니다. Meemo는 판매처 링크를 통해 수수료를 받을 수 있으며, 이용자에게 추가 비용은 없습니다. 개인정보: 답변은 루틴 생성에만 사용됩니다. 셀카를 추가하면 분석을 위해 Claude AI(Anthropic)로 전송되며 Meemo에 저장되지 않습니다. 프로필 저장은 이 브라우저에만 정보를 저장하며, Meemo 서버로 업로드되지 않습니다.",
   },
   zh: {
     brand: "MEEMO", sub: "肌肤分析",
@@ -239,6 +283,17 @@ const T = {
     selfieSkip: "跳过 — 仅使用问卷答案 →",
     scanHeader: "肌肤扫描分析 ──",
     scanFactored: "✓ 视觉观察已纳入您的护理方案",
+    scalpSection: "头皮档案",
+    secSkin: "肌肤", secScalp: "头皮", secProfile: "个人档案", secLifestyle: "生活方式",
+    skip: "跳过此题 →",
+    continueHint: "选择一个选项或添加备注以继续 — 或跳过此题",
+    skinRoutine: "肌肤护理 —— 早晚用于面部",
+    scalpRoutine: "头皮护理 —— 洗发日使用",
+    textPreview: "文本预览 — 点击全选",
+    fallbackNote: "正在显示精选推荐 — 个性化分析暂时不可用，以下为我们的编辑精选。",
+    legalTitle: "重要信息 ──",
+    recsExplainer: "下方每个产品都显示价格范围、最佳零售商，以及一个 › 按钮，说明您的哪些输入触发了该推荐。",
+    legalBody: "Meemo 仅提供美容方面的指导。本分析不构成医疗建议，也不诊断或治疗任何肌肤、头皮或健康问题。如有持续或严重的问题——包括银屑病、皮炎或脱发——请咨询皮肤科医生。产品评分和价格仅供参考，零售商处可能有所不同。Meemo 可能通过零售商链接获得佣金，您无需支付额外费用。隐私：您的回答仅用于生成您的护理方案。如您添加自拍照，它将被发送至 Claude AI(Anthropic)进行分析，Meemo 绝不会存储。保存档案仅将您的信息存储在此浏览器中——不会上传到 Meemo 服务器。",
   },
 };
 
@@ -251,7 +306,8 @@ const urgencyStyle = {
 };
 const retailerColor = { Amazon: "#ff9900", YesStyle: "#e94b6e", "Soko Glam": "#7b68ee", iHerb: "#5aac44", "Beauty of Joseon": "#c9a96e", StyleKorean: "#00b0c8", Stylevana: "#ff6b9d", "Olive Young": "#4ecdc4", "Peach & Lily": "#f78fb3", Target: "#cc0000", Ulta: "#7b2d8b", "Nudie Glow": "#f9ca24" };
 
-function getRetailerURL(retailer, name, brand) {
+function getRetailerURL(retailer, name, brand, directUrl) {
+  if (directUrl) return directUrl;
   const q = encodeURIComponent(`${name} ${brand}`);
   const n = encodeURIComponent(name);
   const map = {
@@ -266,9 +322,6 @@ function getRetailerURL(retailer, name, brand) {
     "Peach & Lily": `https://www.peachandlily.com/search?q=${n}`,
     "Target": `https://www.target.com/s?searchTerm=${q}`,
     "Ulta": `https://www.ulta.com/search?search=${q}`,
-    "Peach & Lily": `https://www.peachandlily.com/search?q=${n}`,
-    "Target": `https://www.target.com/s?searchTerm=${q}`,
-    "Ulta": `https://www.ulta.com/search?search=${n}`,
     "Nudie Glow": `https://nudieglow.com/search?q=${n}`,
     "COSRX": `https://www.cosrx.com/search?q=${n}`,
     "Dr. Jart+": `https://www.drjart.com/search?q=${n}`,
@@ -278,24 +331,27 @@ function getRetailerURL(retailer, name, brand) {
 
 const STEP_ORDER = { "oil cleanser":1,"balm cleanser":1,"cleansing oil":1,"foam cleanser":2,"gel cleanser":2,"cleanser":2,"exfoliating toner":3,"essence toner":3,"toner":3,"serum ampoule":4,"ampoule":4,"lightweight serum":4,"serum":4,"essence":4,"sheet mask":5,"sleeping mask":5,"mask":5,"eye cream":6,"water-jelly cream":7,"gel cream":7,"moisturizer":7,"cream":7,"emulsion":7,"color-correcting cream":8,"sunscreen":9,"spf cream":9,"scalp serum":4,"scalp treatment":4,"scalp toner":3 };
 function stepOrder(tex=""){ const t=tex.toLowerCase(); for(const[k,v]of Object.entries(STEP_ORDER))if(t.includes(k))return v; return 6; }
-function stepLabel(tex=""){ const t=tex.toLowerCase();
-  if(t.includes("cleanser")||t.includes("cleansing")||t.includes("foam"))return"STEP 1 · CLEANSE";
-  if(t.includes("toner")||t.includes("exfoliat"))return"STEP 2 · TONE";
-  if(t.includes("ampoule")||t.includes("serum")||t.includes("essence"))return"STEP 3 · TREAT";
-  if(t.includes("mask"))return"STEP 4 · MASK";
-  if(t.includes("eye"))return"STEP 4 · EYE CREAM";
-  if(t.includes("cream")||t.includes("moistur")||t.includes("emulsion")||t.includes("jelly"))return"STEP 4 · MOISTURIZE";
-  if(t.includes("spf")||t.includes("sun")||t.includes("color-correct"))return"STEP 5 · PROTECT";
-  if(t.includes("scalp"))return"STEP 3 · SCALP TREAT";
-  return"STEP · APPLY"; }
+function stepCategory(tex=""){ const t=tex.toLowerCase();
+  if(t.includes("scalp"))return"SCALP TREAT";
+  if(t.includes("spf")||t.includes("sun")||t.includes("color-correct"))return"PROTECT";
+  if(t.includes("cleanser")||t.includes("cleansing")||t.includes("foam"))return"CLEANSE";
+  if(t.includes("toner")||t.includes("exfoliat"))return"TONE";
+  if(t.includes("ampoule")||t.includes("serum")||t.includes("essence"))return"TREAT";
+  if(t.includes("mask"))return"MASK";
+  if(t.includes("eye"))return"EYE CREAM";
+  if(t.includes("cream")||t.includes("moistur")||t.includes("emulsion")||t.includes("jelly"))return"MOISTURIZE";
+  return"APPLY"; }
+function stepLabel(tex=""){ const c=stepCategory(tex);
+  const n={"CLEANSE":1,"TONE":2,"TREAT":3,"MASK":4,"EYE CREAM":4,"MOISTURIZE":4,"PROTECT":5,"SCALP TREAT":3}[c];
+  return n?`STEP ${n} · ${c}`:`STEP · ${c}`; }
 
 const DEMO_RECS = [
-  {name:"Low pH Good Morning Cleanser",brand:"COSRX",tech:"pH-Balanced Surfactant System",ingredient:"Tea Tree Oil",texture:"gel cleanser",why:"Gentle pH-balanced formula clears congestion without stripping combination skin.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$14",retailer:"Amazon",rating:"4.7",ratingCount:"89k+",altName:"Real Fresh Foam Cleanser",altBrand:"Innisfree",altPrice:"$13–$16",altRetailer:"YesStyle",altRating:"4.5",dataReason:"Your oily/combination skin needs a low-pH cleanser that won't over-strip."},
-  {name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"Triple Acid Exfoliation",ingredient:"Salicylic Acid BHA",texture:"exfoliating toner",why:"Unclogs pores and fades dark spots without heavy peeling — PM use only.",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$14–$18",retailer:"YesStyle",rating:"4.6",ratingCount:"42k+",altName:"BHA Blackhead Power Liquid",altBrand:"COSRX",altPrice:"$18–$22",altRetailer:"Amazon",altRating:"4.5",dataReason:"Pigmentation and dullness concerns + oily skin = BHA exfoliation is the highest-leverage step."},
-  {name:"Snail Mucin 96% Power Repairing Essence",brand:"COSRX",tech:"Snail Secretion Filtrate",ingredient:"Snail Mucin 96%",texture:"essence serum",why:"Deeply repairs barrier and boosts hydration — ideal for stressed or reactive skin.",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$25",retailer:"Amazon",rating:"4.8",ratingCount:"127k+",altName:"Galactomyces 95 Tone Balancing Essence",altBrand:"Some By Mi",altPrice:"$15–$19",altRetailer:"iHerb",altRating:"4.6",dataReason:"Sensitivity + stress habit selected. Snail mucin is the most clinically backed barrier repair ingredient."},
-  {name:"Hair Loss Care Scalp Serum",brand:"Ryo",tech:"6-Herbal Complex + Adenosine",ingredient:"Adenosine + Ginseng Root",texture:"scalp serum",why:"Strengthens hair roots and reduces thinning — key for hormonal hair changes at 45+.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$24",retailer:"Amazon",rating:"4.6",ratingCount:"8k+",altName:"Scalp Scaling Toner",altBrand:"Dr. Groot",altPrice:"$14–$18",altRetailer:"YesStyle",altRating:"4.4",dataReason:"Age 45+ + stress habit = hormonal scalp thinning is common. Ryo is Korea's #1 scalp brand, clinically tested for hair loss."},
-  {name:"Water Bomb Cherry Blossom Jelly Cream",brand:"Laneige",tech:"Moisture Wrap Technology",ingredient:"Cherry Blossom Extract",texture:"water-jelly cream",why:"Locks in hydration without heaviness — perfect for oily skin in warm climates.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$22–$28",retailer:"Soko Glam",rating:"4.6",ratingCount:"31k+",altName:"Water Sleeping Mask",altBrand:"Laneige",altPrice:"$18–$24",altRetailer:"Amazon",altRating:"4.7",dataReason:"Hot/humid climate + combination skin means a gel-texture moisturizer over a heavy cream."},
-  {name:"Cicapair Tiger Grass Color Correcting SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Protects and corrects uneven tone — essential for outdoor exposure and redness.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Soko Glam",rating:"4.5",ratingCount:"18k+",altName:"Airy Sun Stick SPF 50+",altBrand:"Beauty of Joseon",altPrice:"$12–$16",altRetailer:"Amazon",altRating:"4.8",dataReason:"Sun exposure + redness + uneven tone = SPF with Cica is the highest-urgency morning product."},
+  {name:"Low pH Good Morning Cleanser",brand:"COSRX",tech:"pH-Balanced Surfactant System",ingredient:"Tea Tree Oil",texture:"gel cleanser",why:"Gentle pH-balanced gel that cleanses thoroughly without stripping or tightness.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$14",retailer:"Amazon",url:"https://www.amazon.com/dp/B016NRXO06",rating:"4.7",ratingCount:"89k+",altName:"Green Tea Amino Hydrating Cleansing Foam",altBrand:"Innisfree",altPrice:"$13–$16",altRetailer:"YesStyle",altUrl:"https://www.yesstyle.com/en/innisfree-green-tea-amino-hydrating-cleansing-foam-150g/info.html/pid.1120887593",altRating:"4.5",altWhy:"A hydrating green-tea foam, if you prefer a foam over a gel.",dataReason:"A low-pH cleanser is the safest daily starting point for every skin type — it removes buildup without disturbing the skin barrier."},
+  {name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"Triple Acid Exfoliation",ingredient:"Salicylic Acid BHA",texture:"exfoliating toner",why:"Unclogs pores and fades dark spots without heavy peeling — PM use only. Patch-test first if your skin is reactive, and start 2–3 nights a week.",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$14–$18",retailer:"YesStyle",url:"https://www.yesstyle.com/en/some-by-mi-aha-bha-pha-30-days-miracle-toner-150ml-2024-version-150ml/info.html/pid.1067311275",rating:"4.6",ratingCount:"42k+",altName:"BHA Blackhead Power Liquid",altBrand:"COSRX",altPrice:"$18–$22",altRetailer:"Amazon",altUrl:"https://www.amazon.com/dp/B00OZEJ8R8",altRating:"4.5",altWhy:"A leave-on BHA treatment for stubborn blackheads and congestion.",dataReason:"A gentle exfoliating toner used at night is the highest-leverage step for clearer pores and a more even tone over time."},
+  {name:"Snail Mucin 96% Power Repairing Essence",brand:"COSRX",tech:"Snail Secretion Filtrate",ingredient:"Snail Mucin 96%",texture:"essence serum",why:"Deeply repairs the barrier and boosts hydration with a lightweight, fast-absorbing texture.",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$25",retailer:"Amazon",url:"https://www.amazon.com/dp/B00PBX3L7K",rating:"4.8",ratingCount:"127k+",altName:"Galactomyces 95 Tone Balancing Essence",altBrand:"COSRX",altPrice:"$18–$20",altRetailer:"iHerb",altUrl:"https://www.iherb.com/pr/cosrx-galactomyces-95-tone-balancing-essence-3-38-fl-oz-100-ml/82107",altRating:"4.6",altWhy:"A fermented essence that leans brighter and more even-toned.",dataReason:"Snail mucin is one of the most clinically backed barrier-repair ingredients in K-beauty, and it layers under any moisturizer."},
+  {name:"Root:Gen Scalp Serum for Thinning Hair",brand:"Ryo",tech:"6-Herbal Complex + Adenosine",ingredient:"Adenosine + Ginseng Root",texture:"scalp serum",why:"Strengthens hair roots and supports thinning hair with a clinically tested herbal complex.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$24",retailer:"Amazon",url:"https://www.amazon.com/dp/B0GMHP5TXD",rating:"4.6",ratingCount:"8k+",altName:"Multi-Perfection Hair Loss Care Tonic",altBrand:"Dr. Groot",altPrice:"$26–$30",altRetailer:"YesStyle",altUrl:"https://www.yesstyle.com/en/dr-groot-multi-perfection-hair-loss-care-tonic-hoofdhuidverzorging/info.html/pid.1129963324",altRating:"4.4",altWhy:"A leave-on tonic from another leading Korean scalp line, focused on hair-loss care.",dataReason:"Ryo is Korea's #1 scalp-care brand and this serum is clinically tested for hair-loss care — most relevant if thinning is a concern."},
+  {name:"Water Bank Blue Hyaluronic Cream Moisturizer",brand:"Laneige",tech:"Blue Hyaluronic Acid Fermentation",ingredient:"Blue Hyaluronic Acid",texture:"gel cream",why:"Deep, lasting hydration from fermented blue hyaluronic acid in a cushiony cream.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$36–$42",retailer:"Laneige",url:"https://int.laneige.com/products/water-bank-blue-hyaluronic-cream-moisturizer",rating:"4.6",ratingCount:"31k+",altName:"Water Sleeping Mask",altBrand:"Laneige",altPrice:"$18–$24",altRetailer:"Amazon",altUrl:"https://www.amazon.com/dp/B09HN8JBFP",altRating:"4.7",altWhy:"An overnight mask for an extra hydration boost a few nights a week.",dataReason:"A dependable daily moisturizer suits most climates and skin types, and layers cleanly under SPF in the morning."},
+  {name:"Cicapair Soothing Color Correcting Treatment SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Color-correcting SPF that neutralizes redness while it protects — a two-in-one morning step.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Amazon",url:"https://www.amazon.com/dp/B0F7J33CP4",rating:"4.5",ratingCount:"18k+",altName:"Matte Sun Stick: Mugwort + Camelia SPF 50+",altBrand:"Beauty of Joseon",altPrice:"$12–$16",altRetailer:"YesStyle",altUrl:"https://www.yesstyle.com/en/beauty-of-joseon-matte-sun-stick-18g/info.html/pid.1119542494",altRating:"4.8",altWhy:"A portable stick format that makes reapplication through the day easy.",dataReason:"Daily SPF is the highest-impact morning step for every profile; the Cica base also calms visible redness while it protects."},
 ];
 
 const questions = [
@@ -320,11 +376,10 @@ function LoadingLine({text,delay}){
     <span style={{color:done?"#4ecdc4":C.amber,marginRight:"0.8rem"}}>{done?"✓":"›"}</span>{text}</div>);
 }
 
-function RecCard({rec,index,stepNum}){
+function RecCard({rec,index,stepNum,t}){
   const[open,setOpen]=useState(false);
   const urg=urgencyStyle[rec.urgency]||urgencyStyle.RECOMMENDED;
   const col=catColor[rec.category]||C.amber;
-  const sl=stepLabel(rec.texture);
   const retCol=retailerColor[rec.retailer]||C.amber;
   return(
     <div style={{border:`1px solid ${C.border}`,borderRadius:"4px",background:"#0d0d0d",position:"relative",overflow:"hidden",animation:`fadeUp 0.4s ease ${index*0.09}s both`}}>
@@ -332,14 +387,14 @@ function RecCard({rec,index,stepNum}){
       <div style={{padding:"0.9rem 1.1rem 0.9rem 1.33rem"}}>
         {/* step + badges */}
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.64rem"}}>
-          <span style={{fontSize:"0.69rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>STEP {stepNum} · {sl.split("·")[1]?.trim()||sl}</span>
+          <span style={{fontSize:"0.69rem",color:col,letterSpacing:"0.2em",fontWeight:600}}>STEP {stepNum} · {stepCategory(rec.texture)}</span>
           <div style={{display:"flex",gap:"0.47rem"}}>
             {rec.timing&&<span style={{fontSize:"0.65rem",color:C.textDim,border:`1px solid ${C.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",letterSpacing:"0.1em"}}>{rec.timing}</span>}
             <span style={{fontSize:"0.65rem",letterSpacing:"0.12em",color:urg.color,border:`1px solid ${urg.border}`,borderRadius:"2px",padding:"0.1rem 0.55rem",background:urg.bg}}>{rec.urgency}</span>
           </div>
         </div>
         {/* first pick label */}
-        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>"FIRST PICK ──"</div>
+        <div style={{fontSize:"0.6rem",color:col,letterSpacing:"0.1em",marginBottom:"0.18rem"}}>{t.firstPick}</div>
         {/* brand + name */}
         <div style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.2em",marginBottom:"0.35rem"}}>{rec.brand?.toUpperCase()}</div>
         <div style={{fontSize:"1.04rem",color:C.text,fontFamily:C.sans,fontWeight:400,lineHeight:1.25,marginBottom:"0.62rem"}}>{rec.name}</div>
@@ -355,14 +410,14 @@ function RecCard({rec,index,stepNum}){
         {/* price + rating + buy */}
         <div style={{display:"flex",alignItems:"stretch",gap:"0.5rem",marginBottom:"0.75rem"}}>
           <div style={{padding:"0.5rem 0.75rem",background:"#0a0a0a",border:`1px solid ${C.border}`,borderRadius:"3px",flex:1}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>"FIRST CHOICE"</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.08em",marginBottom:"0.2rem"}}>{t.firstChoice}</div>
             <div style={{fontSize:"1rem",color:C.text,fontFamily:C.sans,fontWeight:500,marginBottom:"0.25rem"}}>{rec.price}</div>
             {rec.rating&&<div style={{display:"flex",alignItems:"center",gap:"0.3rem"}}>
               <span style={{color:"#f4c542",fontSize:"0.75rem"}}>{"★".repeat(Math.round(parseFloat(rec.rating||0)))}</span>
               <span style={{fontSize:"0.68rem",color:C.textMuted}}>{rec.rating} {rec.ratingCount&&<span style={{color:C.textDim}}>({rec.ratingCount})</span>}</span>
             </div>}
           </div>
-          <a href={getRetailerURL(rec.retailer, rec.name, rec.brand)} target="_blank" rel="noopener noreferrer" onClick={()=>{try{if(window.trackEvent)window.trackEvent("buy_clicked",{product:rec.name,brand:rec.brand,retailer:rec.retailer,price:rec.price});}catch(e){}}}
+          <a href={getRetailerURL(rec.retailer, rec.name, rec.brand, rec.url)} target="_blank" rel="noopener noreferrer" onClick={()=>{try{if(window.trackEvent)window.trackEvent("buy_clicked",{product:rec.name,brand:rec.brand,retailer:rec.retailer,price:rec.price});}catch(e){}}}
             style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"0.5rem 0.75rem",background:`${retCol}14`,border:`1px solid ${retCol}50`,borderRadius:"3px",textDecoration:"none",flexShrink:0,width:"100px",maxWidth:"100px",overflow:"hidden",transition:"all 0.15s"}}>
             <span style={{fontSize:"0.75rem",color:retCol,fontWeight:600,letterSpacing:"0.03em",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{rec.retailer} →</span>
           </a>
@@ -371,7 +426,7 @@ function RecCard({rec,index,stepNum}){
         {/* alt product — always render if any alt field exists */}
         {(rec.altName||rec.altBrand)&&(
           <div style={{marginBottom:"0.75rem",padding:"0.65rem 0.75rem",background:"#080808",border:`1px solid ${C.border}`,borderLeft:`2px solid ${col}40`,borderRadius:"3px"}}>
-            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>"SECOND PICK ──"</div>
+            <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.1em",marginBottom:"0.4rem"}}>{t.secondPick}</div>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"0.5rem"}}>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{fontSize:"0.6rem",color:C.textDim,letterSpacing:"0.12em",marginBottom:"0.1rem"}}>{(rec.altBrand||"").toUpperCase()}</div>
@@ -382,17 +437,18 @@ function RecCard({rec,index,stepNum}){
                   {rec.altPrice&&<span style={{fontSize:"0.68rem",color:C.textMuted}}>{rec.altPrice}</span>}
                 </div>
               </div>
-              {rec.altRetailer&&<a href={getRetailerURL(rec.altRetailer,rec.altName||"",rec.altBrand||"")} target="_blank" rel="noopener noreferrer"
+              {rec.altRetailer&&<a href={getRetailerURL(rec.altRetailer,rec.altName||"",rec.altBrand||"",rec.altUrl)} target="_blank" rel="noopener noreferrer"
                 style={{fontSize:"0.65rem",color:retailerColor[rec.altRetailer]||C.textMuted,border:`1px solid ${(retailerColor[rec.altRetailer]||C.textMuted)+"40"}`,borderRadius:"2px",padding:"0.28rem 0.6rem",textDecoration:"none",whiteSpace:"nowrap",flexShrink:0}}>
                 {rec.altRetailer} →
               </a>}
             </div>
+            {rec.altWhy&&<div style={{fontSize:"0.75rem",color:"#7d766f",lineHeight:1.5,marginTop:"0.45rem",fontStyle:"italic"}}>"{rec.altWhy}"</div>}
           </div>
         )}
 
         {/* why recommended — expandable */}
         <button onClick={()=>setOpen(o=>!o)} style={{display:"flex",alignItems:"center",gap:"0.62rem",background:"transparent",border:"none",cursor:"pointer",padding:0,fontFamily:C.mono}}>
-          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>"WHY THIS WAS RECOMMENDED"</span>
+          <span style={{fontSize:"0.69rem",color:C.textDim,letterSpacing:"0.10em"}}>{t.whyRec}</span>
           <span style={{fontSize:"0.75rem",color:C.textDim,transition:"transform 0.2s",display:"inline-block",transform:open?"rotate(90deg)":"rotate(0deg)"}}>›</span>
         </button>
         {open&&(
@@ -408,8 +464,8 @@ function buildText(recs,answers){
   const profile=[answers.texture?.selected?.join(", "),answers.age?.selected?.join(", "),answers.climate?.selected?.join(", "),answers.sunlight?.selected?.join(", ")].filter(Boolean).join(" · ");
   return["✦ MY MEEMO KOREAN BEAUTY PROTOCOL","Profile: "+profile,"",...recs.map((r,i)=>{
     const stars="★".repeat(Math.round(parseFloat(r.rating||0)));
-    const alt=r.altName?`   ALT: ${r.altName} — ${r.altBrand} · ${r.altPrice} · ${r.altRetailer}\n`:"";
-    return `${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Rating: ${stars} ${r.rating} (${r.ratingCount})\n   First choice: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand)}\n${alt}   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`;
+    const alt=r.altName?`   ALT: ${r.altName} — ${r.altBrand} · ${r.altPrice} · ${r.altRetailer}${r.altRetailer?` · Buy: ${getRetailerURL(r.altRetailer,r.altName,r.altBrand,r.altUrl)}`:""}\n`:"";
+    return `${i+1}. ${r.name} — ${r.brand}\n   ${stepLabel(r.texture)} · ${r.timing||""}\n   Rating: ${stars} ${r.rating} (${r.ratingCount})\n   First choice: ${r.price} · Buy: ${getRetailerURL(r.retailer,r.name,r.brand,r.url)}\n${alt}   Key: ${r.ingredient} · ${r.tech}\n   "${r.why}"\n`;
   }),"Generated by Meemo Wellness AI"].join("\n");
 }
 
@@ -456,7 +512,21 @@ export default function MeemoSkinQuiz(){
     try{if(window.trackEvent)window.trackEvent(name,props);}catch(e){}
     try{if(posthog)posthog.capture(name,props);}catch(e){}
   };
-  const toggleOption=(value)=>{const prev=answers[currentQ.id]||{selected:[],comment:""};const already=prev.selected.includes(value);setAnswers({...answers,[currentQ.id]:{...prev,selected:already?prev.selected.filter(v=>v!==value):[...prev.selected,value]}});};
+  const EXCLUSIVE_ALL={texture:["normal"],sensitivity:["sensitive","reactive","tolerant","resilient"],scalp_concern:["none"],scalp:["balanced_scalp"]};
+  const EXCLUSIVE_PAIRS={texture:{dry:["oily"],oily:["dry"]}};
+  const toggleOption=(value)=>{
+    const prev=answers[currentQ.id]||{selected:[],comment:""};
+    if(prev.selected.includes(value)){setAnswers({...answers,[currentQ.id]:{...prev,selected:prev.selected.filter(v=>v!==value)}});return;}
+    let sel=[...prev.selected];
+    const allVals=EXCLUSIVE_ALL[currentQ.id]||[];
+    if(allVals.includes(value)||currentQ.id==="sensitivity"){sel=[];}
+    else{
+      sel=sel.filter(v=>!allVals.includes(v));
+      const clears=EXCLUSIVE_PAIRS[currentQ.id]?.[value]||[];
+      sel=sel.filter(v=>!clears.includes(v));
+    }
+    setAnswers({...answers,[currentQ.id]:{...prev,selected:[...sel,value]}});
+  };
   const setComment=(text)=>{const prev=answers[currentQ.id]||{selected:[],comment:""};setAnswers({...answers,[currentQ.id]:{...prev,comment:text}});};
   const canContinue=currentAns.selected.length>0||currentAns.comment.trim().length>0;
 
@@ -486,6 +556,12 @@ export default function MeemoSkinQuiz(){
     if(step===SELFIE_STEP){go(()=>setStep(totalSteps));return;}
     if(step<2)return;
     go(()=>setStep(step-1));
+  };
+  const handleSkip=async()=>{
+    if(step<1||step>totalSteps)return;
+    track("question_skipped",{question:currentQ.id,step});
+    if(step<totalSteps){await go(()=>setStep(step+1));}
+    else{track("selfie_step_reached");await go(()=>setStep(SELFIE_STEP));}
   };
 
   const fetchRecs=async(ans,imgData=null)=>{
@@ -524,15 +600,16 @@ LIFESTYLE:
 
 RULES:
 1. Return products IN ORDER of application: cleanser first, then toner, then serum/ampoule, then moisturizer, then SPF last. The JSON array order must match the application sequence.
-9. SCALP RULE: If scalp concerns are selected (dry, oily, sensitive, thinning), REPLACE one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence). Age 45+ with thinning = prioritize scalp. Use brands like Ryo, Dr. Groot, Innisfree, Some By Mi, COSRX for scalp products. Set texture to "scalp serum" or "scalp treatment" for these.
-9. If scalp concerns are present (not "none"), replace one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence) and note it in dataReason.
-2. Each from a different brand
-3. Prioritize high sun exposure → UV protection first
-4. Age 45+ → retinol, peptides, collagen actives
-5. Stressed/poor sleep → cortisol + barrier repair focus
-6. Tropical/humid → lightweight gel textures only
-7. Include REALISTIC price ranges in USD and the best value retailer. Choose from: Amazon, YesStyle, iHerb, Soko Glam, StyleKorean, Stylevana, Olive Young, Peach & Lily, Target, Ulta, Nudie Glow. Pick whichever is genuinely cheapest and most accessible for that product.
-8. dataReason must explain EXACTLY which quiz answers drove this specific product choice
+2. SCALP RULE: If scalp concerns are present (not "none" — dry, oily, sensitive, thinning, dandruff), REPLACE one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence) and note it in dataReason. Age 45+ with thinning = prioritize scalp. Use brands like Ryo, Dr. Groot, Innisfree, Some By Mi, COSRX for scalp products. Set texture to "scalp serum" or "scalp treatment" for these.
+3. Each from a different brand
+4. Prioritize high sun exposure → UV protection first
+5. Age 45+ → retinol, peptides, collagen actives
+6. Stressed/poor sleep → cortisol + barrier repair focus
+7. Tropical/humid → lightweight gel textures only
+8. Include REALISTIC price ranges in USD and the best value retailer. Choose from: Amazon, YesStyle, iHerb, Soko Glam, StyleKorean, Stylevana, Olive Young, Peach & Lily, Target, Ulta, Nudie Glow. Pick whichever is genuinely cheapest and most accessible for that product.
+9. dataReason must explain EXACTLY which quiz answers drove this specific product choice
+10. NEVER contradict the user's answers in why, dataReason, or altWhy (for example, do not mention oily skin if they selected dry, outdoor exposure if they selected indoor, or an age bracket they did not select). If an answer says "not specified", the user skipped that question — do not invent a value for it; keep the reasoning generic for that factor.
+11. In "url" and "altUrl", give the direct product page URL at the chosen retailer when you know it exactly; otherwise use null (never guess a URL).
 
 Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explanation:
 [{
@@ -547,6 +624,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   "timing": "AM|PM|AM + PM",
   "price": "$XX–$XX",
   "retailer": "best value retailer name",
+  "url": "direct product page URL at that retailer, or null",
   "retailerNote": "one sentence tip on where to get best price",
   "rating": "overall rating out of 5 e.g. 4.7",
   "ratingCount": "number of reviews e.g. 12k+",
@@ -554,16 +632,18 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
   "altBrand": "second best brand",
   "altPrice": "$XX–$XX",
   "altRetailer": "best value retailer for alt product",
+  "altUrl": "direct product page URL for the alt product, or null",
   "altRating": "rating out of 5",
+  "altWhy": "one short sentence on why this second pick suits this person",
   "dataReason": "2-3 sentences explaining exactly which quiz inputs drove this recommendation"
 }]`;
     const userContent=imgData
       ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgData}},{type:"text",text:prompt+"\n\nIMPORTANT: A selfie has been provided. Do two things:\n1. Analyze the visible skin carefully — look for redness, oiliness, dryness, dark spots, enlarged pores, uneven texture, fine lines, or any visible concerns.\n2. Before the JSON product array, output a skin scan summary in this EXACT format (no markdown):\nSKIN_SCAN_START\n{\"redness\":\"low|moderate|high — describe location\",\"oiliness\":\"low|moderate|high — describe\",\"pores\":\"small|medium|large — describe\",\"darkSpots\":\"none|mild|moderate|significant — describe\",\"texture\":\"smooth|slightly uneven|rough — describe\",\"hydration\":\"well hydrated|slightly dehydrated|dehydrated\",\"overall\":\"one sentence summary of what you see\"}\nSKIN_SCAN_END\nThen output the product JSON array. Factor all visual observations into product choices."}]
       :[{type:"text",text:prompt}];
     try{
-      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:3000,messages:[{role:"user",content:userContent}]})});
+      const res=await fetch("/api/recommend",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-5",max_tokens:3000,messages:[{role:"user",content:userContent}]})});
       const data=await res.json();
-      if(data.type==="error"||data.error){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);return;}
+      if(data.type==="error"||data.error){setApiNote(t.fallbackNote);setRecs(DEMO_RECS);return;}
       // Handle tool_use blocks from web search — extract only text blocks
       const raw=(data.content||[]).filter(i=>i.type==="text").map(i=>i.text||"").join("")||"";
       // Extract skin scan if present
@@ -582,7 +662,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       console.log('setRecs parsed:',parsed.length);
       setRecs(parsed);
       track("analysis_complete",{skinType:ans.texture?.selected,concerns:ans.concerns?.selected,age:ans.age?.selected,usedSelfie:!!imgData});
-    }catch(err){setApiNote("Showing curated recommendations");setRecs(DEMO_RECS);track("analysis_fallback",{reason:err.message});}
+    }catch(err){setApiNote(t.fallbackNote);setRecs(DEMO_RECS);track("analysis_fallback",{reason:err.message});}
   };
 
   const handleSelfie=(e)=>{
@@ -654,8 +734,8 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.8rem",paddingBottom:"0.88rem",borderBottom:`1px solid ${C.border}`}}>
           <div style={{display:"flex",alignItems:"center",gap:"0.72rem"}}>
             <div style={{width:"9px",height:"9px",borderRadius:"50%",background:C.amber,boxShadow:`0 0 8px ${C.amber}`}}/>
-            <span style={{fontSize:"0.8rem",color:C.amber,letterSpacing:"0.14em"}}>MEEMO</span>
-            <span style={{fontSize:"0.8rem",color:C.textDim,letterSpacing:"0.1em"}}>SKIN_ANALYSIS</span>
+            <span style={{fontSize:"0.8rem",color:C.amber,letterSpacing:"0.14em"}}>{t.brand}</span>
+            <span style={{fontSize:"0.8rem",color:C.textDim,letterSpacing:"0.1em"}}>{t.sub}</span>
           </div>
           <div style={{display:"flex",alignItems:"center",gap:"0.35rem"}}>
             {[["en","EN"],["es","ES"],["pt","PT"],["ko","한"],["zh","中"]].map(([code,lbl])=>(
@@ -672,7 +752,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
               {questions.map((q,i)=><div key={i} style={{flex:1,height:"2px",background:i<step?(sectionColors[q.section]||C.amber):C.border,boxShadow:i<step?`0 0 6px ${sectionColors[q.section]||C.amber}55`:"none",transition:"all 0.4s ease",borderRadius:"1px"}}/>)}
             </div>
             <div style={{display:"flex",gap:"1.3rem"}}>
-              {["SKIN","SCALP","PROFILE","LIFESTYLE"].map(sec=><span key={sec} style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{sec}</span>)}
+              {[["SKIN",t.secSkin],["SCALP",t.secScalp],["PROFILE",t.secProfile],["LIFESTYLE",t.secLifestyle]].map(([sec,lbl])=><span key={sec} style={{fontSize:"0.72rem",letterSpacing:"0.10em",color:currentQ?.section===sec?sectionColors[sec]:C.textDim,transition:"color 0.3s"}}>{lbl}</span>)}
             </div>
           </div>
         )}
@@ -691,19 +771,19 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
             {/* INTRO */}
             {step===0&&(
               <div>
-                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.1rem"}}>MEEMO / SKIN_DIAGNOSTICS v2.5</div>
+                <div style={{fontSize:"0.78rem",color:C.amber,letterSpacing:"0.14em",marginBottom:"1.1rem"}}>{t.version}</div>
                 <div style={{fontSize:"0.88rem",color:C.textDim,marginBottom:"0.9rem"}}>
-                  <span style={{color:C.textMuted}}>$ init </span><span style={{color:C.text}}>skin_analysis --your-way</span>
+                  <span style={{color:C.textMuted}}>$ init </span><span style={{color:C.text}}>{t.terminal}</span>
                   <span style={{color:C.amber,opacity:cursor?1:0}}>_</span>
                 </div>
                 <h1 style={{fontFamily:C.sans,fontSize:"1.9rem",fontWeight:300,color:C.text,lineHeight:1.2,marginBottom:"1.1rem"}}>
                   {t.headline1}<br/><span style={{color:C.amber}}>{t.headline2}</span>
                 </h1>
                 <p style={{fontSize:"0.88rem",color:C.textMuted,lineHeight:1.85,marginBottom:"1.58rem"}}>
-                  Korean skin and scalp innovation, matched to you. Precise. Proven. Personal.
+                  {t.subtitle}
                 </p>
                 <div style={{display:"flex",gap:"0.62rem",marginBottom:"1.58rem"}}>
-                  {[["SKIN","3 q's","#e8920a"],["SCALP","2 q's","#f78fb3"],["PROFILE","2 q's","#4ecdc4"],["LIFESTYLE","3 q's","#a29bfe"]].map(([sec,n,col])=>(
+                  {[[t.secSkin,"4 q's","#e8920a"],[t.secScalp,"2 q's","#f78fb3"],[t.secProfile,"2 q's","#4ecdc4"],[t.secLifestyle,"3 q's","#a29bfe"]].map(([sec,n,col])=>(
                     <div key={sec} style={{flex:1,border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.7rem 0.95rem",background:"#0d0d0d",borderTop:`2px solid ${col}`}}>
                       <div style={{fontSize:"0.72rem",color:col,letterSpacing:"0.10em",marginBottom:"0.47rem"}}>{sec}</div>
                       <div style={{fontSize:"0.8rem",color:C.textMuted}}>{n}</div>
@@ -719,6 +799,10 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   ))}
                 </div>
                 <button onClick={handleNext} style={{...primaryBtn,width:"100%"}}>{t.begin}</button>
+                <div style={{marginTop:"1.1rem",padding:"0.75rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px"}}>
+                  <div style={{fontSize:"0.62rem",color:C.textMuted,letterSpacing:"0.16em",marginBottom:"0.4rem"}}>{t.legalTitle}</div>
+                  <p style={{fontSize:"0.66rem",color:C.textDim,lineHeight:1.65}}>{t.legalBody}</p>
+                </div>
               </div>
             )}
 
@@ -728,7 +812,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 {isNewSection&&(
                   <div style={{display:"flex",alignItems:"center",gap:"0.8rem",marginBottom:"1.3rem",paddingBottom:"0.88rem",borderBottom:`1px solid ${C.border}`}}>
                     <div style={{width:"3px",height:"14px",background:sectionColors[currentQ.section],borderRadius:"2px",boxShadow:`0 0 6px ${sectionColors[currentQ.section]}`}}/>
-                    <span style={{fontSize:"0.72rem",color:sectionColors[currentQ.section],letterSpacing:"0.14em"}}>{currentQ.section==="SKIN"?t.skinSection:currentQ.section==="PROFILE"?t.profileSection:t.lifestyleSection}</span>
+                    <span style={{fontSize:"0.72rem",color:sectionColors[currentQ.section],letterSpacing:"0.14em"}}>{currentQ.section==="SKIN"?t.skinSection:currentQ.section==="SCALP"?t.scalpSection:currentQ.section==="PROFILE"?t.profileSection:t.lifestyleSection}</span>
                   </div>
                 )}
                 <div style={{marginBottom:"1.33rem"}}>
@@ -758,15 +842,16 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     style={{width:"100%",background:"#0d0d0d",border:`1px solid ${currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.text,fontFamily:C.mono,fontSize:"0.84rem",lineHeight:1.6,resize:"vertical",outline:"none",transition:"border-color 0.15s"}}
                     onFocus={e=>e.target.style.borderColor=(sectionColors[currentQ.section]||C.amber)+"80"}
                     onBlur={e=>e.target.style.borderColor=currentAns.comment?(sectionColors[currentQ.section]||C.amber)+"55":C.border}/>
-                  {currentAns.comment&&<div style={{fontSize:"0.71rem",color:sectionColors[currentQ.section]||C.amber,marginTop:"0.44rem",letterSpacing:"0.1em"}}>✓ note saved</div>}
+                  {currentAns.comment&&<div style={{fontSize:"0.71rem",color:sectionColors[currentQ.section]||C.amber,marginTop:"0.44rem",letterSpacing:"0.1em"}}>{t.noteSaved}</div>}
                 </div>
                 <div style={{display:"flex",gap:"0.72rem"}}>
                   {step>1&&<button onClick={handleBack} style={ghostBtn}>{t.back}</button>}
                   <button onClick={handleNext} disabled={!canContinue} style={{...primaryBtn,flex:1,opacity:canContinue?1:0.3,cursor:canContinue?"pointer":"not-allowed"}}>
-                    {step===totalSteps?"run full analysis →":"continue →"}
+                    {step===totalSteps?t.runAnalysis:t.continueBtn}
                   </button>
                 </div>
-                {!canContinue&&<div style={{fontSize:"0.71rem",color:C.textDim,textAlign:"center",marginTop:"0.75rem",letterSpacing:"0.08em"}}>select an option or add a note to continue</div>}
+                <button onClick={handleSkip} style={{background:"transparent",border:"none",color:C.textDim,fontSize:"0.75rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,display:"block",margin:"0.8rem auto 0",padding:"0.2rem 0.5rem"}}>{t.skip}</button>
+                {!canContinue&&<div style={{fontSize:"0.71rem",color:C.textDim,textAlign:"center",marginTop:"0.5rem",letterSpacing:"0.08em"}}>{t.continueHint}</div>}
               </div>
             )}
 
@@ -776,7 +861,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 <div style={{marginBottom:"1.25rem"}}>
                   <div style={{fontSize:"0.58rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.5rem"}}>SKIN_SCAN ──</div>
                   <h2 style={{fontFamily:C.sans,fontSize:"1.35rem",fontWeight:400,color:C.text,lineHeight:1.3,marginBottom:"0.35rem"}}>{t.selfieTitle}</h2>
-                  <p style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.75}}>Upload a selfie for AI-powered visual skin analysis. We analyze visible redness, oiliness, texture, pores, and tone — then layer it on top of your quiz answers for more accurate recommendations.</p>
+                  <p style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.75}}>{t.selfieDesc}</p>
                 </div>
 
                 {/* upload area */}
@@ -784,14 +869,14 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   {selfiePreview?(
                     <div>
                       <img src={selfiePreview} alt="selfie" style={{width:"120px",height:"120px",objectFit:"cover",borderRadius:"50%",border:"2px solid #4ecdc4",marginBottom:"0.75rem"}}/>
-                      <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.1em"}}>✓ Photo ready — AI will analyze your skin</div>
-                      <div style={{fontSize:"0.62rem",color:C.textMuted,marginTop:"0.3rem"}}>Tap to change</div>
+                      <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.1em"}}>✓ {t.selfieReady}</div>
+                      <div style={{fontSize:"0.62rem",color:C.textMuted,marginTop:"0.3rem"}}>{t.selfieChange}</div>
                     </div>
                   ):(
                     <div>
                       <div style={{fontSize:"2rem",marginBottom:"0.5rem"}}>📷</div>
-                      <div style={{fontSize:"0.78rem",color:C.textMuted,marginBottom:"0.25rem"}}>Tap to upload a selfie</div>
-                      <div style={{fontSize:"0.62rem",color:C.textDim}}>JPG or PNG · Front-facing, good lighting</div>
+                      <div style={{fontSize:"0.78rem",color:C.textMuted,marginBottom:"0.25rem"}}>{t.selfieUpload}</div>
+                      <div style={{fontSize:"0.62rem",color:C.textDim}}>{t.selfieFormat}</div>
                     </div>
                   )}
                 </div>
@@ -800,14 +885,14 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                 {/* privacy note */}
                 <div style={{padding:"0.6rem 0.75rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",marginBottom:"1.25rem"}}>
                   <div style={{fontSize:"0.6rem",color:C.textDim,lineHeight:1.65}}>
-                    🔒 Your photo is sent directly to Claude AI for analysis and is never stored. Analysis happens in real time and is deleted immediately after.
+                    🔒 {t.selfiePrivacy}
                   </div>
                 </div>
 
                 <div style={{display:"flex",gap:"0.5rem",justifyContent:"space-between"}}>
-                  <button onClick={handleBack} style={{...ghostBtn}}>← back</button>
+                  <button onClick={handleBack} style={{...ghostBtn}}>{t.back}</button>
                   <button onClick={handleNext} style={{...primaryBtn,flex:1}}>
-                    {selfiePreview?"analyze my skin →":"skip — use quiz answers only →"}
+                    {selfiePreview?t.selfieAnalyze:t.selfieSkip}
                   </button>
                 </div>
               </div>
@@ -840,7 +925,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                         <div style={{display:"flex",alignItems:"center",gap:"0.85rem",marginBottom:"0.75rem"}}>
                           <img src={selfiePreview} alt="scan" style={{width:"48px",height:"48px",borderRadius:"50%",objectFit:"cover",border:"1.5px solid #4ecdc4",flexShrink:0}}/>
                           <div>
-                            <div style={{fontSize:"0.62rem",color:"#4ecdc4",letterSpacing:"0.18em",marginBottom:"0.15rem"}}>SKIN SCAN ANALYSIS ──</div>
+                            <div style={{fontSize:"0.62rem",color:"#4ecdc4",letterSpacing:"0.18em",marginBottom:"0.15rem"}}>{t.scanHeader}</div>
                             <div style={{fontSize:"0.78rem",color:C.textMuted,lineHeight:1.5}}>{skinScan.overall}</div>
                           </div>
                         </div>
@@ -860,7 +945,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                           ))}
                         </div>
                         <div style={{fontSize:"0.58rem",color:C.textDim,marginTop:"0.6rem",letterSpacing:"0.06em"}}>
-                          ✓ Visual observations factored into your regime below
+                          {t.scanFactored}
                         </div>
                       </div>
                     </div>
@@ -892,18 +977,18 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                     )}
                   </div>
                   <div style={{fontSize:"0.72rem",color:C.textDim,letterSpacing:"0.08em",lineHeight:1.6}}>
-                    Each product below shows its price range, best retailer, and a <span style={{color:C.amber}}>›</span> button explaining exactly which of your inputs triggered it.
+                    {t.recsExplainer}
                   </div>
                 </div>
 
                 {/* regime cards */}
                 <div style={{display:"flex",flexDirection:"column",gap:"0.8rem",marginBottom:"1.33rem"}}>
-                  {skinRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#e8920a",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"0.5rem"}}>SKIN ROUTINE —— Apply to face AM/PM</div>}{skinRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i} stepNum={i+1}/>)}{scalpRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#55efc4",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"1.5rem"}}>SCALP ROUTINE —— Apply on wash days</div>}{scalpRecs.map((rec,i)=><RecCard key={"s"+i} rec={rec} index={i} stepNum={i+1}/>)}
+                  {skinRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#e8920a",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"0.5rem"}}>{t.skinRoutine}</div>}{skinRecs.map((rec,i)=><RecCard key={i} rec={rec} index={i} stepNum={i+1} t={t}/>)}{scalpRecs.length>0&&<div style={{fontSize:"0.69rem",color:"#55efc4",letterSpacing:"0.18em",marginBottom:"0.5rem",marginTop:"1.5rem"}}>{t.scalpRoutine}</div>}{scalpRecs.map((rec,i)=><RecCard key={"s"+i} rec={rec} index={i} stepNum={i+1} t={t}/>)}
                 </div>
 
                 {/* estimated total */}
                 <div style={{padding:"0.6rem 0.9rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.33rem"}}>
-                  <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.10em"}}>ESTIMATED FULL ROUTINE COST</span>
+                  <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.10em"}}>{t.estimatedCost}</span>
                   <span style={{fontSize:"1.02rem",color:C.text,fontFamily:C.sans}}>
                     ${sortedRecs.reduce((sum,r)=>{const m=r.price?.match(/\$(\d+)/);return sum+(m?parseInt(m[1]):20);},0)}–${sortedRecs.reduce((sum,r)=>{const m=r.price?.match(/\$\d+–\$(\d+)/);return sum+(m?parseInt(m[1]):30);},0)}
                   </span>
@@ -914,13 +999,13 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#a29bfe",boxShadow:"0 0 10px #a29bfe60"}}/>
                   <div style={{paddingLeft:"0.9rem"}}>
                     <div style={{fontSize:"0.72rem",color:"#a29bfe",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>{t.saveProfile}</div>
-                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Save your regime to your Meemo profile. We will remember your skin type, routine, and concerns for next time.</p>
+                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>{t.saveDesc}</p>
                     {!profileSaved?(
                       <div style={{display:"flex",flexDirection:"column",gap:"0.62rem"}}>
                         <input value={profileName} onChange={e=>setProfileName(e.target.value)} placeholder={t.saveName} style={{width:"100%",background:"#111",border:`1px solid ${profileName?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
                         <input value={profileEmail} onChange={e=>setProfileEmail(e.target.value)} placeholder={t.saveEmail} type="email" style={{width:"100%",background:"#111",border:`1px solid ${profileEmail?"#a29bfe55":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
                         <button onClick={handleSaveProfile} disabled={!profileName.trim()&&!profileEmail.trim()} style={{background:"#a29bfe",color:"#000",border:"none",borderRadius:"3px",padding:"0.88rem",fontSize:"0.86rem",letterSpacing:"0.08em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,opacity:(!profileName.trim()&&!profileEmail.trim())?0.35:1}}>
-                          save my skin profile →
+                          {t.saveBtn}
                         </button>
                       </div>
                     ):(
@@ -937,12 +1022,12 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                   <div style={{position:"absolute",left:0,top:0,bottom:0,width:"3px",background:"#4ecdc4",boxShadow:"0 0 10px #4ecdc460"}}/>
                   <div style={{paddingLeft:"0.9rem"}}>
                     <div style={{fontSize:"0.72rem",color:"#4ecdc4",letterSpacing:"0.2em",marginBottom:"0.57rem"}}>{t.textRegime}</div>
-                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>Send your full Korean Beauty routine to your phone. Opens your SMS app with the protocol pre-filled.</p>
+                    <p style={{fontSize:"0.8rem",color:C.textMuted,lineHeight:1.6,marginBottom:"0.9rem"}}>{t.textDesc}</p>
                     {!smsSent?(
                       <div style={{display:"flex",gap:"0.62rem"}}>
                         <input value={phone} onChange={e=>setPhone(e.target.value)} placeholder={t.textPhone} type="tel" style={{flex:1,background:"#111",border:`1px solid ${phone?"#4ecdc455":C.border}`,borderRadius:"3px",padding:"0.6rem 0.9rem",color:C.text,fontFamily:C.mono,fontSize:"0.88rem",outline:"none"}}/>
                         <button onClick={handleSMS} disabled={!phone.trim()} style={{background:"#4ecdc4",color:"#000",border:"none",borderRadius:"3px",padding:"0.6rem 1.1rem",fontSize:"0.86rem",letterSpacing:"0.06em",cursor:"pointer",fontFamily:C.mono,fontWeight:500,flexShrink:0,opacity:!phone.trim()?0.35:1}}>
-                          send →
+                          {t.textSend}
                         </button>
                       </div>
                     ):(
@@ -956,7 +1041,7 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
 
                 {/* ── COPY + EMAIL ── */}
                 <div style={{borderTop:`1px solid ${C.border}`,paddingTop:"1.33rem",marginBottom:"1.33rem"}}>
-                  <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.2em",marginBottom:"0.9rem"}}>COPY + SHARE ──</div>
+                  <div style={{fontSize:"0.72rem",color:C.amber,letterSpacing:"0.2em",marginBottom:"0.9rem"}}>{t.savePlusShare}</div>
                   <div style={{display:"flex",gap:"0.67rem",marginBottom:"0.9rem"}}>
                     <button onClick={handleCopy} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"0.52rem",padding:"0.85rem 0.72rem",background:copied?"rgba(78,205,196,0.08)":"rgba(232,146,10,0.07)",border:`1px solid ${copied?"#4ecdc4":C.amber}`,borderRadius:"3px",cursor:"pointer",fontFamily:C.mono,transition:"all 0.2s"}}>
                       <span style={{fontSize:"1.2rem",lineHeight:1}}>{copied?"✓":"⎘"}</span>
@@ -968,12 +1053,18 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
                       <span style={{fontSize:"0.72rem",color:C.textMuted,letterSpacing:"0.1em"}}>{t.emailLabel}</span>
                     </a>
                   </div>
-                  <div style={{fontSize:"0.7rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.57rem"}}>TEXT PREVIEW — tap to select all</div>
+                  <div style={{fontSize:"0.7rem",color:C.textDim,letterSpacing:"0.10em",marginBottom:"0.57rem"}}>{t.textPreview}</div>
                   <textarea ref={shareRef} readOnly value={buildText(sortedRecs,answers)} rows={5} onClick={e=>e.target.select()}
                     style={{width:"100%",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px",padding:"0.65rem 0.97rem",color:C.textMuted,fontFamily:C.mono,fontSize:"0.73rem",lineHeight:1.75,resize:"none",outline:"none",cursor:"text"}}/>
                 </div>
 
                 <button onClick={restart} style={{...ghostBtn,width:"100%",textAlign:"center"}}>{t.restart}</button>
+
+                {/* ── LEGAL: disclaimer + privacy ── */}
+                <div style={{marginTop:"1.33rem",padding:"0.85rem 1rem",background:"#0d0d0d",border:`1px solid ${C.border}`,borderRadius:"3px"}}>
+                  <div style={{fontSize:"0.66rem",color:C.textMuted,letterSpacing:"0.16em",marginBottom:"0.5rem"}}>{t.legalTitle}</div>
+                  <p style={{fontSize:"0.7rem",color:C.textDim,lineHeight:1.7}}>{t.legalBody}</p>
+                </div>
               </div>
             )}
           </div>
