@@ -329,7 +329,7 @@ function getRetailerURL(retailer, name, brand, directUrl) {
   return map[retailer] || `https://www.google.com/search?q=${encodeURIComponent(name + " " + brand + " buy")}`;
 }
 
-const STEP_ORDER = { "oil cleanser":1,"balm cleanser":1,"cleansing oil":1,"foam cleanser":2,"gel cleanser":2,"cleanser":2,"exfoliating toner":3,"essence toner":3,"toner":3,"serum ampoule":4,"ampoule":4,"lightweight serum":4,"serum":4,"essence":4,"sheet mask":5,"sleeping mask":5,"mask":5,"eye cream":6,"water-jelly cream":7,"gel cream":7,"moisturizer":7,"cream":7,"emulsion":7,"color-correcting cream":8,"sunscreen":9,"spf cream":9,"scalp serum":4,"scalp treatment":4,"scalp toner":3 };
+const STEP_ORDER = { "oil cleanser":1,"balm cleanser":1,"cleansing oil":1,"foam cleanser":2,"gel cleanser":2,"cleanser":2,"exfoliating toner":3,"essence toner":3,"toner":3,"serum ampoule":4,"ampoule":4,"lightweight serum":4,"serum":4,"essence":4,"sheet mask":5,"sleeping mask":5,"mask":5,"eye cream":6,"water-jelly cream":7,"gel cream":7,"moisturizer":7,"cream":7,"emulsion":7,"color-correcting cream":8,"sunscreen":9,"spf cream":9,"scalp serum":4,"scalp treatment":4,"scalp toner":3,"scalp tonic":4,"sun stick":9 };
 function stepOrder(tex=""){ const t=tex.toLowerCase(); for(const[k,v]of Object.entries(STEP_ORDER))if(t.includes(k))return v; return 6; }
 function stepCategory(tex=""){ const t=tex.toLowerCase();
   if(t.includes("scalp"))return"SCALP TREAT";
@@ -352,6 +352,42 @@ const DEMO_RECS = [
   {name:"Root:Gen Scalp Serum for Thinning Hair",brand:"Ryo",tech:"6-Herbal Complex + Adenosine",ingredient:"Adenosine + Ginseng Root",texture:"scalp serum",why:"Strengthens hair roots and supports thinning hair with a clinically tested herbal complex.",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$24",retailer:"Amazon",url:"https://www.amazon.com/dp/B0GMHP5TXD",rating:"4.6",ratingCount:"8k+",altName:"Multi-Perfection Hair Loss Care Tonic",altBrand:"Dr. Groot",altPrice:"$26–$30",altRetailer:"YesStyle",altUrl:"https://www.yesstyle.com/en/dr-groot-multi-perfection-hair-loss-care-tonic-hoofdhuidverzorging/info.html/pid.1129963324",altRating:"4.4",altWhy:"A leave-on tonic from another leading Korean scalp line, focused on hair-loss care.",dataReason:"Ryo is Korea's #1 scalp-care brand and this serum is clinically tested for hair-loss care — most relevant if thinning is a concern."},
   {name:"Water Bank Blue Hyaluronic Cream Moisturizer",brand:"Laneige",tech:"Blue Hyaluronic Acid Fermentation",ingredient:"Blue Hyaluronic Acid",texture:"gel cream",why:"Deep, lasting hydration from fermented blue hyaluronic acid in a cushiony cream.",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$36–$42",retailer:"Laneige",url:"https://int.laneige.com/products/water-bank-blue-hyaluronic-cream-moisturizer",rating:"4.6",ratingCount:"31k+",altName:"Water Sleeping Mask",altBrand:"Laneige",altPrice:"$18–$24",altRetailer:"Amazon",altUrl:"https://www.amazon.com/dp/B09HN8JBFP",altRating:"4.7",altWhy:"An overnight mask for an extra hydration boost a few nights a week.",dataReason:"A dependable daily moisturizer suits most climates and skin types, and layers cleanly under SPF in the morning."},
   {name:"Cicapair Soothing Color Correcting Treatment SPF 30",brand:"Dr. Jart+",tech:"Cica Complex + UV Shield",ingredient:"Centella Asiatica",texture:"color-correcting cream",why:"Color-correcting SPF that neutralizes redness while it protects — a two-in-one morning step.",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$30–$38",retailer:"Amazon",url:"https://www.amazon.com/dp/B0F7J33CP4",rating:"4.5",ratingCount:"18k+",altName:"Matte Sun Stick: Mugwort + Camelia SPF 50+",altBrand:"Beauty of Joseon",altPrice:"$12–$16",altRetailer:"YesStyle",altUrl:"https://www.yesstyle.com/en/beauty-of-joseon-matte-sun-stick-18g/info.html/pid.1119542494",altRating:"4.8",altWhy:"A portable stick format that makes reapplication through the day easy.",dataReason:"Daily SPF is the highest-impact morning step for every profile; the Cica base also calms visible redness while it protects."},
+];
+
+// Verified product catalog (checked against retailer listings on 2026-11-22).
+// The AI may ONLY choose from these products, by id; all names, prices,
+// ratings and links shown to the user come from this data, never from the AI.
+const CATALOG = [
+  {id:"cosrx-lowph-cleanser",step:"Cleanser",name:"Low pH Good Morning Gel Cleanser",brand:"COSRX",tech:"Low-pH Cleansing System",ingredient:"Tea Tree Leaf Oil",texture:"gel cleanser",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$11–$15",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA10823673",rating:"4.8",ratingCount:"",fit:"All skin types, esp. oily/combination and acne-prone; gentle low-pH daily cleanse."},
+  {id:"innisfree-green-tea-foam",step:"Cleanser",name:"Green Tea Amino Hydrating Cleansing Foam",brand:"Innisfree",tech:"Green Tea Amino Acid Complex",ingredient:"Green Tea Extract",texture:"foam cleanser",category:"HYDRATE",urgency:"ESSENTIAL",timing:"AM + PM",price:"$10–$16",retailer:"YesStyle",url:"https://www.yesstyle.com/en/innisfree-green-tea-amino-hydrating-cleansing-foam-150g/info.html/pid.1120887593",rating:"4.5",ratingCount:"179",fit:"All skin types; hydrating, non-stripping foam, also a good second-step cleanser."},
+  {id:"pyunkang-pore-foam",step:"Cleanser",name:"Low pH Pore Deep Cleansing Foam",brand:"Pyunkang Yul",tech:"Low-pH Pore Cleansing",ingredient:"Centella + Tea Tree",texture:"foam cleanser",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$10–$18",retailer:"iHerb",url:"https://www.iherb.com/pr/pyunkang-yul-low-ph-pore-deep-cleansing-foam-3-4-fl-oz-100-ml/98371",rating:"4.7",ratingCount:"4,098",fit:"Oily/combination and sensitive skin; deep pore and sebum cleansing, low pH."},
+  {id:"anua-cleansing-oil",step:"Cleanser",name:"Heartleaf Pore Control Cleansing Oil",brand:"Anua",tech:"Heartleaf Pore Control",ingredient:"Heartleaf Extract",texture:"oil cleanser",category:"REPAIR",urgency:"RECOMMENDED",timing:"PM",price:"$18–$22",retailer:"Ulta Beauty",url:"https://www.ulta.com/p/heartleaf-pore-control-cleansing-oil-pimprod2048919",rating:"4.4",ratingCount:"1,021",fit:"Oily/combination, breakout-prone skin; first-step double cleanse for makeup, sebum and blackheads. Contains fragrance — avoid for very sensitive skin."},
+  {id:"roundlab-dokdo-cleanser",step:"Cleanser",name:"1025 Dokdo Cleanser",brand:"Round Lab",tech:"Deep Sea Water Minerals",ingredient:"Ceramide + Panthenol",texture:"foam cleanser",category:"HYDRATE",urgency:"ESSENTIAL",timing:"AM + PM",price:"$12–$15",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA10245858",rating:"4.8",ratingCount:"",fit:"All skin types including sensitive; low-pH dense foam with ceramide and panthenol."},
+  {id:"somebymi-miracle-toner",step:"Tone",name:"AHA BHA PHA 30 Days Miracle Toner",brand:"Some By Mi",tech:"AHA·BHA·PHA Triple Acid",ingredient:"Tea Tree + Salicylic Acid",texture:"exfoliating toner",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"PM",price:"$18–$24",retailer:"Ulta Beauty",url:"https://www.ulta.com/p/aha-bha-pha-30-day-miracle-exfoliating-toner-pimprod2051778?sku=2641258",rating:"4.6",ratingCount:"16",fit:"Acne-prone, oily/combination skin; gentle triple-acid exfoliation for pores and texture. Not for highly sensitive skin."},
+  {id:"cosrx-bha-liquid",step:"Tone",name:"BHA Blackhead Power Liquid",brand:"COSRX",tech:"Betaine Salicylate 4%",ingredient:"BHA (Betaine Salicylate)",texture:"exfoliating toner",category:"BRIGHTEN",urgency:"RECOMMENDED",timing:"PM",price:"$19–$25",retailer:"Ulta Beauty",url:"https://www.ulta.com/p/bha-blackhead-power-liquid-treatment-xlsImpprod15641056?sku=2504914",rating:"4.1",ratingCount:"246",fit:"Oily/combination, congested skin; leave-on BHA for blackheads, excess sebum and clogged pores. Not for highly sensitive skin."},
+  {id:"anua-heartleaf-toner",step:"Tone",name:"Heartleaf 77 Soothing Toner",brand:"Anua",tech:"Heartleaf 77% Soothing",ingredient:"Houttuynia Cordata Extract",texture:"soothing toner",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$19–$23",retailer:"Ulta Beauty",url:"https://www.ulta.com/p/heartleaf-77-soothing-toner-pimprod2048929?sku=2634190",rating:"4.4",ratingCount:"163",fit:"Sensitive, irritated or dry skin; fragrance-free daily soothing and hydrating toner."},
+  {id:"pyunkang-essence-toner",step:"Tone",name:"Essence Toner",brand:"Pyunkang Yul",tech:"Astragalus Root Essence",ingredient:"Astragalus Root Extract",texture:"essence toner",category:"HYDRATE",urgency:"ESSENTIAL",timing:"AM + PM",price:"$13–$17",retailer:"iHerb",url:"https://www.iherb.com/pr/pyunkang-yul-essence-toner-3-4-fl-oz-100-ml/80190",rating:"4.6",ratingCount:"6,999",fit:"Dry and sensitive skin; viscous, fragrance-free deep hydration and barrier support."},
+  {id:"roundlab-birch-toner",step:"Tone",name:"Birch Juice Moisturizing Toner",brand:"Round Lab",tech:"Birch Juice Hydration",ingredient:"Birch Sap + Hyaluronic Acid",texture:"essence toner",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$20–$27",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA71395723",rating:"",ratingCount:"",fit:"Dry/dehydrated skin; ampoule-type hydrating toner for lasting moisture."},
+  {id:"cosrx-snail-essence",step:"Essence",name:"Advanced Snail 96 Mucin Power Essence",brand:"COSRX",tech:"Snail Secretion Filtrate 96%",ingredient:"Snail Mucin",texture:"essence serum",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$23–$25",retailer:"COSRX",url:"https://www.cosrx.com/products/advanced-snail-96-mucin-power-essence",rating:"4.8",ratingCount:"3,250",fit:"All skin types, esp. sensitive and post-acne; barrier repair, dullness and dark spots, intense hydration."},
+  {id:"cosrx-galactomyces",step:"Essence",name:"Galactomyces 95 Tone Balancing Essence",brand:"COSRX",tech:"Galactomyces Ferment 95%",ingredient:"Galactomyces Ferment Filtrate",texture:"essence serum",category:"BRIGHTEN",urgency:"RECOMMENDED",timing:"AM + PM",price:"$20–$24",retailer:"COSRX",url:"https://www.cosrx.com/products/galactomyces-95-tone-balancing-essence",rating:"4.7",ratingCount:"104",fit:"Dull, rough skin with uneven tone; nourishes for a more radiant, clear look."},
+  {id:"boj-glow-serum",step:"Essence",name:"Glow Deep Serum: Rice + Alpha-Arbutin",brand:"Beauty of Joseon",tech:"Rice + Alpha-Arbutin Brightening",ingredient:"Alpha-Arbutin 2%",texture:"essence serum",category:"BRIGHTEN",urgency:"ESSENTIAL",timing:"AM + PM",price:"$15–$17",retailer:"Beauty of Joseon",url:"https://beautyofjoseon.com/products/glow-deep-serum-rice-alpha-arbutin",rating:"4.8",ratingCount:"1,721",fit:"Dullness, dark spots and hyperpigmentation; brightening boost for most skin types."},
+  {id:"skin1004-centella-ampoule",step:"Essence",name:"Madagascar Centella Ampoule",brand:"SKIN1004",tech:"Madagascar Centella Extract",ingredient:"Centella Asiatica Extract",texture:"essence serum",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$15–$19",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA43792133",rating:"4.8",ratingCount:"",fit:"Sensitive, irritation-prone skin; soothing, fast-absorbing hydration."},
+  {id:"anua-heartleaf-ampoule",step:"Essence",name:"Heartleaf 80 Moisture Soothing Ampoule",brand:"Anua",tech:"Heartleaf 80% Soothing",ingredient:"Houttuynia Cordata Extract",texture:"essence serum",category:"BARRIER",urgency:"RECOMMENDED",timing:"AM + PM",price:"$21–$25",retailer:"YesStyle",url:"https://www.yesstyle.com/en/anua-heartleaf-80-moisture-soothing-ampoule-30ml/info.html/pid.1136793651",rating:"4.7",ratingCount:"47",fit:"Sensitive skin prone to external irritation; soothing, nourishing moisture."},
+  {id:"isntree-ha-serum",step:"Essence",name:"Ultra-Low Molecular Hyaluronic Acid Serum",brand:"Isntree",tech:"Ultra-Low Molecular Hyaluronic Acid",ingredient:"Multi-Weight Hyaluronic Acid",texture:"essence serum",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$16–$20",retailer:"iHerb",url:"https://www.iherb.com/pr/isntree-ultra-low-molecular-hyaluronic-acid-serum-1-69-fl-oz-50-ml/140866",rating:"4.7",ratingCount:"369",fit:"Dehydrated skin; deep, quick-absorbing hydration, non-irritating and vegan."},
+  {id:"laneige-water-bank-cream",step:"Moisturize",name:"Water Bank Blue Hyaluronic Cream Moisturizer",brand:"Laneige",tech:"Blue Hyaluronic Acid Fermentation",ingredient:"Blue Hyaluronic Acid",texture:"gel cream",category:"HYDRATE",urgency:"ESSENTIAL",timing:"AM + PM",price:"$36–$40",retailer:"Laneige",url:"https://us.laneige.com/products/water-bank-blue-hyaluronic-cream-moisturizer",rating:"",ratingCount:"",fit:"Normal to dry skin; deep hydration and moisture-barrier support."},
+  {id:"laneige-sleeping-mask",step:"Moisturize",name:"Water Sleeping Mask",brand:"Laneige",tech:"Overnight Probiotic Complex",ingredient:"Squalane + Probiotic Complex",texture:"gel cream",category:"HYDRATE",urgency:"RECOMMENDED",timing:"PM",price:"$30–$33",retailer:"Laneige",url:"https://us.laneige.com/products/water-sleeping-mask",rating:"4.7",ratingCount:"2,502",fit:"Normal to dry skin; overnight hydration and brightening for dull, tired skin, a few nights a week."},
+  {id:"illiyoon-ceramide-cream",step:"Moisturize",name:"Ceramide Ato Concentrate Cream",brand:"Illiyoon",tech:"Ceramide Skin Complex",ingredient:"Ceramide NP",texture:"barrier cream",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$28–$33",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA39684183",rating:"4.9",ratingCount:"",fit:"Sensitive and extra-dry skin; ceramide barrier repair with long-lasting hydration."},
+  {id:"pyunkang-barrier-cream",step:"Moisturize",name:"Calming Moisture Barrier Cream",brand:"Pyunkang Yul",tech:"Calming Barrier Complex",ingredient:"Centella + Ceramide",texture:"barrier cream",category:"BARRIER",urgency:"ESSENTIAL",timing:"AM + PM",price:"$9–$16",retailer:"Stylevana",url:"https://www.stylevana.com/en_US/pyunkang-yul-calming-moisture-barrier-cream-50ml7472.html",rating:"",ratingCount:"",fit:"Sensitive, irritated skin of all types including oily/combination; calming barrier support."},
+  {id:"roundlab-birch-cream",step:"Moisturize",name:"Birch Juice Moisturizing Cream",brand:"Round Lab",tech:"Birch Juice Moisture Care",ingredient:"Birch Sap + Hyaluronic Acid",texture:"gel cream",category:"HYDRATE",urgency:"RECOMMENDED",timing:"AM + PM",price:"$19–$23",retailer:"Ulta Beauty",url:"https://www.ulta.com/p/birch-juice-moisturizing-cream-pimprod2049659",rating:"4.8",ratingCount:"171",fit:"Oily and dehydrated skin; long-lasting hydration with oil/sebum care, fragrance-free."},
+  {id:"boj-relief-sun",step:"Protect",name:"Relief Sun: Rice + Probiotics SPF50+ PA++++",brand:"Beauty of Joseon",tech:"Rice + Probiotic UV Care",ingredient:"Rice Extract + Grain Ferment",texture:"sunscreen",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$14–$18",retailer:"YesStyle",url:"https://www.yesstyle.com/en/beauty-of-joseon-relief-sun-50ml/info.html/pid.1107744417",rating:"4.7",ratingCount:"28,715",fit:"All skin types, esp. dry; lightweight hydrating daily SPF with brightening rice and ferments."},
+  {id:"boj-sun-stick",step:"Protect",name:"Matte Sun Stick: Mugwort + Camelia SPF50+ PA++++",brand:"Beauty of Joseon",tech:"Mugwort Sebum-Control Stick",ingredient:"Mugwort + Camelia",texture:"sun stick",category:"PROTECT",urgency:"RECOMMENDED",timing:"AM",price:"$14–$18",retailer:"Stylevana",url:"https://www.stylevana.com/en_US/beauty-of-joseon-matte-sun-stick-mugwort-camelia-spf50-pa-18g21910.html",rating:"",ratingCount:"",fit:"Oily/combination skin; matte, non-greasy hands-free SPF reapplication through the day."},
+  {id:"drjart-cicapair-spf",step:"Protect",name:"Cicapair Soothing Color Correcting Treatment SPF 30",brand:"Dr. Jart+",tech:"Cica Color-Correcting SPF",ingredient:"Centella Asiatica (Cica)",texture:"color-correcting cream",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$50–$56",retailer:"Sephora",url:"https://www.kohls.com/product/prd-7704170/dr-jart-cicapair-soothing-color-correcting-treatment-spf-30-with-centella-asiatica-extracts.jsp?skuid=75224854",rating:"4.3",ratingCount:"858",fit:"Sensitive, redness- and rosacea-prone skin; green-to-beige cream neutralizes redness while protecting."},
+  {id:"skin1004-sun-serum",step:"Protect",name:"Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+",brand:"SKIN1004",tech:"Hyalu-Cica Water-Fit",ingredient:"Centella + Hyaluronic Acid",texture:"sunscreen",category:"PROTECT",urgency:"ESSENTIAL",timing:"AM",price:"$24–$28",retailer:"Olive Young",url:"https://us.oliveyoung.com/products/UA36240979",rating:"",ratingCount:"",fit:"Dry/normal and sensitive skin; light, watery serum-like hydrating sunscreen, non-greasy."},
+  {id:"roundlab-birch-sun",step:"Protect",name:"Birch Juice Moisturizing Sun Cream SPF50+ PA++++",brand:"Round Lab",tech:"Birch Juice Moisturizing UV",ingredient:"Birch Sap",texture:"sunscreen",category:"PROTECT",urgency:"RECOMMENDED",timing:"AM",price:"$16–$20",retailer:"Stylevana",url:"https://www.stylevana.com/en_US/round-lab-birch-juice-moisturizing-sun-cream-spf50-pa-50ml28716.html",rating:"",ratingCount:"",fit:"All skin types, especially dryness concerns; moisturizing daily sun cream."},
+  {id:"ryo-rootgen-serum",step:"Scalp",name:"Root:Gen Scalp Serum for Thinning Hair",brand:"Ryo",tech:"Root:Gen Ginseng Tech",ingredient:"Ginseng + Peptides",texture:"scalp serum",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$18–$26",retailer:"Amazon",url:"https://www.amazon.com/dp/B0GMHP5TXD",rating:"",ratingCount:"",fit:"Thinning hair and hair loss due to breakage; cooling scalp care for fuller-looking hair."},
+  {id:"drgroot-tonic",step:"Scalp",name:"Multi-Perfection Hair Loss Care Tonic",brand:"Dr. Groot",tech:"Multi-Perfection Hair Loss Care",ingredient:"Scalp Nutrition Complex",texture:"scalp tonic",category:"REPAIR",urgency:"ESSENTIAL",timing:"AM + PM",price:"$26–$30",retailer:"YesStyle",url:"https://www.yesstyle.com/en/dr-groot-multi-perfection-hair-loss-care-tonic-hoofdhuidverzorging/info.html/pid.1129963324",rating:"4.4",ratingCount:"60",fit:"Hair-loss concerns; hydrating, soothing scalp tonic to revitalize the scalp."},
+  {id:"somebymi-scalp-tonic",step:"Scalp",name:"Cica Peptide Anti Hair Loss Derma Scalp Tonic",brand:"Some By Mi",tech:"Cica Peptide Complex",ingredient:"Cica + 11 Peptides + Biotin",texture:"scalp tonic",category:"REPAIR",urgency:"RECOMMENDED",timing:"AM + PM",price:"$17–$22",retailer:"Stylevana",url:"https://www.stylevana.com/en_US/some-by-mi-cica-peptide-anti-hair-loss-derma-scalp-tonic-150ml60869.html",rating:"",ratingCount:"",fit:"Stressed or sensitive scalp with hair-loss symptoms; soothing spray tonic."},
+  {id:"drgroot-thickening-serum",step:"Scalp",name:"Hair Thickening Serum for Hair Loss",brand:"Dr. Groot",tech:"Roll-On Scalp Serum",ingredient:"Exfoliating Scalp Complex",texture:"scalp serum",category:"REPAIR",urgency:"RECOMMENDED",timing:"PM",price:"$21–$26",retailer:"Amazon",url:"https://www.amazon.com/dp/B0DK22L979",rating:"",ratingCount:"",fit:"Thinning hair; roll-on scalp serum that exfoliates and reduces scalp oil and redness."},
 ];
 
 const questions = [
@@ -568,16 +604,11 @@ export default function MeemoSkinQuiz(){
     console.log('fetchRecs called, ans keys:',Object.keys(ans));
     setApiNote(null);
     const fmt=(id)=>{const a=ans[id];if(!a)return"not specified";const p=[];if(a.selected?.length)p.push(a.selected.join(", "));if(a.comment?.trim())p.push(`[note: ${a.comment.trim()}]`);return p.join(" — ")||"not specified";};
-    const prompt=`You are a Korean dermatology-informed skincare expert with deep knowledge of Korean pharmacy products, Olive Young bestsellers, and dermatologist-recommended Korean skincare.
+    const catalogText=["Cleanser","Tone","Essence","Moisturize","Protect","Scalp"].map(st=>"# STEP: "+st+"\n"+CATALOG.filter(p=>p.step===st).map(p=>`- id "${p.id}": ${p.brand} ${p.name} (${p.price}) — ${p.fit}`).join("\n")).join("\n");
+    const prompt=`You are a Korean dermatology-informed skincare expert. You recommend products ONLY from the verified catalog below — you never name a product that is not in the catalog.
 
-Your recommendations must meet this standard:
-- PRIORITIZE products sold in Korean pharmacies (올리브영 Olive Young, Lalavla, Bonne Santé), dermatology clinics, and recommended by Korean dermatologists
-- PREFER products with peer-reviewed or clinical study backing, dermatologist-tested certification, or KFDA approval
-- AVOID recommending products that are primarily viral in Western markets without clinical evidence
-- FAVOR brands with long track records in Korea: COSRX, Illiyoon, Pyunkang Yul, Isntree, Dr. Jart+, Etude, Mediheal, Anua, Beauty of Joseon, Skin1004, Round Lab, Torriden, Some By Mi, Ryo, Aestura, Cicapair
-- For scalp: prioritize clinically tested Korean trichology brands — Ryo, Dr. Groot, Reen, La'dor, Daeng Gi Meo Ri
-- Mention if a product is a Korean pharmacy staple or dermatologist-recommended in the dataReason field
-- Price should reflect actual Korean market value, not inflated Western import pricing
+VERIFIED PRODUCT CATALOG (the only products you may choose; prices and links are fixed and handled by the app):
+${catalogText}
 
 SKIN PROFILE:
 - Midday feel: ${fmt("texture")}
@@ -599,41 +630,19 @@ LIFESTYLE:
 - Routine level: ${fmt("routine")}
 
 RULES:
-1. Return products IN ORDER of application: cleanser first, then toner, then serum/ampoule, then moisturizer, then SPF last. The JSON array order must match the application sequence.
-2. SCALP RULE: If scalp concerns are present (not "none" — dry, oily, sensitive, thinning, dandruff), REPLACE one of the 5 products with a Korean scalp treatment (scalp serum, scalp toner, or scalp essence) and note it in dataReason. Age 45+ with thinning = prioritize scalp. Use brands like Ryo, Dr. Groot, Innisfree, Some By Mi, COSRX for scalp products. Set texture to "scalp serum" or "scalp treatment" for these.
-3. Each from a different brand
-4. Prioritize high sun exposure → UV protection first
-5. Age 45+ → retinol, peptides, collagen actives
-6. Stressed/poor sleep → cortisol + barrier repair focus
-7. Tropical/humid → lightweight gel textures only
-8. Include REALISTIC price ranges in USD and the best value retailer. Choose from: Amazon, YesStyle, iHerb, Soko Glam, StyleKorean, Stylevana, Olive Young, Peach & Lily, Target, Ulta, Nudie Glow. Pick whichever is genuinely cheapest and most accessible for that product.
-9. dataReason must explain EXACTLY which quiz answers drove this specific product choice
-10. NEVER contradict the user's answers in why, dataReason, or altWhy (for example, do not mention oily skin if they selected dry, outdoor exposure if they selected indoor, or an age bracket they did not select). If an answer says "not specified", the user skipped that question — do not invent a value for it; keep the reasoning generic for that factor.
-11. In "url" and "altUrl", give the direct product page URL at the chosen retailer when you know it exactly; otherwise use null (never guess a URL).
+1. Return exactly 5 items, one per step, IN ORDER: Cleanser, Tone, Essence, Moisturize, Protect.
+2. SCALP RULE: If scalp concerns are present (not "none" and not "balanced" — dry, oily, sensitive, thinning, or dandruff), ADD a 6th item with step "Scalp". Age 45+ with thinning = prioritize a hair-loss scalp pick.
+3. For each item, choose productId (first pick) and altProductId (second pick) from that step's catalog list. The two ids must be different, and each from a different brand where the catalog allows.
+4. Match each catalog product's "fit" notes to the profile: e.g. never pick an exfoliating acid toner for highly sensitive skin; tropical/humid climates favor lightweight gel textures; high sun exposure favors the strongest SPF picks; dry/cold profiles favor barrier and cream textures.
+5. NEVER contradict the user's answers in why, altWhy, or dataReason (for example, do not mention oily skin if they selected dry, outdoor exposure if they selected indoor, or an age bracket they did not select). If an answer says "not specified", the user skipped that question — do not invent a value for it; keep the reasoning generic for that factor.
+6. Do NOT output product names, prices, ratings, retailers, or URLs — only the catalog ids and your reasoning text. The app fills in all product data from the catalog.
 
-Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explanation:
+Return ONLY a raw JSON array, no markdown, no backticks, no explanation:
 [{
-  "name": "product name",
-  "brand": "Korean brand",
-  "tech": "key technology",
-  "ingredient": "hero ingredient",
-  "texture": "exact texture type",
-  "why": "personalized reason max 15 words",
-  "category": "BARRIER|BRIGHTEN|HYDRATE|REPAIR|PROTECT",
-  "urgency": "ESSENTIAL|RECOMMENDED|BOOST",
-  "timing": "AM|PM|AM + PM",
-  "price": "$XX–$XX",
-  "retailer": "best value retailer name",
-  "url": "direct product page URL at that retailer, or null",
-  "retailerNote": "one sentence tip on where to get best price",
-  "rating": "overall rating out of 5 e.g. 4.7",
-  "ratingCount": "number of reviews e.g. 12k+",
-  "altName": "second best product name for same step",
-  "altBrand": "second best brand",
-  "altPrice": "$XX–$XX",
-  "altRetailer": "best value retailer for alt product",
-  "altUrl": "direct product page URL for the alt product, or null",
-  "altRating": "rating out of 5",
+  "step": "Cleanser|Tone|Essence|Moisturize|Protect|Scalp",
+  "productId": "catalog id of the first pick for this step",
+  "why": "personalized reason for the first pick, max 15 words",
+  "altProductId": "catalog id of the second pick for this step",
   "altWhy": "one short sentence on why this second pick suits this person",
   "dataReason": "2-3 sentences explaining exactly which quiz inputs drove this recommendation"
 }]`;
@@ -659,8 +668,29 @@ Return ONLY a raw JSON array of 5 objects, no markdown, no backticks, no explana
       if(s===-1||e===-1)throw new Error("no json");
       const parsed=JSON.parse(raw.slice(s,e+1));
       if(!Array.isArray(parsed)||!parsed.length)throw new Error("empty");
-      console.log('setRecs parsed:',parsed.length);
-      setRecs(parsed);
+      // Map the AI's catalog-id choices to verified product data. Any id the
+      // AI gets wrong is replaced with that step's default catalog product,
+      // so invented products, prices, ratings, and links can never surface.
+      const byId={};CATALOG.forEach(p=>{byId[p.id]=p;});
+      const stepDefault={};CATALOG.forEach(p=>{if(!stepDefault[p.step])stepDefault[p.step]=p;});
+      const toRec=(f,alt,item)=>({name:f.name,brand:f.brand,tech:f.tech,ingredient:f.ingredient,texture:f.texture,why:(item&&item.why)||f.fit,category:f.category,urgency:f.urgency,timing:f.timing,price:f.price,retailer:f.retailer,url:f.url,rating:f.rating,ratingCount:f.ratingCount,altName:alt?alt.name:"",altBrand:alt?alt.brand:"",altPrice:alt?alt.price:"",altRetailer:alt?alt.retailer:"",altUrl:alt?alt.url:"",altRating:alt?alt.rating:"",altWhy:(item&&item.altWhy)||"",dataReason:(item&&item.dataReason)||""});
+      const mapped=[];const seenSteps=new Set();
+      for(const item of parsed){
+        const first=byId[item.productId];
+        const step=item.step||(first?first.step:null);
+        if(!step||seenSteps.has(step)||!stepDefault[step])continue;
+        const f=(first&&first.step===step)?first:stepDefault[step];
+        let alt=byId[item.altProductId];
+        if(!alt||alt.step!==step||alt.id===f.id)alt=CATALOG.find(p=>p.step===step&&p.id!==f.id)||null;
+        seenSteps.add(step);mapped.push(toRec(f,alt,item));
+      }
+      ["Cleanser","Tone","Essence","Moisturize","Protect"].forEach(st=>{if(!seenSteps.has(st)){const f=stepDefault[st];const alt=CATALOG.find(p=>p.step===st&&p.id!==f.id)||null;mapped.push(toRec(f,alt,null));}});
+      const scalpVals=[...(ans.scalp_concern?.selected||[]),...(ans.scalp?.selected||[])];
+      const hasScalpConcern=scalpVals.some(v=>!["none","balanced_scalp"].includes(v));
+      if(hasScalpConcern&&!seenSteps.has("Scalp")){const f=stepDefault["Scalp"];const alt=CATALOG.find(p=>p.step==="Scalp"&&p.id!==f.id)||null;mapped.push(toRec(f,alt,null));}
+      if(!mapped.length)throw new Error("unmappable");
+      console.log('setRecs mapped:',mapped.length);
+      setRecs(mapped);
       track("analysis_complete",{skinType:ans.texture?.selected,concerns:ans.concerns?.selected,age:ans.age?.selected,usedSelfie:!!imgData});
     }catch(err){setApiNote(t.fallbackNote);setRecs(DEMO_RECS);track("analysis_fallback",{reason:err.message});}
   };
