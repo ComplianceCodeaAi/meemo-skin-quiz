@@ -1,0 +1,980 @@
+{
+  "$schema": "./meemo-evidence.schema.json",
+  "schema_version": "1.0.0",
+  "dataset_version": "2026-11-27.1",
+  "title": "Meemo research evidence seed",
+  "review": {
+    "status": "source_checked_draft",
+    "reviewed_on": "2026-11-27",
+    "review_due": "2027-02-25",
+    "reviewer": "AI-assisted primary-source extraction; independent editorial or clinical review not completed",
+    "scope": "Targeted seed for two catalog products and one study; not a systematic evidence search.",
+    "expiry_policy": "90-day editorial review interval, selected for maintenance; not a scientific shelf life."
+  },
+  "catalog": {
+    "repository": "https://github.com/ComplianceCodeaAi/meemo-skin-quiz",
+    "commit": "0d637aae3316d0c9a77bd990ce908f74f6ba9b96",
+    "source_files": [
+      "src/App.jsx",
+      "api/_bot.js"
+    ],
+    "commercial_verification_date": "2026-11-22",
+    "ids_checked_on": "2026-11-27",
+    "product_ids": [
+      "cosrx-lowph-cleanser",
+      "innisfree-green-tea-foam",
+      "pyunkang-pore-foam",
+      "anua-cleansing-oil",
+      "roundlab-dokdo-cleanser",
+      "somebymi-miracle-toner",
+      "cosrx-bha-liquid",
+      "anua-heartleaf-toner",
+      "pyunkang-essence-toner",
+      "roundlab-birch-toner",
+      "cosrx-snail-essence",
+      "cosrx-galactomyces",
+      "boj-glow-serum",
+      "skin1004-centella-ampoule",
+      "anua-heartleaf-ampoule",
+      "isntree-ha-serum",
+      "laneige-water-bank-cream",
+      "laneige-sleeping-mask",
+      "illiyoon-ceramide-cream",
+      "pyunkang-barrier-cream",
+      "roundlab-birch-cream",
+      "boj-relief-sun",
+      "boj-sun-stick",
+      "drjart-cicapair-spf",
+      "skin1004-sun-serum",
+      "roundlab-birch-sun",
+      "ryo-rootgen-serum",
+      "drgroot-tonic",
+      "somebymi-scalp-tonic",
+      "drgroot-thickening-serum"
+    ],
+    "product_count": 30,
+    "commercial_data_policy": "Keep identity, price, retailer links and ratings in the commercial catalog. Their verification does not substantiate efficacy."
+  },
+  "policy": {
+    "default_evidence_type": "insufficient_evidence",
+    "default_review_status": "not_reviewed",
+    "live_integration_status": "not_connected",
+    "evidence_types": [
+      "finished_product_human_study",
+      "ingredient_level_human_study",
+      "preclinical_research",
+      "insufficient_evidence"
+    ],
+    "excluded_efficacy_signals": [
+      "virality",
+      "social engagement",
+      "retailer verification",
+      "star ratings",
+      "review counts",
+      "affiliate commission",
+      "brand marketing language",
+      "price"
+    ],
+    "quantitative_product_results_require": "Exact product/formulation study, applicable population and outcome, verified analysis, and approved claim.",
+    "missing_evidence_meaning": "Not assessed or insufficiently supported within this registry; not proof of ineffectiveness or a claim that no research exists.",
+    "generalization_rule": "Never promote ingredient-level or preclinical findings to finished-product efficacy.",
+    "ranking_rule": "No numerical efficacy score or product ranking is provided by this seed.",
+    "approval_rule": "Preview is reviewable only. Production rendering requires explicit approved review states and matching current formula; no approvals are inferred from this file."
+  },
+  "sources": [
+    {
+      "id": "pubmed-34214362",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34214362/",
+      "kind": "peer_reviewed_abstract",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Bibliography, abstract methods and reported outcomes; full paper not accessed from publisher.",
+      "locator": "Abstract"
+    },
+    {
+      "id": "publisher-34214362",
+      "url": "https://www.degruyterbrill.com/de/document/doi/10.1515/jbcpp-2020-0510/html",
+      "kind": "publisher_metadata_and_abstract",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Abstract, funding, author conflict declaration and ethics; access does not include full methods or results.",
+      "locator": "Abstract; Acknowledgments; disclosures"
+    },
+    {
+      "id": "poster-34214362",
+      "url": "https://ff.unair.ac.id/conferences/icphs2020/files/disabled-eposter-/ICPHS2020-CP-84_sylvia-anggraeni-hutomo.pdf",
+      "kind": "author_conference_poster",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Earlier report of the same study, inspected for reporting inconsistencies; not an independent clinical trial.",
+      "locator": "One-page poster, results tables"
+    },
+    {
+      "id": "skin1004-official-ampoule",
+      "url": "https://www.skin1004.com/products/skin1004-madagascar-centella-ampoule",
+      "kind": "brand_formulation_listing",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Online product identity, sizes and ingredient listing only; not efficacy verification.",
+      "locator": "Capacity; Full Ingredients"
+    },
+    {
+      "id": "skin1004-oliveyoung-us",
+      "url": "https://us.oliveyoung.com/products/UA43792133",
+      "kind": "retailer_formulation_listing",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Catalog-linked 55 ml US listing and INCI; not an efficacy source.",
+      "locator": "Product title; Ingredients"
+    },
+    {
+      "id": "illiyoon-official-international",
+      "url": "https://int.illiyoon.com/products/ceramide-ato-concentrate-cream",
+      "kind": "brand_formulation_and_test_summary",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "International ingredient listing plus manufacturer-reported test summary; full study not reviewed.",
+      "locator": "Ingredients; Clinical Results"
+    },
+    {
+      "id": "illiyoon-oliveyoung-us",
+      "url": "https://us.oliveyoung.com/products/UA39684183",
+      "kind": "retailer_formulation_listing",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Catalog-linked US listing for 75, 200 and 500 ml; its formulation differs from the brand international page.",
+      "locator": "Full Ingredients, each size"
+    },
+    {
+      "id": "catalog-pr5",
+      "url": "https://github.com/ComplianceCodeaAi/meemo-skin-quiz/pull/5",
+      "kind": "repository_change",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Merged catalog implementation and original 2026-11-22 commercial verification scope.",
+      "locator": "PR description and src/App.jsx diff"
+    },
+    {
+      "id": "catalog-pr6",
+      "url": "https://github.com/ComplianceCodeaAi/meemo-skin-quiz/pull/6",
+      "kind": "repository_change",
+      "status": "active",
+      "accessed_on": "2026-11-27",
+      "verification_scope": "Merged SMS implementation using the same catalog IDs.",
+      "locator": "PR description and api/_bot.js diff"
+    }
+  ],
+  "studies": [
+    {
+      "id": "pmid-34214362",
+      "study_family_id": "anggraeni-batik-workers",
+      "title": "Role of Centella asiatica and ceramide in skin barrier improvement: a double blind clinical trial of Indonesian batik workers",
+      "authors": [
+        "Sylvia Anggraeni",
+        "Menul Ayu Umborowati",
+        "Damayanti Damayanti",
+        "Anang Endaryanto",
+        "Cita Rosita Sigit Prakoeswa"
+      ],
+      "journal": "Journal of Basic and Clinical Physiology and Pharmacology",
+      "year": 2021,
+      "publication_date": "2021-06-25",
+      "volume": "32",
+      "issue": "4",
+      "pages": "589-593",
+      "doi": "10.1515/jbcpp-2020-0510",
+      "pmid": "34214362",
+      "source_ids": [
+        "pubmed-34214362",
+        "publisher-34214362",
+        "poster-34214362"
+      ],
+      "source_access_level": "abstract_disclosures_and_related_poster",
+      "full_text_verified": false,
+      "review_status": "source_checked",
+      "reviewed_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "design": {
+        "type": "double_blind_comparative_human_trial",
+        "blinding": [
+          "participants",
+          "researchers"
+        ],
+        "randomization": "Creams randomly labeled by manufacturer; participant sequence generation and allocation concealment not verified from primary full text.",
+        "comparator": "Other active cream; no vehicle-only control described in accessed primary sources.",
+        "ingredient_isolation_established": false
+      },
+      "population": {
+        "n_total": 30,
+        "n_per_arm": null,
+        "ages": null,
+        "sex_distribution": null,
+        "country": "Indonesia",
+        "setting": "batik workers with occupational chemical exposure",
+        "skin_condition": "dry skin without clinical manifestations of contact dermatitis",
+        "unknown_reason": "Arm counts, ages and sex distribution not verified in the accessed primary abstract."
+      },
+      "duration_weeks": 4,
+      "application_frequency_per_day": 2,
+      "application_sites": [
+        "hands",
+        "arms"
+      ],
+      "measurement_timepoints_weeks": [
+        0,
+        2,
+        4
+      ],
+      "instrument_reported": "Cutometer dual MP-580 (as named by the abstract)",
+      "interventions": [
+        {
+          "id": "centella-containing-cream",
+          "studied_ingredient": "Centella asiatica",
+          "formulation": "PT Paragon study cream containing Centella; complete vehicle and INCI not verified.",
+          "concentration": {
+            "ingredient": "Centella asiatica",
+            "value": null,
+            "unit": null,
+            "basis": null,
+            "status": "not_verified_in_accessed_primary_sources",
+            "reason": "Do not infer a concentration from unrelated cream studies or third-party copies."
+          },
+          "catalog_product_match": false
+        },
+        {
+          "id": "ceramide-containing-cream",
+          "studied_ingredient": "ceramide (subtype not verified)",
+          "formulation": "PT Paragon study cream containing ceramide; complete vehicle and INCI not verified.",
+          "concentration": {
+            "ingredient": "ceramide",
+            "value": null,
+            "unit": null,
+            "basis": null,
+            "status": "not_verified_in_accessed_primary_sources",
+            "reason": "Ceramide subtype, percentage basis and vehicle need primary full-text verification."
+          },
+          "catalog_product_match": false
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "centella-hydration-palm",
+          "intervention_id": "centella-containing-cream",
+          "domain": "hydration",
+          "body_site": "palm",
+          "measurement": "corneometry",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.007,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "centella-hydration-dorsum",
+          "intervention_id": "centella-containing-cream",
+          "domain": "hydration",
+          "body_site": "hand dorsum",
+          "measurement": "corneometry",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.001,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "centella-ph-dorsum",
+          "intervention_id": "centella-containing-cream",
+          "domain": "skin_ph",
+          "body_site": "hand dorsum",
+          "measurement": "skin surface pH",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.017,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "ceramide-hydration-palm",
+          "intervention_id": "ceramide-containing-cream",
+          "domain": "hydration",
+          "body_site": "palm",
+          "measurement": "corneometry",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.038,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "ceramide-hydration-dorsum",
+          "intervention_id": "ceramide-containing-cream",
+          "domain": "hydration",
+          "body_site": "hand dorsum",
+          "measurement": "corneometry",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.002,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "ceramide-water-loss-dorsum",
+          "intervention_id": "ceramide-containing-cream",
+          "domain": "water_loss",
+          "body_site": "hand dorsum",
+          "measurement": "transepidermal water loss",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.023,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "ceramide-ph-palm",
+          "intervention_id": "ceramide-containing-cream",
+          "domain": "skin_ph",
+          "body_site": "palm",
+          "measurement": "skin surface pH",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.001,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        },
+        {
+          "id": "ceramide-ph-dorsum",
+          "intervention_id": "ceramide-containing-cream",
+          "domain": "skin_ph",
+          "body_site": "hand dorsum",
+          "measurement": "skin surface pH",
+          "followup_weeks": [
+            0,
+            2,
+            4
+          ],
+          "comparison_scope": "within_arm_over_time_reported",
+          "reported_direction": "improvement_reported",
+          "p_value": 0.011,
+          "statistical_test": "Not verified from primary full text; do not assume a pairwise baseline-to-week-four test.",
+          "effect_size": null,
+          "effect_size_unit": null,
+          "confidence_interval": null,
+          "pairwise_baseline_week4_confirmed": false,
+          "source_ids": [
+            "pubmed-34214362",
+            "publisher-34214362"
+          ]
+        }
+      ],
+      "between_group": {
+        "abstract_summary": "No statistically significant overall effectiveness difference reported.",
+        "equivalence_demonstrated": false,
+        "superiority_demonstrated": false,
+        "caution": "A nonsignificant result does not demonstrate equivalence; endpoint-specific comparisons need full-text reconciliation."
+      },
+      "reporting_issues": [
+        {
+          "id": "selective-abstract-outcome-capture",
+          "source_ids": [
+            "pubmed-34214362"
+          ],
+          "description": "The outcome array captures selected statistically significant results reported in the abstract, not the complete endpoint-by-arm result set.",
+          "decision": "Do not interpret omitted outcomes as unmeasured, positive, negative or null findings; extract the full endpoint set from the primary paper."
+        },
+        {
+          "id": "poster-ph-discrepancy",
+          "source_ids": [
+            "poster-34214362",
+            "pubmed-34214362"
+          ],
+          "description": "Earlier poster table reports a palmar pH between-group p-value of 0.027, while the journal abstract gives a general no-difference statement.",
+          "decision": "Exclude pH from consumer benefit wording; reconcile against the primary full paper."
+        },
+        {
+          "id": "tewl-test-scope",
+          "source_ids": [
+            "poster-34214362",
+            "pubmed-34214362"
+          ],
+          "description": "The TEWL p-value is presented with repeated timepoint data; it is not a verified pairwise baseline-to-week-four improvement test.",
+          "decision": "Retain the reported p-value as study metadata; do not advertise product water-loss reduction or superiority."
+        }
+      ],
+      "funding": {
+        "funder": "PT Paragon Technology and Innovation",
+        "manufacturer_role": "Formulated and randomly labeled study creams; also funded the study.",
+        "authors_conflict_declaration": "Authors declared no conflict of interest.",
+        "source_ids": [
+          "publisher-34214362"
+        ]
+      },
+      "adverse_events": {
+        "status": "not_reported_in_accessed_sources",
+        "details": null
+      },
+      "evidence_appraisal": {
+        "certainty": "limited",
+        "framework": "Meemo editorial judgment; not a formal GRADE assessment",
+        "reasons": [
+          "Small study with 30 participants and four-week follow-up.",
+          "Full primary methods and statistics have not been verified.",
+          "Occupationally exposed hands and arms differ from facial skincare use.",
+          "The tested formulations and concentrations are not matched to either catalog product.",
+          "Effects of the vehicle and other ingredients cannot be separated.",
+          "Manufacturer funding and the full-text reporting questions are recorded."
+        ]
+      },
+      "unsupported_extrapolations": [
+        "finished-product efficacy",
+        "facial acne treatment",
+        "pigmentation reduction",
+        "wrinkle reversal",
+        "hair growth",
+        "contact dermatitis prevention",
+        "clinical equivalence of creams",
+        "guaranteed safety",
+        "quantitative results for catalog products"
+      ]
+    }
+  ],
+  "formulations": [
+    {
+      "id": "skin1004-ampoule-us-55ml-listing-2026-11-27",
+      "product_id": "skin1004-centella-ampoule",
+      "source_ids": [
+        "skin1004-official-ampoule",
+        "skin1004-oliveyoung-us"
+      ],
+      "market": "US catalog retailer; matching official global listing",
+      "sizes_ml": [
+        55
+      ],
+      "version": "Online INCI snapshot; batch and change date unknown",
+      "verified_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "packaging_verified": false,
+      "inci": [
+        "Water",
+        "Glycerin",
+        "Butylene Glycol",
+        "Centella Asiatica Extract",
+        "1,2-Hexanediol",
+        "Cellulose Gum",
+        "Ethylhexylglycerin"
+      ],
+      "inci_is_complete": true,
+      "concentrations": [
+        {
+          "ingredient": "Centella Asiatica Extract",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "Neither matched listing discloses extract percentage or standardized marker concentration."
+        }
+      ],
+      "notes": [
+        "The current matched listings do not support a 100% Centella formulation claim.",
+        "An extract percentage, if obtained later, must not be treated as its active triterpene concentration.",
+        "Online label verification does not establish the ingredients in an individual purchased batch."
+      ]
+    },
+    {
+      "id": "illiyoon-cream-us-retailer-listing-2026-11-27",
+      "product_id": "illiyoon-ceramide-cream",
+      "source_ids": [
+        "illiyoon-oliveyoung-us"
+      ],
+      "market": "US catalog retailer",
+      "sizes_ml": [
+        75,
+        200,
+        500
+      ],
+      "version": "Online retailer INCI snapshot; exact purchased variant unresolved",
+      "verified_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "packaging_verified": false,
+      "inci": [
+        "Hydroxypropyl Bispalmitamide MEA",
+        "Ceramide NP",
+        "Cholesterol",
+        "Phytosphingosine",
+        "Glycine Max (Soybean) Oil",
+        "Rosmarinus Officinalis (Rosemary) Leaf Extract"
+      ],
+      "inci_is_complete": false,
+      "concentrations": [
+        {
+          "ingredient": "Ceramide NP",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "The linked US retailer does not state a concentration."
+        },
+        {
+          "ingredient": "Hydroxypropyl Bispalmitamide MEA",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "Named by the listing as Ceramide PC-104; no concentration stated."
+        }
+      ],
+      "notes": [
+        "Selected ingredients only, normalized from the retailer INCI; not a complete allergy-screening list.",
+        "Do not replace this listed pseudoceramide with the international page ingredient.",
+        "The catalog product ID does not identify a formulation version or batch."
+      ]
+    },
+    {
+      "id": "illiyoon-cream-international-listing-2026-11-27",
+      "product_id": "illiyoon-ceramide-cream",
+      "source_ids": [
+        "illiyoon-official-international"
+      ],
+      "market": "Official international listing",
+      "sizes_ml": [
+        75,
+        200,
+        500
+      ],
+      "version": "Online international INCI snapshot; differs from linked US retailer",
+      "verified_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "packaging_verified": false,
+      "inci": [
+        "Cetyl-PG Hydroxyethyl Palmitamide",
+        "Ceramide NP",
+        "Cholesterol",
+        "Phytosphingosine",
+        "Madecassoside",
+        "Glycine Max (Soybean) Oil"
+      ],
+      "inci_is_complete": false,
+      "concentrations": [
+        {
+          "ingredient": "Ceramide NP",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "International page INCI does not disclose a concentration."
+        },
+        {
+          "ingredient": "Cetyl-PG Hydroxyethyl Palmitamide",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "Do not import ppm from another market, size or version."
+        },
+        {
+          "ingredient": "Madecassoside",
+          "value": null,
+          "unit": null,
+          "basis": null,
+          "status": "not_disclosed",
+          "reason": "Raw-material purity wording on the page is not a finished-product concentration."
+        }
+      ],
+      "notes": [
+        "Selected ingredients only; the complete INCI has not been captured in this seed, and the catalog/package formula match remains unresolved.",
+        "The international listing includes a different ceramide-related ingredient and madecassoside.",
+        "The discrepancy could reflect version or market differences; a reformulation date has not been established."
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "skin1004-centella-ampoule",
+      "brand": "SKIN1004",
+      "name": "Madagascar Centella Ampoule",
+      "catalog_step": "Essence",
+      "catalog_source_ids": [
+        "catalog-pr5",
+        "catalog-pr6"
+      ],
+      "catalog_retailer_source_id": "skin1004-oliveyoung-us",
+      "studied_ingredient": "Centella asiatica",
+      "evidence_type": "ingredient_level_human_study",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "formulation_status": "matched_current_listings",
+      "formulation_ids": [
+        "skin1004-ampoule-us-55ml-listing-2026-11-27"
+      ],
+      "active_formulation_id": "skin1004-ampoule-us-55ml-listing-2026-11-27",
+      "evidence_links": [
+        {
+          "study_id": "pmid-34214362",
+          "outcome_ids": [
+            "centella-hydration-palm",
+            "centella-hydration-dorsum"
+          ],
+          "direct_product_match": false,
+          "formulation_match": "not_established",
+          "applicability": "Ingredient-class research context only; facial product performance not established."
+        }
+      ],
+      "claim_ids": [
+        "skin1004-indirect-hydration-context"
+      ],
+      "product_efficacy_established": false,
+      "evidence_certainty": "limited",
+      "suitability": {
+        "eligible_concerns": [
+          "dryness",
+          "hydration"
+        ],
+        "restrictions": [
+          "A different formulation was tested; do not state that this catalog product was clinically proven.",
+          "Do not use this study for acne, pigmentation, wrinkles, hair growth or disease-prevention claims.",
+          "Known ingredient allergies require checking the actual product label; absence of a matching name is not safety clearance.",
+          "Pregnancy, child use and active skin disease were not established as suitable by this evidence.",
+          "Stop use and seek appropriate advice for a concerning reaction; this record is not a diagnosis or treatment plan."
+        ],
+        "allergen_screening": "Exact listed INCI only; no inference that the product is safe.",
+        "population_generalization": "The trial was not conducted on facial users of this product."
+      },
+      "gaps": [
+        "Current extract and marker concentrations are undisclosed.",
+        "No finished-product study accepted into this seed.",
+        "Primary full trial text remains to be verified."
+      ]
+    },
+    {
+      "product_id": "illiyoon-ceramide-cream",
+      "brand": "Illiyoon",
+      "name": "Ceramide Ato Concentrate Cream",
+      "catalog_step": "Moisturize",
+      "catalog_source_ids": [
+        "catalog-pr5",
+        "catalog-pr6"
+      ],
+      "catalog_retailer_source_id": "illiyoon-oliveyoung-us",
+      "studied_ingredient": "ceramide family; exact trial subtype unknown",
+      "evidence_type": "ingredient_level_human_study",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "formulation_status": "conflicting_listings",
+      "formulation_ids": [
+        "illiyoon-cream-us-retailer-listing-2026-11-27",
+        "illiyoon-cream-international-listing-2026-11-27"
+      ],
+      "active_formulation_id": null,
+      "evidence_links": [
+        {
+          "study_id": "pmid-34214362",
+          "outcome_ids": [
+            "ceramide-hydration-palm",
+            "ceramide-hydration-dorsum",
+            "ceramide-water-loss-dorsum"
+          ],
+          "direct_product_match": false,
+          "formulation_match": "not_established",
+          "applicability": "Ingredient-class research context only; facial product performance not established."
+        }
+      ],
+      "claim_ids": [
+        "illiyoon-indirect-hydration-context"
+      ],
+      "product_efficacy_established": false,
+      "evidence_certainty": "limited",
+      "suitability": {
+        "eligible_concerns": [
+          "dryness",
+          "hydration"
+        ],
+        "restrictions": [
+          "A different formulation was tested; do not state that this catalog product was clinically proven.",
+          "Do not use this study for acne, pigmentation, wrinkles, hair growth or disease-prevention claims.",
+          "Known ingredient allergies require checking the actual product label; absence of a matching name is not safety clearance.",
+          "Pregnancy, child use and active skin disease were not established as suitable by this evidence.",
+          "Stop use and seek appropriate advice for a concerning reaction; this record is not a diagnosis or treatment plan."
+        ],
+        "allergen_screening": "Partial ingredient snapshots and unresolved formula; manual label review needed.",
+        "population_generalization": "No exact catalog formulation or facial-use efficacy match."
+      },
+      "gaps": [
+        "Official international and US retailer ingredient lists differ.",
+        "Catalog SKU/formulation match must be resolved before product-linked claims.",
+        "Ceramide concentration cannot be copied from another market.",
+        "Manufacturer study summary is an unaccepted lead, not a verified product trial."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "skin1004-indirect-hydration-context",
+      "product_id": "skin1004-centella-ampoule",
+      "study_ids": [
+        "pmid-34214362"
+      ],
+      "source_ids": [
+        "pubmed-34214362",
+        "skin1004-official-ampoule",
+        "skin1004-oliveyoung-us"
+      ],
+      "concerns": [
+        "dryness",
+        "hydration"
+      ],
+      "claim_scope": "ingredient_context",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "quantitative_product_claim": false,
+      "text": "A small human study reported improved hydration readings with a Centella-containing cream.",
+      "mandatory_caveat": "The study used a different cream on dry hands and arms; it does not establish this ampoule's effectiveness on facial skin.",
+      "sms_text": "Centella cream research offers limited hydration context."
+    },
+    {
+      "id": "illiyoon-indirect-hydration-context",
+      "product_id": "illiyoon-ceramide-cream",
+      "study_ids": [
+        "pmid-34214362"
+      ],
+      "source_ids": [
+        "pubmed-34214362",
+        "illiyoon-official-international",
+        "illiyoon-oliveyoung-us"
+      ],
+      "concerns": [
+        "dryness",
+        "hydration"
+      ],
+      "claim_scope": "ingredient_context",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-11-27",
+      "review_due": "2027-02-25",
+      "quantitative_product_claim": false,
+      "text": "A small human study reported hydration changes with a ceramide-containing cream.",
+      "mandatory_caveat": "The study tested another cream on hands and arms. It does not prove results for this product; its catalog formulation also needs confirmation.",
+      "sms_text": "Ceramide cream research offers limited hydration context."
+    }
+  ],
+  "research_queue": [
+    {
+      "id": "retrieve-primary-full-text",
+      "product_ids": [
+        "skin1004-centella-ampoule",
+        "illiyoon-ceramide-cream"
+      ],
+      "source_ids": [
+        "publisher-34214362"
+      ],
+      "status": "pending_primary_full_text",
+      "evidence_type": "insufficient_evidence",
+      "task": "Obtain the authorized primary full text; verify arm counts, concentrations, vehicle composition, randomization, statistics, effect estimates and adverse events.",
+      "blocks": [
+        "Exact concentration transfer",
+        "Ingredient isolation claims",
+        "Stronger comparative or quantitative claims"
+      ]
+    },
+    {
+      "id": "resolve-illiyoon-variant",
+      "product_ids": [
+        "illiyoon-ceramide-cream"
+      ],
+      "source_ids": [
+        "illiyoon-official-international",
+        "illiyoon-oliveyoung-us"
+      ],
+      "status": "formulation_mismatch",
+      "evidence_type": "insufficient_evidence",
+      "task": "Match the catalog retailer SKU and current package INCI to a versioned formula; request brand confirmation of the differing ceramide-related ingredients.",
+      "blocks": [
+        "Product-linked evidence copy",
+        "Quantitative concentration or outcome claims",
+        "Comprehensive allergy screening"
+      ]
+    },
+    {
+      "id": "illiyoon-brand-test-report",
+      "product_ids": [
+        "illiyoon-ceramide-cream"
+      ],
+      "source_ids": [
+        "illiyoon-official-international"
+      ],
+      "status": "manufacturer_summary_pending_review",
+      "evidence_type": "insufficient_evidence",
+      "task": "Request full brand test reports, including the exact tested formula, comparator, instruments, protocol, effect sizes and uncertainty. The public summary mentions 32 women and 2025 testing.",
+      "blocks": [
+        "Finished-product human-study classification",
+        "Brand clinical percentages or duration promises in recommendations"
+      ]
+    },
+    {
+      "id": "remaining-catalog-review",
+      "product_ids": [
+        "cosrx-lowph-cleanser",
+        "innisfree-green-tea-foam",
+        "pyunkang-pore-foam",
+        "anua-cleansing-oil",
+        "roundlab-dokdo-cleanser",
+        "somebymi-miracle-toner",
+        "cosrx-bha-liquid",
+        "anua-heartleaf-toner",
+        "pyunkang-essence-toner",
+        "roundlab-birch-toner",
+        "cosrx-snail-essence",
+        "cosrx-galactomyces",
+        "boj-glow-serum",
+        "anua-heartleaf-ampoule",
+        "isntree-ha-serum",
+        "laneige-water-bank-cream",
+        "laneige-sleeping-mask",
+        "pyunkang-barrier-cream",
+        "roundlab-birch-cream",
+        "boj-relief-sun",
+        "boj-sun-stick",
+        "drjart-cicapair-spf",
+        "skin1004-sun-serum",
+        "roundlab-birch-sun",
+        "ryo-rootgen-serum",
+        "drgroot-tonic",
+        "somebymi-scalp-tonic",
+        "drgroot-thickening-serum"
+      ],
+      "source_ids": [
+        "catalog-pr5",
+        "catalog-pr6"
+      ],
+      "status": "not_reviewed",
+      "evidence_type": "insufficient_evidence",
+      "task": "Review each remaining product/formulation against primary human research and the specific target outcome; do not copy evidence from these two records.",
+      "blocks": [
+        "Evidence-based claims for remaining products"
+      ]
+    }
+  ],
+  "outcome_tracking": {
+    "status": "measurement_design_only_not_implemented",
+    "schedule_days": [
+      0,
+      14,
+      28
+    ],
+    "self_report_fields": [
+      "dryness_0_to_10",
+      "tightness_0_to_10",
+      "irritation_0_to_10",
+      "days_used_last_7",
+      "other_routine_changes"
+    ],
+    "required_context": [
+      "product_id",
+      "formulation_id_if_known",
+      "baseline_date",
+      "followup_date",
+      "use_frequency",
+      "reported_reactions"
+    ],
+    "metric_definitions": {
+      "rating_direction": "0 means none; 10 means worst for dryness, tightness and irritation.",
+      "change": "follow-up score minus baseline; negative means less of the reported symptom.",
+      "missing": "Use null with a missing reason; never substitute zero.",
+      "causal_interpretation": "Individual self-reports track experience; they do not demonstrate treatment causality or become clinical-trial evidence."
+    },
+    "instrument_only_metrics": [
+      "TEWL",
+      "corneometry"
+    ],
+    "guardrails": [
+      "Do not infer TEWL, corneometry or barrier repair from a selfie.",
+      "Do not compare unstandardized before/after images as quantitative clinical outcomes.",
+      "A day-28 check-in is a tracking choice, not a promised time to benefit.",
+      "Store individual tracking data separately with explicit consent and suitable access controls; this registry contains no personal data."
+    ]
+  }
+}
