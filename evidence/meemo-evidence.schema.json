@@ -1,0 +1,1771 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ComplianceCodeaAi/meemo-skin-quiz/feat/research-evidence-layer/evidence/meemo-evidence.schema.json",
+  "title": "Meemo evidence registry v1",
+  "description": "Source-linked scientific evidence, formula snapshots and bounded copy. JSON Schema checks structure; runtime and content review check relationships and claim applicability.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "dataset_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "source_checked_draft",
+            "approved",
+            "revoked"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expiry_policy": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "reviewed_on",
+        "review_due",
+        "reviewer",
+        "scope",
+        "expiry_policy"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "source_files": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "commercial_verification_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "ids_checked_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "product_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "product_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "commercial_data_policy": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "repository",
+        "commit",
+        "source_files",
+        "commercial_verification_date",
+        "ids_checked_on",
+        "product_ids",
+        "product_count",
+        "commercial_data_policy"
+      ],
+      "additionalProperties": false
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "default_evidence_type": {
+          "const": "insufficient_evidence"
+        },
+        "default_review_status": {
+          "const": "not_reviewed"
+        },
+        "live_integration_status": {
+          "enum": [
+            "not_connected",
+            "integrated"
+          ]
+        },
+        "evidence_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "finished_product_human_study",
+              "ingredient_level_human_study",
+              "preclinical_research",
+              "insufficient_evidence"
+            ]
+          },
+          "minItems": 4,
+          "uniqueItems": true
+        },
+        "excluded_efficacy_signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "quantitative_product_results_require": {
+          "type": "string",
+          "minLength": 1
+        },
+        "missing_evidence_meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generalization_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ranking_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approval_rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "default_evidence_type",
+        "default_review_status",
+        "live_integration_status",
+        "evidence_types",
+        "excluded_efficacy_signals",
+        "quantitative_product_results_require",
+        "missing_evidence_meaning",
+        "generalization_rule",
+        "ranking_rule",
+        "approval_rule"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    },
+    "studies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/study"
+      },
+      "minItems": 0
+    },
+    "formulations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/formulation"
+      },
+      "minItems": 0
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/product"
+      },
+      "minItems": 0
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 0
+    },
+    "research_queue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/research_item"
+      },
+      "minItems": 0
+    },
+    "outcome_tracking": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "measurement_design_only_not_implemented",
+            "implemented"
+          ]
+        },
+        "schedule_days": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "self_report_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "required_context": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "metric_definitions": {
+          "type": "object",
+          "properties": {
+            "rating_direction": {
+              "type": "string",
+              "minLength": 1
+            },
+            "change": {
+              "type": "string",
+              "minLength": 1
+            },
+            "missing": {
+              "type": "string",
+              "minLength": 1
+            },
+            "causal_interpretation": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "rating_direction",
+            "change",
+            "missing",
+            "causal_interpretation"
+          ],
+          "additionalProperties": false
+        },
+        "instrument_only_metrics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "guardrails": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "status",
+        "schedule_days",
+        "self_report_fields",
+        "required_context",
+        "metric_definitions",
+        "instrument_only_metrics",
+        "guardrails"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "$schema",
+    "schema_version",
+    "dataset_version",
+    "title",
+    "review",
+    "catalog",
+    "policy",
+    "sources",
+    "studies",
+    "formulations",
+    "products",
+    "claims",
+    "research_queue",
+    "outcome_tracking"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "concentration": {
+      "type": "object",
+      "properties": {
+        "ingredient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "unit": {
+          "enum": [
+            null,
+            "percent",
+            "ppm",
+            "mg_per_g",
+            "mg_per_ml"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "disclosed",
+            "not_disclosed",
+            "not_verified_in_accessed_primary_sources"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "ingredient",
+        "value",
+        "unit",
+        "basis",
+        "status",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "disclosed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "enum": [
+                  "percent",
+                  "ppm",
+                  "mg_per_g",
+                  "mg_per_ml"
+                ]
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "unit": {
+                "type": "null"
+              },
+              "basis": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": {
+                "const": "percent"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "maximum": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "kind": {
+          "enum": [
+            "peer_reviewed_abstract",
+            "peer_reviewed_full_text",
+            "publisher_metadata_and_abstract",
+            "author_conference_poster",
+            "brand_formulation_listing",
+            "retailer_formulation_listing",
+            "brand_formulation_and_test_summary",
+            "repository_change",
+            "preclinical_paper",
+            "clinical_study_report"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "revoked",
+            "superseded"
+          ]
+        },
+        "accessed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "verification_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "kind",
+        "status",
+        "accessed_on",
+        "verification_scope",
+        "locator"
+      ],
+      "additionalProperties": false
+    },
+    "formulation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "product_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "market": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sizes_ml": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verified_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "packaging_verified": {
+          "type": "boolean"
+        },
+        "inci": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "inci_is_complete": {
+          "type": "boolean"
+        },
+        "concentrations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/concentration"
+          },
+          "minItems": 0
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "product_id",
+        "source_ids",
+        "market",
+        "sizes_ml",
+        "version",
+        "verified_on",
+        "review_due",
+        "packaging_verified",
+        "inci",
+        "inci_is_complete",
+        "concentrations",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "intervention_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body_site": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "followup_weeks": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "comparison_scope": {
+          "enum": [
+            "within_arm_over_time_reported",
+            "within_arm_pairwise",
+            "between_group",
+            "between_group_change",
+            "not_verified"
+          ]
+        },
+        "reported_direction": {
+          "enum": [
+            "improvement_reported",
+            "no_significant_difference",
+            "worsening_reported",
+            "mixed",
+            "not_reported"
+          ]
+        },
+        "p_value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "statistical_test": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effect_size": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "effect_size_unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence_interval": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "lower": {
+                  "type": "number"
+                },
+                "upper": {
+                  "type": "number"
+                },
+                "level": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "exclusiveMaximum": 1
+                }
+              },
+              "required": [
+                "lower",
+                "upper",
+                "level"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "pairwise_baseline_week4_confirmed": {
+          "type": "boolean"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "intervention_id",
+        "domain",
+        "body_site",
+        "measurement",
+        "followup_weeks",
+        "comparison_scope",
+        "reported_direction",
+        "p_value",
+        "statistical_test",
+        "effect_size",
+        "effect_size_unit",
+        "confidence_interval",
+        "pairwise_baseline_week4_confirmed",
+        "source_ids"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "effect_size": {
+                "type": "number"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "effect_size_unit": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "intervention": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "studied_ingredient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formulation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "concentration": {
+          "$ref": "#/$defs/concentration"
+        },
+        "catalog_product_match": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "studied_ingredient",
+        "formulation",
+        "concentration",
+        "catalog_product_match"
+      ],
+      "additionalProperties": false
+    },
+    "study": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "study_family_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "journal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "publication_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "volume": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issue": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pages": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^10\\.[0-9]{4,9}/\\S+$"
+        },
+        "pmid": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]+$"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_access_level": {
+          "enum": [
+            "abstract_only",
+            "abstract_disclosures_and_related_poster",
+            "full_text",
+            "unpublished_full_report",
+            "preclinical_full_text"
+          ]
+        },
+        "full_text_verified": {
+          "type": "boolean"
+        },
+        "review_status": {
+          "enum": [
+            "source_checked",
+            "approved",
+            "not_reviewed",
+            "revoked",
+            "superseded",
+            "on_hold"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "design": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "blinding": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "randomization": {
+              "type": "string",
+              "minLength": 1
+            },
+            "comparator": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ingredient_isolation_established": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "blinding",
+            "randomization",
+            "comparator",
+            "ingredient_isolation_established"
+          ],
+          "additionalProperties": false
+        },
+        "population": {
+          "type": "object",
+          "properties": {
+            "n_total": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "n_per_arm": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "ages": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "minimum": {
+                      "type": "number"
+                    },
+                    "maximum": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "enum": [
+                        "years",
+                        "months"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "minimum",
+                    "maximum",
+                    "unit"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "sex_distribution": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "female": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "male": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "other_or_unspecified": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "female",
+                    "male",
+                    "other_or_unspecified"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "country": {
+              "type": "string",
+              "minLength": 1
+            },
+            "setting": {
+              "type": "string",
+              "minLength": 1
+            },
+            "skin_condition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unknown_reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "n_total",
+            "n_per_arm",
+            "ages",
+            "sex_distribution",
+            "country",
+            "setting",
+            "skin_condition",
+            "unknown_reason"
+          ],
+          "additionalProperties": false
+        },
+        "duration_weeks": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "application_frequency_per_day": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "application_sites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "measurement_timepoints_weeks": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "instrument_reported": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interventions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/intervention"
+          },
+          "minItems": 1
+        },
+        "outcomes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outcome"
+          },
+          "minItems": 1
+        },
+        "between_group": {
+          "type": "object",
+          "properties": {
+            "abstract_summary": {
+              "type": "string",
+              "minLength": 1
+            },
+            "equivalence_demonstrated": {
+              "type": "boolean"
+            },
+            "superiority_demonstrated": {
+              "type": "boolean"
+            },
+            "caution": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "abstract_summary",
+            "equivalence_demonstrated",
+            "superiority_demonstrated",
+            "caution"
+          ],
+          "additionalProperties": false
+        },
+        "reporting_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "source_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]*$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decision": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "source_ids",
+              "description",
+              "decision"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "funding": {
+          "type": "object",
+          "properties": {
+            "funder": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "manufacturer_role": {
+              "type": "string",
+              "minLength": 1
+            },
+            "authors_conflict_declaration": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "funder",
+            "manufacturer_role",
+            "authors_conflict_declaration",
+            "source_ids"
+          ],
+          "additionalProperties": false
+        },
+        "adverse_events": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_reported_in_accessed_sources",
+                "reported"
+              ]
+            },
+            "details": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "details"
+          ],
+          "additionalProperties": false
+        },
+        "evidence_appraisal": {
+          "type": "object",
+          "properties": {
+            "certainty": {
+              "enum": [
+                "limited",
+                "moderate",
+                "high",
+                "not_assessed"
+              ]
+            },
+            "framework": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "certainty",
+            "framework",
+            "reasons"
+          ],
+          "additionalProperties": false
+        },
+        "unsupported_extrapolations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "study_family_id",
+        "title",
+        "authors",
+        "journal",
+        "year",
+        "publication_date",
+        "volume",
+        "issue",
+        "pages",
+        "doi",
+        "pmid",
+        "source_ids",
+        "source_access_level",
+        "full_text_verified",
+        "review_status",
+        "reviewed_on",
+        "review_due",
+        "design",
+        "population",
+        "duration_weeks",
+        "application_frequency_per_day",
+        "application_sites",
+        "measurement_timepoints_weeks",
+        "instrument_reported",
+        "interventions",
+        "outcomes",
+        "between_group",
+        "reporting_issues",
+        "funding",
+        "adverse_events",
+        "evidence_appraisal",
+        "unsupported_extrapolations"
+      ],
+      "additionalProperties": false
+    },
+    "evidence_link": {
+      "type": "object",
+      "properties": {
+        "study_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "outcome_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "direct_product_match": {
+          "type": "boolean"
+        },
+        "formulation_match": {
+          "enum": [
+            "not_established",
+            "exact_verified",
+            "mismatch"
+          ]
+        },
+        "applicability": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "study_id",
+        "outcome_ids",
+        "direct_product_match",
+        "formulation_match",
+        "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "brand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalog_step": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalog_source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "catalog_retailer_source_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "studied_ingredient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_type": {
+          "enum": [
+            "finished_product_human_study",
+            "ingredient_level_human_study",
+            "preclinical_research",
+            "insufficient_evidence"
+          ]
+        },
+        "review_status": {
+          "enum": [
+            "source_checked",
+            "approved",
+            "not_reviewed",
+            "revoked",
+            "superseded",
+            "on_hold"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "formulation_status": {
+          "enum": [
+            "matched_current_listings",
+            "conflicting_listings",
+            "not_verified",
+            "superseded"
+          ]
+        },
+        "formulation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "active_formulation_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "evidence_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence_link"
+          },
+          "minItems": 0
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "product_efficacy_established": {
+          "type": "boolean"
+        },
+        "evidence_certainty": {
+          "enum": [
+            "limited",
+            "moderate",
+            "high",
+            "not_assessed"
+          ]
+        },
+        "suitability": {
+          "type": "object",
+          "properties": {
+            "eligible_concerns": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "restrictions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "allergen_screening": {
+              "type": "string",
+              "minLength": 1
+            },
+            "population_generalization": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "eligible_concerns",
+            "restrictions",
+            "allergen_screening",
+            "population_generalization"
+          ],
+          "additionalProperties": false
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "product_id",
+        "brand",
+        "name",
+        "catalog_step",
+        "catalog_source_ids",
+        "catalog_retailer_source_id",
+        "studied_ingredient",
+        "evidence_type",
+        "review_status",
+        "reviewed_on",
+        "review_due",
+        "formulation_status",
+        "formulation_ids",
+        "active_formulation_id",
+        "evidence_links",
+        "claim_ids",
+        "product_efficacy_established",
+        "evidence_certainty",
+        "suitability",
+        "gaps"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_type": {
+                "enum": [
+                  "ingredient_level_human_study",
+                  "preclinical_research",
+                  "insufficient_evidence"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "product_efficacy_established": {
+                "const": false
+              },
+              "evidence_links": {
+                "items": {
+                  "properties": {
+                    "direct_product_match": {
+                      "const": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_type": {
+                "const": "finished_product_human_study"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_links": {
+                "minItems": 1,
+                "contains": {
+                  "properties": {
+                    "direct_product_match": {
+                      "const": true
+                    },
+                    "formulation_match": {
+                      "const": "exact_verified"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "formulation_status": {
+                "const": "matched_current_listings"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "active_formulation_id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "active_formulation_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "product_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "study_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "concerns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "claim_scope": {
+          "enum": [
+            "ingredient_context",
+            "finished_product_human_outcome",
+            "preclinical_context"
+          ]
+        },
+        "review_status": {
+          "enum": [
+            "source_checked",
+            "approved",
+            "not_reviewed",
+            "revoked",
+            "superseded",
+            "on_hold"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "quantitative_product_claim": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mandatory_caveat": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sms_text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "product_id",
+        "study_ids",
+        "source_ids",
+        "concerns",
+        "claim_scope",
+        "review_status",
+        "reviewed_on",
+        "review_due",
+        "quantitative_product_claim",
+        "text",
+        "mandatory_caveat",
+        "sms_text"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "claim_scope": {
+                "enum": [
+                  "ingredient_context",
+                  "preclinical_context"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "quantitative_product_claim": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "research_item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "product_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "pending_primary_full_text",
+            "formulation_mismatch",
+            "manufacturer_summary_pending_review",
+            "not_reviewed",
+            "in_review",
+            "resolved"
+          ]
+        },
+        "evidence_type": {
+          "enum": [
+            "finished_product_human_study",
+            "ingredient_level_human_study",
+            "preclinical_research",
+            "insufficient_evidence"
+          ]
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "product_ids",
+        "source_ids",
+        "status",
+        "evidence_type",
+        "task",
+        "blocks"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
